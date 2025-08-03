@@ -5,7 +5,7 @@ Bienvenidos a mi portfolio!
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Esteban Gabriel Loni - Portfolio</title>
+    <title>Esteban Gabrielloni - Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
