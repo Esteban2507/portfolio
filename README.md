@@ -4,27 +4,61 @@ Bienvenidos a mi portfolio!
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Esteban Gabriel - Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Esteban Gabriel Loni - Portfolio</title>
+  <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
-    <header>
-        <h1>Esteban Gabriel</h1>
-        <p>Analista de datos | Power BI | Automatización | ERPs</p>
-        <img src="perfil.jpg" alt="Foto de perfil" class="perfil-img" />
-    </header>
-    <section>
-        <h2>Proyectos Destacados</h2>
-        <ul>
-            <li>Control de facturas con Power BI</li>
-            <li>Automatización de reportes con Excel y macros</li>
-            <li>Integración de reportes con SAP, JDE, FTS</li>
-        </ul>
-    </section>
-    <footer>
-        <p>Contacto: egabrielloni@yahoo.com.ar | <a href="https://www.linkedin.com/in/egabrielloni">LinkedIn</a></p>
-    </footer>
+  <header>
+    <img src="perfil.jpg" alt="Foto de perfil" class="perfil-img" />
+    <h1>Esteban Gabriel Loni</h1>
+    <p>Analista de Datos | Power BI | Excel | ERP | Automatización</p>
+  </header>
+
+  <section class="seccion">
+    <h2>Sobre mí</h2>
+    <p>
+      Soy un profesional con sólida experiencia en análisis de datos, automatización de reportes
+      y verificación de información contable. Trabajo con herramientas como Power BI, Excel (macros),
+      SAP, JDE y FTS. Me enfoco en la precisión, la eficiencia y la mejora continua.
+    </p>
+  </section>
+
+  <section class="seccion">
+    <h2>Habilidades</h2>
+    <ul class="lista-habilidades">
+      <li>📊 Power BI</li>
+      <li>📁 Excel (Macros, VBA)</li>
+      <li>🧠 Análisis de datos</li>
+      <li>🔄 Automatización de tareas</li>
+      <li>💼 SAP / JDE / FTS</li>
+      <li>💻 Python (en formación)</li>
+    </ul>
+  </section>
+
+  <section class="seccion">
+    <h2>Proyectos personales</h2>
+    <div class="proyectos">
+      <div class="proyecto">
+        <img src="proyecto1.jpg" alt="Proyecto 1" />
+        <p>Control de facturas cruzando datos entre reportes de Power BI.</p>
+      </div>
+      <div class="proyecto">
+        <img src="proyecto2.jpg" alt="Proyecto 2" />
+        <p>Automatización de verificación contable con Excel y macros.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <h2>Contacto</h2>
+    <p>📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a></p>
+    <p>🔗 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank">LinkedIn</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Esteban Gabriel Loni</p>
+  </footer>
 </body>
 </html>
