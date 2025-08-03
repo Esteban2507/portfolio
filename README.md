@@ -10,7 +10,7 @@ Bienvenidos a mi portfolio!
 </head>
 <body>
     <header>
-        <img src="foto.jpg" alt="Foto de perfil" class="Perfil.jpg">
+        <img src="foto.jpg" alt="Foto de perfil" class="perfil.jpg">
         <h1>Esteban Gabriel Loni</h1>
         <p>Analista de datos | Power BI · Excel · Macros · SAP · FTS</p>
     </header>
