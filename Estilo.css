@@ -160,7 +160,7 @@ footer a:hover {
     content: '"';
     font-size: 2rem;
     vertical-align: top;
-    color: #f0f0f0;
+    color: #ffffff;
 }
 @media (max-width: 600px) {
     .perfil img {
