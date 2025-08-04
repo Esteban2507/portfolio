@@ -69,23 +69,7 @@ ul li::before {
     left: -1rem;
     color: #00bcd4;
 }
-.frase {
-    text-align: center;
-    font-style: italic;
-    font-size: 1.4rem;
-    margin: 2rem auto;
-    max-width: 700px;
-    position: relative;
-    color: #00bcd4;
-}
 
-.frase blockquote::before,
-.frase blockquote::after {
-    content: '"';
-    font-size: 2rem;
-    vertical-align: top;
-    color: #00bcd4;
-}
 
 /* Galería de proyectos */
 .galeria {
@@ -155,4 +139,21 @@ footer a:hover {
     h2 {
         font-size: 1.2rem;
     }
+    .frase {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.4rem;
+    margin: 2rem auto;
+    max-width: 700px;
+    position: relative;
+    color: #00bcd4;
+}
+
+.frase blockquote::before,
+.frase blockquote::after {
+    content: '"';
+    font-size: 2rem;
+    vertical-align: top;
+    color: #00bcd4;
+}
 }
