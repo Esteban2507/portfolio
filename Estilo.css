@@ -139,14 +139,33 @@ footer a:hover {
     h2 {
         font-size: 1.2rem;
     }
-    .frase {
+    .frase-destacada {
+    margin: 40px auto;
+    max-width: 800px;
     text-align: center;
     font-style: italic;
-    font-size: 1.4rem;
-    margin: 2rem auto;
-    max-width: 700px;
+    font-size: 1.5em;
+    color: #444;
+    padding: 20px;
+    border-left: 5px solid #1e88e5;
+    background-color: #f9f9f9;
     position: relative;
-    color: #00bcd4;
+}
+
+.frase-destacada blockquote::before {
+    content: open-quote;
+    font-size: 2.5em;
+    line-height: 0;
+    vertical-align: -0.4em;
+    color: #1e88e5;
+}
+
+.frase-destacada blockquote::after {
+    content: close-quote;
+    font-size: 2.5em;
+    line-height: 0;
+    vertical-align: -0.4em;
+    color: #1e88e5;
 }
 
 .frase blockquote::before,
