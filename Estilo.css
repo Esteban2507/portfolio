@@ -14,7 +14,7 @@ header {
 }
 
 .foto-perfil img {
-    width: 180px;
+    width: 140px;
     height: auto;
     border-radius: 20px;
     object-fit: cover;
@@ -66,3 +66,4 @@ footer {
     border-top: 1px solid #333;
     font-size: 0.9em;
 }
+
