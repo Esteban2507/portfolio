@@ -126,20 +126,7 @@ footer a:hover {
 }
 
 /* Responsive ajustes */
-@media (max-width: 600px) {
-    .perfil img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .perfil h1 {
-        font-size: 1.5rem;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-    }
-    .frase-destacada {
+ .frase-destacada {
     margin: 40px auto;
     max-width: 800px;
     text-align: center;
@@ -175,4 +162,17 @@ footer a:hover {
     vertical-align: top;
     color: #00bcd4;
 }
-}
+@media (max-width: 600px) {
+    .perfil img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .perfil h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+   }
