@@ -1,4 +1,6 @@
-# 📊 Portafolio Profesional - Esteban Gabriel
+# 📊 Portfolio Profesional - Esteban Gabrielloni
+
+![Hecho con dedicación y mate 🍵](https://img.shields.io/badge/Hecho%20con-dedicación%20y%20mate-06c755?style=for-the-badge)
 
 ¡Bienvenido a mi portafolio!  
 Soy **Analista de Datos** con experiencia en el desarrollo de reportes, dashboards y herramientas de control automatizado que mejoran la toma de decisiones en las organizaciones.
@@ -10,12 +12,6 @@ Este sitio fue construido en HTML y CSS, y está alojado en GitHub Pages. Aquí 
 ## 🌐 Acceso al sitio
 
 👉 [Ver portafolio en vivo](https://esteban2507.github.io/portfolio)
-
----
-
-## 🖼 Captura del portfolio
-
-![Captura del portfolio](img/Captura de portfolio.png)
 
 ---
 
@@ -59,4 +55,3 @@ Herramienta automatizada en Excel para revisar facturas y documentos contables, 
 ## 📝 Licencia
 
 Este portafolio fue desarrollado con fines personales y profesionales. Los proyectos reflejan mi experiencia y desarrollo real dentro del entorno laboral. Estás invitado a explorar y tomar inspiración, respetando la autoría de los contenidos.
-
