@@ -46,8 +46,9 @@ Herramienta automatizada en Excel para revisar facturas y documentos contables, 
 
 - 📧 [egabrielloni@yahoo.com.ar](mailto:egabrielloni@yahoo.com.ar)  
 - 🌐 [LinkedIn](https://www.linkedin.com/in/egabrielloni)  
-- 🐱 [GitHub](https://github.com/egabrielloni)
-
+- <img width="50" height="50" alt="icons8-github-50" src="https://github.com/user-attachments/assets/f0a253ec-e247-40f0-bcec-ad951bd291a3"[GitHub](https://github.com/egabrielloni)
+/>
+  
 ---
 
 ## 📝 Licencia
