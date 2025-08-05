@@ -1,4 +1,4 @@
-# 📊 Portafolio Profesional - Esteban Gabriel
+# 📊 Portfolio Profesional - Esteban Gabrielloni
 
 ¡Bienvenido a mi portafolio!  
 Soy **Analista de Datos** con experiencia en el desarrollo de reportes, dashboards y herramientas de control automatizado que mejoran la toma de decisiones en las organizaciones.
@@ -22,8 +22,8 @@ Dashboard que compara facturas ingresadas en distintos sistemas contables (Gosoc
 
 ---
 
-### 🔹 Seguimiento de KPIs - Supply Chain  
-Visualización de métricas clave con filtros dinámicos por mes, región y proveedor, ideal para monitorear el rendimiento del área de compras y abastecimiento.
+### 🔹 Seguimiento de KPIs de Gestión 
+Visualización de métricas clave con filtros dinámicos por mes, región y proveedor, para las áreas administrativas, con alertas y filtros dinámicos.
 
 ---
 
