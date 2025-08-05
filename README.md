@@ -1,23 +1,62 @@
-# portfolio
-### 🔗 Link al portafolio
-[Ver portafolio en vivo]([https://estebangabriel.github.io/](https://esteban2507.github.io/portfolio/)
+# 📊 Portafolio Profesional - Esteban Gabriel
 
-### 🖼 Captura de pantalla
-![Captura del portafolio]([img/Captura de portafolio.png](https://github.com/Esteban2507/portfolio/blob/main/img/Captura%20de%20portfolio.png))
+¡Bienvenido a mi portafolio!  
+Soy **Analista de Datos** con experiencia en el desarrollo de reportes, dashboards y herramientas de control automatizado que mejoran la toma de decisiones en las organizaciones.
 
-### 📁 Proyectos destacados
+Este sitio fue construido en HTML y CSS, y está alojado en GitHub Pages. Aquí vas a encontrar una selección de mis principales proyectos en Power BI y Excel con impacto comprobado en procesos contables y de análisis.
 
-- **Control de facturas en Power BI**: Dashboard que compara facturas de diferentes sistemas (Gosocket, SAP, etc.) y resalta discrepancias para evitar errores de pago.
-- **Seguimiento de KPIs de Supply Chain**: Métricas dinámicas con filtros por mes, región y proveedor.
-- **Validación automática en Excel**: Macros para revisar documentos contables y marcar errores de forma automática.
+---
 
-### 🛠 Herramientas y tecnologías
+## 🌐 Acceso al sitio
 
-- Power BI
-- Excel + VBA
-- Python (pandas, openpyxl)
-- HTML + CSS (GitHub Pages)
+👉 [Ver portafolio en vivo](https://esteban2507.github.io/portfolio)
 
-### 📝 Licencia
+---
 
-Este portafolio fue creado con fines personales y educativos. Estás libre de usar el diseño como inspiración, pero los proyectos presentados son propiedad del autor.
+## 🖼 Captura del portfolio
+
+![Captura del portfolio](img/Captura de portfolio.png)
+
+---
+
+## 📁 Proyectos destacados
+
+### 🔹 Control de Facturas - Power BI  
+Dashboard que compara facturas ingresadas en distintos sistemas contables (Gosocket, SAP, etc.), permitiendo detectar duplicidades, errores de monto o moneda antes del pago.
+
+> 💡 Impacto: Reducción del 90% en errores de validación contable.
+
+---
+
+### 🔹 Seguimiento de KPIs - Supply Chain  
+Visualización de métricas clave con filtros dinámicos por mes, región y proveedor, ideal para monitorear el rendimiento del área de compras y abastecimiento.
+
+---
+
+### 🔹 Validación Automática - Excel + VBA  
+Herramienta automatizada en Excel para revisar facturas y documentos contables, marcando diferencias, faltantes o inconsistencias con lógica condicional y macros.
+
+---
+
+## 🛠 Herramientas y Tecnologías
+
+- Power BI (DAX, Power Query)
+- Excel avanzado + VBA
+- Python (en formación)
+- HTML + CSS
+- GitHub Pages
+
+---
+
+## 📬 Contacto
+
+- 📧 [egabrielloni@yahoo.com.ar](mailto:egabrielloni@yahoo.com.ar)  
+- 🌐 [LinkedIn](https://www.linkedin.com/in/egabrielloni)  
+- 🐱 [GitHub](https://github.com/egabrielloni)
+
+---
+
+## 📝 Licencia
+
+Este portafolio fue desarrollado con fines personales y profesionales. Los proyectos reflejan mi experiencia y desarrollo real dentro del entorno laboral. Estás invitado a explorar y tomar inspiración, respetando la autoría de los contenidos.
+
