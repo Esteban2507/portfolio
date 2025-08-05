@@ -43,3 +43,8 @@ Want to learn more or collaborate on a project? Feel free to reach out:
 **🌐 [LinkedIn](https://www.linkedin.com/in/estebangabriel)**
 
 ---
+
+📝 Licence
+This portfolio was developed for personal and professional purposes. The projects reflect my real-life experience and development within the workplace. You are invited to explore and be inspired, respecting the authorship of the content.
+
+---
