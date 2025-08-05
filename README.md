@@ -1,13 +1,5 @@
 # 📊 Portfolio Profesional - Esteban Gabrielloni
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Power%20BI-Lover%20💛-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" alt="Power BI Lover" />
-  <img src="https://img.shields.io/badge/Excel%20Fan-📊-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="Excel Fan" />
-  <img src="https://img.shields.io/badge/Datos%20al%20rescate-🧠📈-00bcd4?style=for-the-badge" alt="Datos al rescate" />
-  <img src="https://img.shields.io/badge/VBA-Ninja%20🧙‍♂️-1e1e1e?style=for-the-badge&logo=visual-basic&logoColor=white" alt="VBA Ninja" />
-  <img src="https://img.shields.io/badge/Mate%20siempre-🍵-06c755?style=for-the-badge" alt="Mate siempre" />
-</p>
-
 ¡Bienvenido a mi portafolio!  
 Soy **Analista de Datos** con experiencia en el desarrollo de reportes, dashboards y herramientas de control automatizado que mejoran la toma de decisiones en las organizaciones.
 
