@@ -56,8 +56,8 @@ main {
 
 section {
     margin-bottom: 3rem;
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: none;
     transition: opacity 1s ease, transform 1s ease;
 }
 
