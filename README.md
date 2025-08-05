@@ -3,7 +3,7 @@
 [Ver portafolio en vivo]([https://estebangabriel.github.io/](https://esteban2507.github.io/portfolio/)
 
 ### 🖼 Captura de pantalla
-![Captura del portafolio](img/Captura de portafolio.png)
+![Captura del portafolio]([img/Captura de portafolio.png](https://github.com/Esteban2507/portfolio/blob/main/img/Captura%20de%20portfolio.png))
 
 ### 📁 Proyectos destacados
 
