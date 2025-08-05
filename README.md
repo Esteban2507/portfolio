@@ -1,54 +1,47 @@
 # 📊 Portfolio Profesional - Esteban Gabrielloni
 
-¡Bienvenido a mi portafolio!  
-Soy **Analista de Datos** con experiencia en el desarrollo de reportes, dashboards y herramientas de control automatizado que mejoran la toma de decisiones en las organizaciones.
-
-Este sitio fue construido en HTML y CSS, y está alojado en GitHub Pages. Aquí vas a encontrar una selección de mis principales proyectos en Power BI y Excel con impacto comprobado en procesos contables y de análisis.
+¡Hola! Soy Esteban, un analista de datos apasionado por transformar información en decisiones inteligentes. Este es un espacio donde comparto algunos de mis proyectos personales, exploraciones y visualizaciones.
 
 ---
 
-## 🌐 Acceso al sitio
+## 🗂️ Proyectos Destacados
 
-👉 [Ver portafolio en vivo](https://esteban2507.github.io/portfolio)
+### 📊 [Proyecto 1: Análisis de Ventas Internacionales](proyecto1.html)
+Un dashboard interactivo que visualiza las ventas de una empresa ficticia en distintas regiones del mundo. Utilicé **Power BI** para detectar patrones estacionales y comparar desempeño entre países.
 
----
+### 🧾 [Proyecto 2: Control de Facturación con Excel VBA](proyecto2.html)
+Macro en Excel que automatiza el control de facturas entre distintas hojas y reportes. Resalta diferencias y marca coincidencias con lógica condicional.
 
-## 📁 Proyectos destacados
+### 🔍 [Proyecto 3: Comparador de Reportes Contables](proyecto3.html)
+Herramienta desarrollada en Excel con VBA para comparar reportes como `FTS`, `ALMACEN` y `SERVICIOS ADUANEROS`, asegurando coherencia en los pagos de proveedores. Ideal para tareas de verificación contable.
 
-### 🔹 Control de Facturas - Power BI  
-Dashboard que compara facturas ingresadas en distintos sistemas contables (Gosocket, SAP, etc.), permitiendo detectar duplicidades, errores de monto o moneda antes del pago.
-
-> 💡 Impacto: Reducción del 90% en errores de validación contable.
-
----
-
-### 🔹 Seguimiento de KPIs de Gestión 
-Visualización de métricas clave con filtros dinámicos por mes, región y proveedor, para las áreas administrativas, con alertas y filtros dinámicos.
+### 🐍 [Proyecto 4: Análisis de Ventas con Python](proyecto4.html)
+Script en Python que analiza un conjunto de datos de ventas: promedio por producto, tendencias mensuales y proyecciones. Incluye visualizaciones con **Matplotlib** y **Seaborn**. Un proyecto simple pero potente para demostrar habilidades en análisis de datos con Python.
 
 ---
 
-### 🔹 Validación Automática - Excel + VBA  
-Herramienta automatizada en Excel para revisar facturas y documentos contables, marcando diferencias, faltantes o inconsistencias con lógica condicional y macros.
+## 🧰 Tecnologías y herramientas
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![Excel VBA](https://img.shields.io/badge/Excel-VBA-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
 ---
 
-## 🛠 Herramientas y Tecnologías
+## 😄 Sobre mí
 
-- Power BI (DAX, Power Query)
-- Excel avanzado + VBA
-- Python (en formación)
-- HTML + CSS
-- GitHub Pages
+Me encanta automatizar procesos, encontrar errores antes de que se conviertan en problemas y contar historias con datos. Actualmente estoy profundizando mis conocimientos en **Python**, **Power BI** y **Celonis**.
 
 ---
 
-## 📬 Contacto
+## 📫 Contacto
 
-- 📧 [egabrielloni@yahoo.com.ar](mailto:egabrielloni@yahoo.com.ar)  
-- 🌐 [LinkedIn](https://www.linkedin.com/in/egabrielloni)  
-- <img width="50" height="50" alt="icons8-github-50" src="https://github.com/user-attachments/assets/f0a253ec-e247-40f0-bcec-ad951bd291a3"[GitHub](https://github.com/egabrielloni)
-/>
-  
+Si querés saber más sobre mi trabajo o colaborar, podés escribirme a:
+
+**✉️ esteban.gabriel@email.com**  
+**🌐 [LinkedIn](https://www.linkedin.com/in/estebangabriel)**
+
 ---
 
 ## 📝 Licencia
