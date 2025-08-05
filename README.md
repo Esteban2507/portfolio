@@ -2,7 +2,7 @@
 
 ¡Hola! Soy Esteban, un analista de datos apasionado por transformar información en decisiones inteligentes. Este es un espacio donde comparto algunos de mis proyectos personales, exploraciones y visualizaciones.
 
----
+---          > 🌐 [English version available here](README_EN.md)
 
 ## 🗂️ Proyectos Destacados
 
