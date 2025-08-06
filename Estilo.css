@@ -208,7 +208,7 @@ ul li::before {
 
 /* FRASE DESTACADA */
 .frase-destacada {
-    margin: 20px auto 20px auto;
+    margin: 20px auto 15px auto;
     margin-top: 2px
     max-width: 1200px;
     text-align: center;
