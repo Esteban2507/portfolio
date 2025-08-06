@@ -6,16 +6,16 @@
 
 ## 🗂️ Proyectos Destacados
 
-### 📊 [Proyecto 1: Análisis de Ventas Internacionales](proyecto1.html)
+### 📊 [Proyecto 1: Análisis de Ventas Internacionales](Proyecto1.html)
 Un dashboard interactivo que visualiza las ventas de una empresa ficticia en distintas regiones del mundo. Utilicé **Power BI** para detectar patrones estacionales y comparar desempeño entre países.
 
-### 🧾 [Proyecto 2: Control de Facturación con Excel VBA](proyecto2.html)
+### 🧾 [Proyecto 2: Control de Facturación con Excel VBA](Proyecto2.html)
 Macro en Excel que automatiza el control de facturas entre distintas hojas y reportes. Resalta diferencias y marca coincidencias con lógica condicional.
 
-### 🔍 [Proyecto 3: Comparador de Reportes Contables](proyecto3.html)
+### 🔍 [Proyecto 3: Comparador de Reportes Contables](Proyecto3.html)
 Herramienta desarrollada en Excel con VBA para comparar reportes como `FTS`, `ALMACEN` y `SERVICIOS ADUANEROS`, asegurando coherencia en los pagos de proveedores. Ideal para tareas de verificación contable.
 
-### 🐍 [Proyecto 4: Análisis de Ventas con Python](proyecto4.html)
+### 🐍 [Proyecto 4: Análisis de Ventas con Python](Proyecto4.html)
 Script en Python que analiza un conjunto de datos de ventas: promedio por producto, tendencias mensuales y proyecciones. Incluye visualizaciones con **Matplotlib** y **Seaborn**. Un proyecto simple pero potente para demostrar habilidades en análisis de datos con Python.
 
 ---
@@ -39,7 +39,7 @@ Me encanta automatizar procesos, encontrar errores antes de que se conviertan en
 
 Si querés saber más sobre mi trabajo o colaborar, podés escribirme a:
 
-**✉️ esteban.gabriel@email.com**  
+**✉️ egabrielloni@yahoo.com.ar**  
 **🌐 [LinkedIn](https://www.linkedin.com/in/estebangabriel)**
 
 ---
