@@ -208,7 +208,7 @@ ul li::before {
 
 /* FRASE DESTACADA */
 .frase-destacada {
-    margin: 20px auto 10px auto;
+    margin: 2px auto 5px auto;
     max-width: 1200px;
     text-align: center;
     font-style: italic;
@@ -295,6 +295,6 @@ footer a:hover {
 .sobre-mi p {
   font-size: 1.2rem;
   line-height: 1.5;
-  margin-bottom: 22px;
+  margin-bottom: 0.2px;
   color: #cfcfcf; /* gris claro para párrafos */
 }
