@@ -1,136 +1,278 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- ---------- Metadatos básicos y SEO ---------- -->
     <meta charset="UTF-8">
-    <title>Portfolio de Esteban Gabrielloni</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio – Esteban Gabrielloni | Analista de Datos</title>
+    <meta name="description"
+          content="Portfolio de Esteban Gabrielloni, Analista de Datos especializado en Power BI, Python y Excel avanzado. Descubre sus proyectos y experiencia profesional.">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+
+    <!-- ---------- Conexiones a CDN (optimiza la carga) ---------- -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- ---------- Hojas de estilo ---------- -->
     <link rel="stylesheet" href="Estilo.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Font Awesome (integrity + crossorigin) -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+          integrity="sha512-8hL5YtKZgZsM2fQfA5bB5EoM9NwT9F6KjE/4v2EJ4N+R+M2I9V5cN6eZ+S1c2B2iG6VJp1tM2Vt8f7s1zG9Vw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer">
+
+    <!-- ---------- Datos estructurados (JSON‑LD) ---------- -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Esteban Gabrielloni",
+      "jobTitle": "Analista de Datos",
+      "url": "https://www.tusitio.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/egabrielloni",
+        "https://github.com/Esteban2507"
+      ],
+      "email": "mailto:egabrielloni@yahoo.com.ar",
+      "image": "https://www.tusitio.com/img/perfil.jpg",
+      "knowsAbout": [
+        "Power BI",
+        "Python",
+        "Excel avanzado",
+        "Análisis de datos"
+      ]
+    }
+    </script>
+
+    <!-- ---------- Estilos rápidos para skip‑link y transiciones (puedes moverlos a Estilo.css) ---------- -->
+    <style>
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+        .skip-link:focus {
+            left: 1rem;
+            top: 1rem;
+            background:#fff;
+            color:#000;
+            padding:.5rem 1rem;
+            z-index:1000;
+            width:auto;
+            height:auto;
+            overflow:visible;
+        }
+
+        /* Animaciones de aparición de secciones */
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .6s ease-out, transform .6s ease-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
 </head>
+
 <body>
+    <!-- ---------- Skip link (salto rápido al contenido principal) ---------- -->
+    <a href="#principal" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- ---------- Cabecera ---------- -->
     <header>
         <div class="perfil">
-            <img src="img/perfil.jpg" alt="Foto de Esteban Gabrielloni">
+            <img src="img/perfil.jpg"
+                 alt="Foto de Esteban Gabrielloni, analista de datos"
+                 width="150" height="150"
+                 loading="lazy">
             <h1>Esteban Gabrielloni</h1>
-            <p>Analista de Datos | Power BI | Python | HTML</p>
+            <p>Analista de Datos • Power BI • Python • HTML</p>
         </div>
     </header>
 
-    <main>
-    <section id="sobre-mi" class="sobre-mi">
-  <div class="container">
-    <h2>Sobre mí</h2>
-    <p>
-      <strong>¡Bienvenidos! </strong> -Soy Esteban, me dedico al data analytics y me encanta todo lo que tenga que ver con automatizar, simplificar procesos y encontrar soluciones que hagan el trabajo más fácil y ágil. Hoy estoy enfocado en herramientas como Excel, Power BI, Python y Celonis, que me ayudan a entender mejor la información y sacarle el jugo a los datos.
-    </p>
-    <p>
-      Siempre estoy aprendiendo algo nuevo, porque me gusta crecer y mantenerme actualizado. Creo que los datos no son solo números: son pistas, historias y oportunidades que esperan ser descubiertas. Me gusta eso de poder transformar algo en apariencia aburrido en algo útil, claro y que ayude a tomar mejores decisiones.
-    </p>
-    <p>
-      Fuera del trabajo, soy fan del asado <em>(dicen que me sale bastante bien 😄)</em>, practico boxeo —una pasión nueva que me enganchó fuerte— y también salgo a andar en bici cuando tengo tiempo. Con mi pareja compartimos el amor por el buen vino y hace años que vamos a catas para conocer y disfrutar juntos.
-    </p>
-    <p>
-      Soy curioso, práctico y disfruto lo que hago, tanto en lo profesional como en lo personal. Y si bien los datos son lo mío, siempre creo que lo más importante son las personas y las conexiones que uno va creando en el camino.
-    </p>
-  </div>
-        </section>
-        
-        <section class="frase-destacada">
-            <blockquote>Los datos no son solo números; son oportunidades esperando ser descubiertas.</blockquote>
+    <!-- ---------- Navegación interna (opcional pero recomendable) ---------- -->
+    <nav aria-label="Navegación principal">
+        <ul>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- ---------- Contenido principal ---------- -->
+    <main id="principal">
+
+        <!-- Sobre mí -->
+        <section id="sobre-mi" class="sobre-mi">
+            <div class="container">
+                <h2>Sobre mí</h2>
+                <p><strong>¡Bienvenidos!</strong> Soy Esteban, me dedico al data analytics y me encanta automatizar, simplificar procesos y encontrar soluciones que hagan el trabajo más fácil y ágil. Actualmente trabajo con Excel, Power BI, Python y Celonis para extraer valor de los datos.</p>
+                <p>Siempre estoy aprendiendo algo nuevo, porque me gusta crecer y mantenerme actualizado. Los datos no son solo números: son pistas, historias y oportunidades que esperan ser descubiertas.</p>
+                <p>Fuera del trabajo, soy fan del asado <em>(dicen que me sale bastante bien 😄)</em>, practico boxeo —una pasión nueva que me enganchó fuerte— y salgo a andar en bici cuando tengo tiempo. Con mi pareja compartimos el amor por el buen vino y asistimos a catas.</p>
+                <p>Soy curioso, práctico y disfruto lo que hago, tanto en lo profesional como en lo personal. Los datos son lo mío, pero lo más importante son las personas y las conexiones que uno va creando en el camino.</p>
+            </div>
         </section>
 
-        <section class="habilidades">
+        <!-- Frase destacada -->
+        <section class="frase-destacada">
+            <blockquote cite="https://www.tusitio.com">
+                Los datos no son solo números; son oportunidades esperando ser descubiertas.
+            </blockquote>
+        </section>
+
+        <!-- Habilidades técnicas -->
+        <section id="habilidades" class="habilidades">
             <h2>Habilidades Técnicas</h2>
             <ul>
-                <li>Power BI</li>
+                <li>Power BI</li>
                 <li>Python</li>
                 <li>Excel avanzado</li>
                 <li>ERPs: SAP, JDE, FTS</li>
             </ul>
         </section>
 
-        <section class="experiencia">
+        <!-- Experiencia profesional -->
+        <section id="experiencia" class="experiencia">
             <h2>Experiencia Profesional</h2>
-            <p><strong>Analista de Datos –</strong> Desarrollo de dashboards en Power BI y automatización de reportes en Excel.</p>
+            <p><strong>Analista de Datos –</strong> Desarrollo de dashboards en Power BI y automatización de reportes en Excel.</p>
         </section>
 
-       <section id="proyectos">
-  <h2 class="titulo">Mis Proyectos</h2>
+        <!-- Proyectos (carrusel) -->
+        <section id="proyectos">
+            <h2 class="titulo">Mis Proyectos</h2>
 
-  <div class="carrusel-container">
-    <button class="btn" id="prev">&#10094;</button>
-    <div class="carrusel" id="carrusel">
-      <div class="proyecto">
-        <img src="img/proyecto1.png" alt="Proyecto 1">
-        <h3>Dashboard de Ventas</h3>
-        <p>Visualización de KPIs comerciales con Power BI.</p>
-        <a href="Proyecto1.html" class="vermas">Ver más</a>
-      </div>
-      <div class="proyecto">
-        <img src="img/proyecto2.png" alt="Proyecto 2">
-        <h3>Control de Stock</h3>
-        <p>App para seguimiento de inventarios en Excel VBA.</p>
-        <a href="Proyecto2.html" class="vermas">Ver más</a>
-      </div>
-      <div class="proyecto">
-        <img src="img/proyecto3.png" alt="Proyecto 3">
-        <h3>Indicadores de Gestión</h3>
-        <p>Panel dinámico para reportes mensuales en Power BI.</p>
-        <a href="Proyecto3.html" class="vermas">Ver más</a>
-      </div>
-      <div class="proyecto">
-        <img src="img/proyecto4.png" alt="Proyecto 4">
-        <h3>Análisis de Ventas (Python)</h3>
-        <p>Estudio de datos históricos y predicción con pandas y matplotlib.</p>
-        <a href="Proyecto4.html" class="vermas">Ver más</a>
-      </div>
-    </div>
-    <button class="btn" id="next">&#10095;</button>
-  </div>
-</section>
+            <div class="carrusel-container" role="region"
+                 aria-roledescription="carrusel de proyectos"
+                 aria-label="Galería de proyectos"
+                 aria-live="polite">
+                <button class="btn" id="prev" type="button"
+                        aria-label="Proyecto anterior">&#10094;</button>
+
+                <div class="carrusel" id="carrusel">
+                    <!-- Cada proyecto como <article> (contenido independiente) -->
+                    <article class="proyecto">
+                        <img src="img/proyecto1.png"
+                             srcset="img/proyecto1-480w.png 480w,
+                                     img/proyecto1-800w.png 800w,
+                                     img/proyecto1.png 1200w"
+                             sizes="(max-width: 600px) 90vw, 260px"
+                             alt="Dashboard de ventas creado con Power BI"
+                             width="260" height="150"
+                             loading="lazy">
+                        <h3>Dashboard de Ventas</h3>
+                        <p>Visualización de KPIs comerciales con Power BI.</p>
+                        <a href="Proyecto1.html" class="vermas">Ver más</a>
+                    </article>
+
+                    <article class="proyecto">
+                        <img src="img/proyecto2.png"
+                             alt="Control de stock desarrollado con Excel VBA"
+                             width="260" height="150"
+                             loading="lazy">
+                        <h3>Control de Stock</h3>
+                        <p>App para seguimiento de inventarios en Excel VBA.</p>
+                        <a href="Proyecto2.html" class="vermas">Ver más</a>
+                    </article>
+
+                    <article class="proyecto">
+                        <img src="img/proyecto3.png"
+                             alt="Indicadores de gestión en Power BI"
+                             width="260" height="150"
+                             loading="lazy">
+                        <h3>Indicadores de Gestión</h3>
+                        <p>Panel dinámico para reportes mensuales en Power BI.</p>
+                        <a href="Proyecto3.html" class="vermas">Ver más</a>
+                    </article>
+
+                    <article class="proyecto">
+                        <img src="img/proyecto4.png"
+                             alt="Análisis de ventas con Python (pandas, matplotlib)"
+                             width="260" height="150"
+                             loading="lazy">
+                        <h3>Análisis de Ventas (Python)</h3>
+                        <p>Estudio de datos históricos y predicción con pandas y matplotlib.</p>
+                        <a href="Proyecto4.html" class="vermas">Ver más</a>
+                    </article>
+                </div>
+
+                <button class="btn" id="next" type="button"
+                        aria-label="Proyecto siguiente">&#10095;</button>
+            </div>
+        </section>
 
     </main>
 
-    <footer>
-        <p>
+    <!-- ---------- Footer ---------- -->
+    <footer id="contacto">
+        <address>
             📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
-            🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank">LinkedIn</a> |
-            <i class="fab fa-github"></i> <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md" target="_blank">GitHub</a>
-        </p>
+            🌐 <a href="https://www.linkedin.com/in/egabrielloni"
+                 target="_blank"
+                 rel="noopener noreferrer">LinkedIn</a> |
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md"
+               target="_blank"
+               rel="noopener noreferrer">GitHub</a>
+        </address>
     </footer>
 
+    <!-- ---------- Scripts ---------- -->
+    <!-- 1) Animación de aparición usando IntersectionObserver -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const secciones = document.querySelectorAll("section");
+        document.addEventListener('DOMContentLoaded', () => {
+            const secs = document.querySelectorAll('section');
 
-            const mostrarSeccion = () => {
-                const trigger = window.innerHeight * 0.85;
-                secciones.forEach(sec => {
-                    const top = sec.getBoundingClientRect().top;
-                    if (top < trigger) {
-                        sec.classList.add("visible");
-                    }
-                });
-            };
+            const observer = new IntersectionObserver(
+                entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            // Si solo quieres la animación una vez, descomenta la siguiente línea:
+                            // observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    rootMargin: '0px 0px -15% 0px', // similar a 85% de la altura de la ventana
+                    threshold: 0.1
+                }
+            );
 
-            window.addEventListener("scroll", mostrarSeccion);
-            mostrarSeccion();
+            secs.forEach(sec => observer.observe(sec));
         });
     </script>
+
+    <!-- 2) Carrusel con botones y scroll suave -->
     <script>
-  const carrusel = document.getElementById('carrusel');
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
+        const carrusel = document.getElementById('carrusel');
+        const btnPrev = document.getElementById('prev');
+        const btnNext = document.getElementById('next');
 
-  const scrollStep = 260;
+        const STEP = 260; // ancho de cada tarjeta + margen (ajusta si cambias el CSS)
 
-  prev.addEventListener('click', () => {
-    carrusel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-  });
+        btnPrev.addEventListener('click', () => {
+            carrusel.scrollBy({ left: -STEP, behavior: 'smooth' });
+        });
 
-  next.addEventListener('click', () => {
-    carrusel.scrollBy({ left: scrollStep, behavior: 'smooth' });
-  });
-</script>
+        btnNext.addEventListener('click', () => {
+            carrusel.scrollBy({ left: STEP, behavior: 'smooth' });
+        });
 
+        // Respeta la preferencia de movimiento reducido
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            btnPrev.disabled = true;
+            btnNext.disabled = true;
+        }
+    </script>
 </body>
 </html>
