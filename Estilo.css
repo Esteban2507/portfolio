@@ -209,12 +209,12 @@ ul li::before {
 /* FRASE DESTACADA */
 .frase-destacada {
     margin: 2px auto 5px auto;
-    margin-top: 4px;
+    margin-top: 2px;
     max-width: 1200px;
     text-align: center;
     font-style: italic;
     font-size: 1.1em;
-    line-height: 0.2;
+    line-height: 1.8;
     color: rgb(242, 242, 244);
     padding: 20px;
     background-color: #121212;
