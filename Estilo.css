@@ -1,137 +1,256 @@
-/* FUENTE GENERAL */
+/* -------------------------------------------------
+   ESTILO.CSS – Versión adaptada al HTML mejorado
+   ------------------------------------------------- */
+
+/* 1️⃣ Variables de color y tipografía (fácil de mantener) */
+:root {
+    --font-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --bg-body: #121212;          /* fondo de página */
+    --bg-primary: #1e1e1e;       /* header / footer */
+    --bg-card: #1e1e1e;          /* tarjetas / proyectos */
+    --color-text: #f0f0f0;       /* texto principal */
+    --color-muted: #a0a0a0;      /* texto secundario */
+    --color-light: #cfcfcf;      /* párrafos */
+    --accent: #00bcd4;           /* azul turquesa */
+    --accent-light: #4fc3f7;     /* tono claro del accent */
+}
+
+/* 2️⃣ Reset básico */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* -------------------------------------------------
+   FUENTE GENERAL & ANIMACIÓN DE CARGA
+   ------------------------------------------------- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #f0f0f0;
+    font-family: var(--font-base);
+    background-color: var(--bg-body);
+    color: var(--color-text);
     margin: 0;
     padding: 0;
     line-height: 1.6;
     opacity: 0;
     animation: fadeInBody 1s ease-in forwards;
 }
-
 @keyframes fadeInBody {
     to { opacity: 1; }
 }
 
-/* ENCABEZADO */
+/* -------------------------------------------------
+   ENLACE DE SALTO (skip‑link) – accesibilidad
+   ------------------------------------------------- */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    background: #fff;
+    color: #000;
+    padding: .5rem 1rem;
+    z-index: 1000;
+    width: auto;
+    height: auto;
+    overflow: visible;
+}
+
+/* -------------------------------------------------
+   HEADER / PERFIL
+   ------------------------------------------------- */
 header {
-    background-color: #1e1e1e;
+    background-color: var(--bg-primary);
     padding: 2rem 1rem;
     text-align: center;
     border-bottom: 2px solid #333;
 }
-
+.perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .perfil img {
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    border: 3px solid #00bcd4;
+    border: 3px solid var(--accent);
     object-fit: cover;
     margin-bottom: 1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform .3s ease, box-shadow .3s ease;
 }
-
 .perfil img:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 12px #00bcd4;
+    box-shadow: 0 0 12px var(--accent);
 }
-
 .perfil h1 {
     margin: 0;
     font-size: 2rem;
 }
-
 .perfil p {
-    margin: 0.5rem 0;
-    color: #a0a0a0;
+    margin: .5rem 0;
+    color: var(--color-muted);
 }
 
-/* SECCIONES PRINCIPALES */
+/* -------------------------------------------------
+   NAV – navegación interna
+   ------------------------------------------------- */
+nav {
+    margin: 1rem 0;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+nav a {
+    color: var(--color-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .3s ease;
+}
+nav a:hover,
+nav a:focus {
+    color: var(--accent);
+}
+
+/* -------------------------------------------------
+   CONTENIDO PRINCIPAL
+   ------------------------------------------------- */
 main {
     padding: 2rem 1.5rem;
     max-width: 1000px;
     margin: auto;
 }
 
+/* -------------------------------------------------
+   SECCIONES (animación mediante IntersectionObserver)
+   ------------------------------------------------- */
 section {
     margin-bottom: 3rem;
-    opacity: 1;
-    transform: none;
+    opacity: 0;
+    transform: translateY(30px);
     transition: opacity 1s ease, transform 1s ease;
 }
-
 section.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
+/* -------------------------------------------------
+   TITULARES (h2)
+   ------------------------------------------------- */
 h2 {
-    border-left: 5px solid #00bcd4;
-    padding-left: 0.5rem;
-    color: #00bcd4;
+    border-left: 5px solid var(--accent);
+    padding-left: .5rem;
+    color: var(--accent);
     margin-bottom: 1rem;
 }
 
+/* -------------------------------------------------
+   LISTAS
+   ------------------------------------------------- */
 ul {
     list-style: none;
     padding-left: 1rem;
 }
-
 ul li {
-    padding: 0.4rem 0;
+    padding: .4rem 0;
     position: relative;
 }
-
 ul li::before {
     content: '✔';
     position: absolute;
     left: -1rem;
-    color: #00bcd4;
+    color: var(--accent);
 }
 
-/* GALERÍA DE PROYECTOS */
-.galeria {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
+/* -------------------------------------------------
+   SECCIÓN “SOBRE MÍ”
+   ------------------------------------------------- */
+.sobre-mi {
+    padding: 60px 20px;
+    background-color: var(--bg-body);
+    color: var(--color-text);
+}
+.sobre-mi .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.sobre-mi h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--accent);
+    text-align: left;
+}
+.sobre-mi p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: .8rem;
+    color: var(--color-light);
 }
 
-.proyecto {
-    display: block;
-    width: 250px;
-    padding: 15px;
-    background-color: #1e1e1e;
-    border-radius: 10px;
+/* -------------------------------------------------
+   FRASE DESTACADA
+   ------------------------------------------------- */
+.frase-destacada {
+    max-width: 1200px;
+    margin: 2rem auto;
     text-align: center;
-    color: white;
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
+    font-style: italic;
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #f2f2f4;
+    padding: 20px;
+    background-color: var(--bg-body);
+    position: relative;
+}
+.frase-destacada blockquote {
+    margin: 0;
+}
+.frase-destacada blockquote::before,
+.frase-destacada blockquote::after {
+    font-size: 6rem;
+    color: var(--accent);
+    vertical-align: middle;
+}
+.frase-destacada blockquote::before {
+    content: "❝";
+    margin-right: .5rem;
+}
+.frase-destacada blockquote::after {
+    content: "❞";
+    margin-left: .5rem;
 }
 
-.proyecto:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+/* -------------------------------------------------
+   HABILIDADES TÉCNICAS
+   ------------------------------------------------- */
+.habilidades ul {
+    columns: 2;
+    column-gap: 2rem;
+}
+.habilidades li {
+    break-inside: avoid;
 }
 
-.proyecto img {
-    width: 50%;
-    border-radius: 5px;
-    margin-bottom: 10px;
+/* -------------------------------------------------
+   EXPERIENCIA PROFESIONAL
+   ------------------------------------------------- */
+.experiencia p {
+    color: var(--color-light);
 }
 
-.proyecto h3 {
-    margin: 0.3rem 0;
-    color: #00bcd4;
-}
-
-.proyecto p {
-    font-size: 0.95rem;
-    color: #cfcfcf;
-}
-
-/* CARRUSEL */
+/* -------------------------------------------------
+   CARRUSEL DE PROYECTOS
+   ------------------------------------------------- */
 .carrusel-container {
     display: flex;
     align-items: center;
@@ -140,7 +259,6 @@ ul li::before {
     margin-top: 30px;
     overflow: hidden;
 }
-
 .carrusel {
     display: flex;
     gap: 20px;
@@ -150,52 +268,54 @@ ul li::before {
     max-width: 90vw;
 }
 
-.carrusel::-webkit-scrollbar {
-    display: none;
-}
+/* Ocultar scrollbars en el carrusel */
+.carrusel::-webkit-scrollbar { display: none; }
 .carrusel {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none;   /* IE 10+ */
+    scrollbar-width: none;      /* Firefox */
 }
 
+/* Tarjeta de proyecto (usada dentro del carrusel) */
 .proyecto {
-    flex: 0 0 240px;
-    background-color: #1e1e1e;
+    flex: 0 0 260px;         /* ancho acorde al paso de scroll definido en JS */
+    background-color: var(--bg-card);
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 0 0 10px rgba(255,255,255,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    text-align: center;
+    color: #fff;
+    transition: transform .3s ease, box-shadow .3s ease;
 }
-
 .proyecto:hover {
     transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(0,0,0,.5);
 }
-
 .proyecto img {
     width: 100%;
     height: 140px;
     object-fit: cover;
     border-radius: 8px;
+    margin-bottom: 10px;
 }
-
 .proyecto h3 {
-    font-size: 1.1em;
-    margin: 10px 0 5px;
+    margin: .3rem 0;
+    color: var(--accent);
 }
-
 .proyecto p {
-    font-size: 0.9em;
-    color: #ccc;
+    font-size: .95rem;
+    color: var(--color-light);
 }
 
+/* Enlace “Ver más” dentro de la tarjeta */
 .vermas {
     display: inline-block;
     margin-top: 8px;
-    color: #4fc3f7;
+    color: var(--accent-light);
     text-decoration: none;
     font-weight: bold;
 }
 
+/* Botones de navegación del carrusel */
 .btn {
     font-size: 2rem;
     background: none;
@@ -203,99 +323,50 @@ ul li::before {
     color: #fff;
     cursor: pointer;
     user-select: none;
-    padding: 0.5rem;
+    padding: .5rem;
+}
+.btn:hover,
+.btn:focus {
+    color: var(--accent);
 }
 
-/* FRASE DESTACADA */
-.frase-destacada {
-    margin: 20px auto 15px auto;
-    margin-top: 2px
-    max-width: 1200px;
-    text-align: center;
-    font-style: italic;
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: rgb(242, 242, 244);
-    padding: 20px;
-    background-color: #121212;
-    position: relative;
-}
-
-.frase-destacada blockquote::before {
-    content: "❝";
-    font-size: 6rem;
-    vertical-align: middle;
-    margin-right: 35px;
-    color: #00bcd4;
-}
-
-.frase-destacada blockquote::after {
-    content: "❞";
-    font-size: 6rem;
-    vertical-align: middle;
-    margin-right: 1px;
-    color: #00bcd4;
-    margin: 0;
-    padding: 0 1rem;
-    display: inline-block;
-}
-
-/* FOOTER */
+/* -------------------------------------------------
+   FOOTER
+   ------------------------------------------------- */
 footer {
     text-align: center;
-    background-color: #1e1e1e;
+    background-color: var(--bg-primary);
     padding: 1rem;
     border-top: 2px solid #333;
-    font-size: 0.9rem;
+    font-size: .9rem;
 }
-
 footer a {
-    color: #00bcd4;
+    color: var(--accent);
     text-decoration: none;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    transition: color .3s ease, text-shadow .3s ease;
 }
-
 footer a:hover {
-    color: #ffffff;
-    text-shadow: 0 0 5px #00bcd4;
+    color: #fff;
+    text-shadow: 0 0 5px var(--accent);
 }
 
-/* RESPONSIVE */
+/* -------------------------------------------------
+   RESPONSIVO
+   ------------------------------------------------- */
 @media (max-width: 600px) {
     .perfil img {
         width: 100px;
         height: 100px;
     }
-
     .perfil h1 {
         font-size: 1.5rem;
     }
-
     h2 {
         font-size: 1.2rem;
     }
-}
-.sobre-mi {
-  padding: 60px 20px;
-  background-color: #121212; /* fondo oscuro */
-  color: #f0f0f0; /* texto claro */
-}
-
-.sobre-mi .container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.sobre-mi h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  text-align: left;
-  color: #00bcd4; /* azul turquesa como acento */
-}
-
-.sobre-mi p {
-  font-size: 1.2rem;
-  line-height: 1.5;
-  margin-bottom: 0.2px;
-  color: #cfcfcf; /* gris claro para párrafos */
-}
+    /* En pantallas pequeñas la barra de navegación se vuelve vertical */
+    nav ul {
+        flex-direction: column;
+        gap: .5rem;
+    }
+    }
