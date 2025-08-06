@@ -39,7 +39,7 @@ I love automating processes, catching errors before they become problems, and te
 
 Want to learn more or collaborate on a project? Feel free to reach out:
 
-**✉️ esteban.gabriel@email.com**  
+**✉️ egabrielloni@yahoo.com.ar**  
 **🌐 [LinkedIn](https://www.linkedin.com/in/estebangabriel)**
 
 ---
@@ -49,5 +49,6 @@ Want to learn more or collaborate on a project? Feel free to reach out:
 This portfolio was developed for personal and professional purposes. The projects reflect my real-life experience and development within the workplace. You are invited to explore and be inspired, respecting the authorship of the content.
 
 ---
+
 
 
