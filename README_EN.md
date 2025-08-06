@@ -6,16 +6,16 @@ Hi there! I'm Esteban, a data analyst passionate about transforming information 
 
 ## 🗂️ Featured Projects
 
-### 📊 [Project 1: International Sales Dashboard](proyecto1.html)
+### 📊 [Project 1: International Sales Dashboard](Proyecto1.html)
 An interactive dashboard built with **Power BI** to visualize the sales of a fictional company across various global regions. It helps identify seasonal patterns and compare performance between countries.
 
-### 🧾 [Project 2: Invoice Control with Excel VBA](proyecto2.html)
+### 🧾 [Project 2: Invoice Control with Excel VBA](Proyecto2.html)
 An Excel macro that automates the validation of invoices between different sheets and reports. It highlights discrepancies and flags matches using conditional formatting.
 
-### 🔍 [Project 3: Accounting Report Comparator](proyecto3.html)
+### 🔍 [Project 3: Accounting Report Comparator](Proyecto3.html)
 A tool built in Excel VBA to compare reports like `FTS`, `ALMACEN`, and `SERVICIOS ADUANEROS`, ensuring consistency in supplier payments. Ideal for financial and accounting verification tasks.
 
-### 🐍 [Project 4: Sales Analysis with Python](proyecto4.html)
+### 🐍 [Project 4: Sales Analysis with Python](Proyecto4.html)
 A Python script that analyzes sales data: average by product, monthly trends, and performance by region. Includes visualizations with **Matplotlib** and **Seaborn**. A simple but effective project to demonstrate data analysis skills with Python.
 
 ---
@@ -49,4 +49,5 @@ Want to learn more or collaborate on a project? Feel free to reach out:
 This portfolio was developed for personal and professional purposes. The projects reflect my real-life experience and development within the workplace. You are invited to explore and be inspired, respecting the authorship of the content.
 
 ---
+
 
