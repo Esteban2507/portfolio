@@ -369,28 +369,4 @@ footer a:hover {
         flex-direction: column;
         gap: .5rem;
     }
-   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const secs = document.querySelectorAll('section');
-
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            },
-            {
-                rootMargin: '0px 0px -15% 0px',
-                threshold: 0.1
-            }
-        );
-
-        secs.forEach(sec => observer.observe(sec));
-    });
-</script>
-
-    }
-
-
+}
