@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyectos - Carrusel</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .project-card {
+      flex: 0 0 33.33%;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .project-card h3 {
+      margin: 0.5rem 0 0.25rem;
+    }
+
+    .project-card p {
+      font-size: 0.9rem;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 0.5rem;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .carousel-btn.left {
+      left: 0;
+    }
+
+    .carousel-btn.right {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Mis Proyectos</h2>
+  <div class="carousel-container">
+    <button class="carousel-btn left" onclick="moveCarousel(-1)">&#8249;</button>
+    <div class="carousel-track" id="carouselTrack">
+      <div class="project-card">
+        <img src="img/proyecto1.png" alt="Proyecto 1">
+        <h3>Dashboard de Ventas</h3>
+        <p>Visualización de KPIs mensuales con Power BI.</p>
+      </div>
+      <div class="project-card">
+        <img src="img/proyecto2.png" alt="Proyecto 2">
+        <h3>Control de Facturas</h3>
+        <p>Comparación automatizada de reportes en Excel con VBA.</p>
+      </div>
+      <div class="project-card">
+        <img src="img/proyecto3.png" alt="Proyecto 3">
+        <h3>Gestión de Incidentes</h3>
+        <p>Automatización de aprobaciones mediante Power Automate.</p>
+      </div>
+      <div class="project-card">
+        <img src="img/proyecto4.png" alt="Proyecto 4">
+        <h3>Análisis de Ventas en Python</h3>
+        <p>Exploración de datos y visualización con Pandas y Matplotlib.</p>
+      </div>
+    </div>
+    <button class="carousel-btn right" onclick="moveCarousel(1)">&#8250;</button>
+  </div>
+
+  <script>
+    let position = 0;
+    const track = document.getElementById('carouselTrack');
+    const totalItems = track.children.length;
+    const itemsPerView = 3;
+    const maxPosition = Math.ceil(totalItems / itemsPerView) - 1;
+
+    function moveCarousel(direction) {
+      position += direction;
+      if (position < 0) position = 0;
+      if (position > maxPosition) position = maxPosition;
+      const slideWidth = track.children[0].offsetWidth;
+      track.style.transform = `translateX(-${position * slideWidth * itemsPerView}px)`;
+    }
+  </script>
+</body>
+</html>

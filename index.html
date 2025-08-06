@@ -16,11 +16,24 @@
     </header>
 
     <main>
-        <section class="sobre-mi">
-            <h2>Sobre mí</h2>
-            <p>Soy analista de datos con sólida experiencia en automatización de reportes, control de procesos administrativos y desarrollo de dashboards interactivos. Tengo formación técnica y una mentalidad orientada a la mejora continua. Me apasiona descubrir insights en los datos y convertirlos en decisiones útiles para el negocio.</p>
+    <section id="sobre-mi" class="sobre-mi">
+  <div class="container">
+    <h2>Sobre mí</h2>
+    <p>
+      <strong>¡Bienvenidos! </strong> -Soy Esteban, me dedico al data analytics y me encanta todo lo que tenga que ver con automatizar, simplificar procesos y encontrar soluciones que hagan el trabajo más fácil y ágil. Hoy estoy enfocado en herramientas como Excel, Power BI, Python y Celonis, que me ayudan a entender mejor la información y sacarle el jugo a los datos.
+    </p>
+    <p>
+      Siempre estoy aprendiendo algo nuevo, porque me gusta crecer y mantenerme actualizado. Creo que los datos no son solo números: son pistas, historias y oportunidades que esperan ser descubiertas. Me gusta eso de poder transformar algo en apariencia aburrido en algo útil, claro y que ayude a tomar mejores decisiones.
+    </p>
+    <p>
+      Fuera del trabajo, soy fan del asado <em>(dicen que me sale bastante bien 😄)</em>, practico boxeo —una pasión nueva que me enganchó fuerte— y también salgo a andar en bici cuando tengo tiempo. Con mi pareja compartimos el amor por el buen vino y hace años que vamos a catas para conocer y disfrutar juntos.
+    </p>
+    <p>
+      Soy curioso, práctico y disfruto lo que hago, tanto en lo profesional como en lo personal. Y si bien los datos son lo mío, siempre creo que lo más importante son las personas y las conexiones que uno va creando en el camino.
+    </p>
+  </div>
         </section>
-
+        
         <section class="frase-destacada">
             <blockquote>Los datos no son solo números; son oportunidades esperando ser descubiertas.</blockquote>
         </section>
@@ -40,33 +53,40 @@
             <p><strong>Analista de Datos –</strong> Desarrollo de dashboards en Power BI y automatización de reportes en Excel.</p>
         </section>
 
-       <section class="proyectos">
-    <h2>Proyectos Personales</h2>
-    <div class="galeria">
-        <a href="Proyecto1.html" class="proyecto">
-            <img src="img/proyecto1.png" alt="Dashboard Power BI">
-            <h3>Control de Pagos</h3>
-            <p>Dashboard en Power BI que compara facturas entre reportes contables para asegurar pagos correctos.</p>
-        </a>
-        <a href="Proyecto2.html" class="proyecto">
-            <img src="img/proyecto2.png" alt="Seguimiento de Indicadores">
-            <h3>KPIs de Gestión</h3>
-            <p>Visualización de indicadores clave de desempeño para las áreas administrativas, con alertas y filtros dinámicos.</p>
-        </a>
-        <a href="Proyecto3.html" class="proyecto">
-            <img src="img/proyecto3.png" alt="Automatización Excel">
-            <h3>Macros de Validación</h3>
-            <p>Automatización de procesos de validación contable usando macros en Excel para ahorrar tiempo y evitar errores.</p>
-        </a>
-        </a>
-        <a href="Proyecto4.html" class="proyecto">
-            <img src="img/proyecto4.png" alt="Automatización Excel">
-            <h3>Analisis de Ventas</h3>
-            <p>proyecto fue desarrollado en Python para analizar datos de ventas de una empresa ficticia. Se procesaron archivos CSV con información de productos, ingresos mensuales y regiones...</p>
-        </a> 
-    </div>
-</section>
+       <section id="proyectos">
+  <h2 class="titulo">Mis Proyectos</h2>
 
+  <div class="carrusel-container">
+    <button class="btn" id="prev">&#10094;</button>
+    <div class="carrusel" id="carrusel">
+      <div class="proyecto">
+        <img src="img/proyecto1.png" alt="Proyecto 1">
+        <h3>Dashboard de Ventas</h3>
+        <p>Visualización de KPIs comerciales con Power BI.</p>
+        <a href="Proyecto1.html" class="vermas">Ver más</a>
+      </div>
+      <div class="proyecto">
+        <img src="img/proyecto2.png" alt="Proyecto 2">
+        <h3>Control de Stock</h3>
+        <p>App para seguimiento de inventarios en Excel VBA.</p>
+        <a href="Proyecto2.html" class="vermas">Ver más</a>
+      </div>
+      <div class="proyecto">
+        <img src="img/proyecto3.png" alt="Proyecto 3">
+        <h3>Indicadores de Gestión</h3>
+        <p>Panel dinámico para reportes mensuales en Power BI.</p>
+        <a href="Proyecto3.html" class="vermas">Ver más</a>
+      </div>
+      <div class="proyecto">
+        <img src="img/proyecto4.png" alt="Proyecto 4">
+        <h3>Análisis de Ventas (Python)</h3>
+        <p>Estudio de datos históricos y predicción con pandas y matplotlib.</p>
+        <a href="Proyecto4.html" class="vermas">Ver más</a>
+      </div>
+    </div>
+    <button class="btn" id="next">&#10095;</button>
+  </div>
+</section>
 
     </main>
 
@@ -96,5 +116,21 @@
             mostrarSeccion();
         });
     </script>
+    <script>
+  const carrusel = document.getElementById('carrusel');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+
+  const scrollStep = 260;
+
+  prev.addEventListener('click', () => {
+    carrusel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+  });
+
+  next.addEventListener('click', () => {
+    carrusel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+  });
+</script>
+
 </body>
 </html>
