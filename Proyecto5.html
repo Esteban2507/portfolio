@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Control de Facturas - Power BI</title>
+    <link rel="stylesheet" href="Estilo.css">
+</head>
+<body>
+    <header>
+        <h1>Control de Facturas de Uruguay en Power BI</h1>
+        <a href="index.html" class="volver">← Volver al portfolio</a>
+    </header>
+ 
+    <main class="proyecto-detalle">
+        <section class="descripcion-proyecto">
+            <h2>Resumen del Proyecto</h2>
+            <p>
+                Este tablero fue desarrollado para verificar la correcta recepción de las facturas emitidas en Uruguay.
+                El proceso compara dos fuentes distintas: el reporte <strong>GOSOCKET</strong> (facturas ingresadas por el negocio)
+                y el reporte <strong>ROSPBU</strong> (facturas que ingresaron al sistema contable).
+            </p>
+            <p>
+                El objetivo principal es detectar discrepancias entre ambos reportes y generar un control claro para asegurar
+                que todas las facturas sean procesadas correctamente para su pago. Se utilizaron medidas DAX personalizadas
+                para comparar el número de factura, proveedor, importe y moneda. También se configuraron indicadores visuales
+                para marcar los casos de “MATCH” y “NO MATCH”.
+            </p>
+            <p>
+                Adicionalmente, se creó una lógica para mostrar un link al sistema de administración solo cuando la factura
+                está correctamente registrada, evitando errores en la navegación del usuario.
+            </p>
+        </section>
+ 
+        <section class="imagenes-proyecto">
+            <h2>Capturas del Tablero</h2>
+            <img src="img/Proyecto5_1.png" alt="Vista general del control de facturas en Power BI">
+            <img src="img/Proyecto5_2.png" alt="Detalle de la comparación entre GOSOCKET y ROSPBU">
+        </section>
+    </main>
+ 
+    <footer>
+        <p>&copy; 2025 Esteban Gabriel</p>
+    </footer>
+</body>
+</html>
+ 
