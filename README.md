@@ -38,12 +38,12 @@ Me especializo en conectar puntos: cruzar reportes contables, visualizar tendenc
 
 | Proyecto | Descripción | Tecnologías | Ver |
 | :--- | :--- | :---: | :---: |
-| **Control de Pagos** | Dashboard interactivo para el cruce de reportes de pagos. Detecta inconsistencias y asegura la integridad financiera. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](Proyecto1.html) |
-| **KPIs de Gestión** | Panel dinámico para el seguimiento mensual de indicadores clave de desempeño. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](Proyecto2.html) |
-| **Validación Contable** | Herramienta de automatización para comparar reportes (FTS, Almacén, Aduana) y validar pagos a proveedores. | ![Excel](https://img.shields.io/badge/-Excel%20VBA-217346) | [🔗 Ver](Proyecto3.html) |
-| **Análisis de Ventas** | Script de Python para análisis exploratorio de datos (EDA), tendencias estacionales y proyecciones. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 Ver](Proyecto4.html) |
-| **Recepción de Facturas** | Tablero de control para verificar la correcta recepción y procesamiento de facturas emitidas. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](Proyecto5.html) |
-| **Traductor API** | API RESTful desarrollada con Flask para traducción de textos multi-idioma. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 Ver](Proyecto6.html) |
+| **Control de Pagos** | Dashboard interactivo para el cruce de reportes de pagos. Detecta inconsistencias y asegura la integridad financiera. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto1.html) |
+| **KPIs de Gestión** | Panel dinámico para el seguimiento mensual de indicadores clave de desempeño. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto2.html) |
+| **Validación Contable** | Herramienta de automatización para comparar reportes (FTS, Almacén, Aduana) y validar pagos a proveedores. | ![Excel](https://img.shields.io/badge/-Excel%20VBA-217346) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto3.html) |
+| **Análisis de Ventas** | Script de Python para análisis exploratorio de datos (EDA), tendencias estacionales y proyecciones. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto4.html) |
+| **Recepción de Facturas** | Tablero de control para verificar la correcta recepción y procesamiento de facturas emitidas. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto5.html) |
+| **Traductor API** | API RESTful desarrollada con Flask para traducción de textos multi-idioma. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto6.html) |
 
 ---
 
