@@ -1,50 +1,55 @@
-# 📊 Portfolio Profesional - Esteban Gabrielloni
+<div align="center">
+  <img src="img/perfil.jpg" alt="Esteban Gabrielloni" width="120" style="border-radius: 50%; margin-bottom: 15px;">
 
-¡Hola! Soy Esteban, un analista de datos apasionado por transformar información en decisiones inteligentes. Este es un espacio donde comparto algunos de mis proyectos personales, exploraciones y visualizaciones.
+  # Esteban Gabrielloni
+  ### Analista de Datos | Power BI | Python | Excel Avanzado
 
---- > 🌐 [English version available here](README_EN.md)
+  *Transformando datos complejos en decisiones estratégicas claras.*
 
-## 🗂️ Proyectos Destacados
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/estebangabriel)
+  [![Email](https://img.shields.io/badge/Email-Contact_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:egabrielloni@yahoo.com.ar)
+  [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github)](https://github.com/Esteban2507)
 
-### 📊 [Proyecto 1: Análisis de Ventas Internacionales](Proyecto1.html)
-Un dashboard interactivo que visualiza las ventas de una empresa ficticia en distintas regiones del mundo. Utilicé **Power BI** para detectar patrones estacionales y comparar desempeño entre países.
-
-### 🧾 [Proyecto 2: Control de Facturación con Excel VBA](Proyecto2.html)
-Macro en Excel que automatiza el control de facturas entre distintas hojas y reportes. Resalta diferencias y marca coincidencias con lógica condicional.
-
-### 🔍 [Proyecto 3: Comparador de Reportes Contables](Proyecto3.html)
-Herramienta desarrollada en Excel con VBA para comparar reportes como `FTS`, `ALMACEN` y `SERVICIOS ADUANEROS`, asegurando coherencia en los pagos de proveedores. Ideal para tareas de verificación contable.
-
-### 🐍 [Proyecto 4: Análisis de Ventas con Python](Proyecto4.html)
-Script en Python que analiza un conjunto de datos de ventas: promedio por producto, tendencias mensuales y proyecciones. Incluye visualizaciones con **Matplotlib** y **Seaborn**. Un proyecto simple pero potente para demostrar habilidades en análisis de datos con Python.
+  [🇬🇧 English Version](README_EN.md)
+</div>
 
 ---
 
-## 🧰 Tecnologías y herramientas
+## 🚀 Sobre Mí
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
-![Excel VBA](https://img.shields.io/badge/Excel-VBA-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+¡Hola! Soy **Esteban**, un apasionado por la eficiencia y la inteligencia de negocios. Mi objetivo es simple: **automatizar lo repetitivo para enfocarnos en lo estratégico**.
 
----
-
-## 😄 Sobre mí
-
-Me encanta automatizar procesos, encontrar errores antes de que se conviertan en problemas y contar historias con datos. Actualmente estoy profundizando mis conocimientos en **Python**, **Power BI** y **Celonis**.
+Me especializo en conectar puntos: cruzar reportes contables, visualizar tendencias de ventas y crear herramientas que ahorran horas de trabajo manual. Actualmente, estoy expandiendo mis horizontes con **Python** y **Celonis** para llevar el análisis de procesos al siguiente nivel.
 
 ---
 
-## 📫 Contacto
+## 🛠️ Tecnologías
 
-Si querés saber más sobre mi trabajo o colaborar, podés escribirme a:
-
-**✉️ egabrielloni@yahoo.com.ar**  
-**🌐 [LinkedIn](https://www.linkedin.com/in/estebangabriel)**
+<div align="center">
+  <img src="https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" alt="Power BI" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Excel_VBA-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="Excel" />
+  <img src="https://img.shields.io/badge/SQL-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" alt="SQL" />
+</div>
 
 ---
 
-## 📝 Licencia
+## 📂 Portafolio de Proyectos
 
-Este portafolio fue desarrollado con fines personales y profesionales. Los proyectos reflejan mi experiencia y desarrollo real dentro del entorno laboral. Estás invitado a explorar y tomar inspiración, respetando la autoría de los contenidos.
+| Proyecto | Descripción | Tecnologías | Ver |
+| :--- | :--- | :---: | :---: |
+| **Control de Pagos** | Dashboard interactivo para el cruce de reportes de pagos. Detecta inconsistencias y asegura la integridad financiera. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](Proyecto1.html) |
+| **KPIs de Gestión** | Panel dinámico para el seguimiento mensual de indicadores clave de desempeño. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](Proyecto2.html) |
+| **Validación Contable** | Herramienta de automatización para comparar reportes (FTS, Almacén, Aduana) y validar pagos a proveedores. | ![Excel](https://img.shields.io/badge/-Excel%20VBA-217346) | [🔗 Ver](Proyecto3.html) |
+| **Análisis de Ventas** | Script de Python para análisis exploratorio de datos (EDA), tendencias estacionales y proyecciones. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 Ver](Proyecto4.html) |
+| **Recepción de Facturas** | Tablero de control para verificar la correcta recepción y procesamiento de facturas emitidas. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](Proyecto5.html) |
+| **Traductor API** | API RESTful desarrollada con Flask para traducción de textos multi-idioma. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 Ver](Proyecto6.html) |
 
+---
+
+<div align="center">
+  <h3>¿Te interesa colaborar?</h3>
+  <p>Estoy siempre abierto a nuevos desafíos y oportunidades.</p>
+  
+  [📩 Escribime un correo](mailto:egabrielloni@yahoo.com.ar)
+</div>

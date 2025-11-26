@@ -1,54 +1,55 @@
-# 📊 Esteban Gabrielloni - Project Portfolio
+<div align="center">
+  <img src="img/perfil.jpg" alt="Esteban Gabrielloni" width="120" style="border-radius: 50%; margin-bottom: 15px;">
 
-Hi there! I'm Esteban, a data analyst passionate about transforming information into smart decisions. This is a space where I showcase some of my personal projects, explorations, and data visualizations.
+  # Esteban Gabrielloni
+  ### Data Analyst | Power BI | Python | Advanced Excel
 
----
+  *Transforming complex data into clear strategic decisions.*
 
-## 🗂️ Featured Projects
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/estebangabriel)
+  [![Email](https://img.shields.io/badge/Email-Contact_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:egabrielloni@yahoo.com.ar)
+  [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github)](https://github.com/Esteban2507)
 
-### 📊 [Project 1: International Sales Dashboard](Proyecto1.html)
-An interactive dashboard built with **Power BI** to visualize the sales of a fictional company across various global regions. It helps identify seasonal patterns and compare performance between countries.
-
-### 🧾 [Project 2: Invoice Control with Excel VBA](Proyecto2.html)
-An Excel macro that automates the validation of invoices between different sheets and reports. It highlights discrepancies and flags matches using conditional formatting.
-
-### 🔍 [Project 3: Accounting Report Comparator](Proyecto3.html)
-A tool built in Excel VBA to compare reports like `FTS`, `ALMACEN`, and `SERVICIOS ADUANEROS`, ensuring consistency in supplier payments. Ideal for financial and accounting verification tasks.
-
-### 🐍 [Project 4: Sales Analysis with Python](Proyecto4.html)
-A Python script that analyzes sales data: average by product, monthly trends, and performance by region. Includes visualizations with **Matplotlib** and **Seaborn**. A simple but effective project to demonstrate data analysis skills with Python.
+  [🇪🇸 Versión en Español](README.md)
+</div>
 
 ---
 
-## 🧰 Technologies & Tools
+## 🚀 About Me
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
-![Excel VBA](https://img.shields.io/badge/Excel-VBA-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+Hi! I'm **Esteban**, passionate about efficiency and business intelligence. My goal is simple: **automate the repetitive to focus on the strategic**.
 
----
-
-## 😄 About Me
-
-I love automating processes, catching errors before they become problems, and telling stories through data. I'm currently diving deeper into **Python**, **Power BI**, and **Celonis**.
+I specialize in connecting the dots: cross-referencing accounting reports, visualizing sales trends, and building tools that save hours of manual work. Currently, I'm expanding my horizons with **Python** and **Celonis** to take process analysis to the next level.
 
 ---
 
-## 📫 Contact
+## 🛠️ Tech Stack
 
-Want to learn more or collaborate on a project? Feel free to reach out:
-
-**✉️ egabrielloni@yahoo.com.ar**  
-**🌐 [LinkedIn](https://www.linkedin.com/in/estebangabriel)**
-
----
-
-## 📝 Licence
-
-This portfolio was developed for personal and professional purposes. The projects reflect my real-life experience and development within the workplace. You are invited to explore and be inspired, respecting the authorship of the content.
+<div align="center">
+  <img src="https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" alt="Power BI" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Excel_VBA-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="Excel" />
+  <img src="https://img.shields.io/badge/SQL-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" alt="SQL" />
+</div>
 
 ---
 
+## 📂 Project Portfolio
 
+| Project | Description | Tech Stack | View |
+| :--- | :--- | :---: | :---: |
+| **Payment Control** | Interactive dashboard for cross-referencing payment reports. Detects inconsistencies and ensures financial integrity. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 View](Proyecto1.html) |
+| **Management KPIs** | Dynamic panel for monthly tracking of key performance indicators. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 View](Proyecto2.html) |
+| **Accounting Validation** | Automation tool to compare reports (FTS, Warehouse, Customs) and validate supplier payments. | ![Excel](https://img.shields.io/badge/-Excel%20VBA-217346) | [🔗 View](Proyecto3.html) |
+| **Sales Analysis** | Python script for exploratory data analysis (EDA), seasonal trends, and forecasting. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 View](Proyecto4.html) |
+| **Invoice Reception** | Control dashboard to verify the correct reception and processing of issued invoices. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 View](Proyecto5.html) |
+| **Translator API** | RESTful API built with Flask for multi-language text translation. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 View](Proyecto6.html) |
 
+---
+
+<div align="center">
+  <h3>Interested in collaborating?</h3>
+  <p>I'm always open to new challenges and opportunities.</p>
+  
+  [📩 Send me an email](mailto:egabrielloni@yahoo.com.ar)
+</div>
