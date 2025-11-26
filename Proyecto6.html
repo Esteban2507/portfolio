@@ -1,74 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Proyecto 6 - API Traductor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API Traductor - Portfolio Esteban Gabrielloni</title>
+
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="Estilo.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-D0D4EQQWC4');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-D0D4EQQWC4');
+    </script>
 </head>
-<body>
-    <header>
-        <h1>Proyecto 6: API Traductor</h1>
-        <a href="index.html" class="volver">← Volver al portfolio</a>
-    </header>
- 
-    <main 
-        class="descripcion-proyecto visible">
-             <img src="img/proyecto6.png" alt="API de traduccion en Python" style="max-width: 30%; height: auto; border-radius: 10px;">
-           <img src="img/proyecto6_2.png" alt="API de traduccion en Python" style="max-width: 30%; height: auto; border-radius: 10px;">
-             <img src="img/proyecto6_3.png" alt="API de traduccion en Python" style="max-width: 30%; height: auto; border-radius: 10px;">
-            <h2>Resumen del Proyecto</h2>
-            <p>
-                Este proyecto es una API Traductora desarrollada en <strong>Python</strong> con <strong>Flask</strong>, 
-                utilizando la librería <code>googletrans</code>.  
-                Permite traducir texto de un idioma a otro mediante una interfaz web sencilla y funcional.
 
-            </p>
-            <p>
-                 <h2>Características principales</h2>
-            <ul>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="perfil">
+                <a href="index.html" class="btn-volver">
+                    <i class="fas fa-arrow-left"></i> Volver al portfolio
+                </a>
+                <h1>API Traductor</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="detalle-proyecto">
+
+            <!-- Galería de Imágenes -->
+            <div class="galeria-imagenes">
+                <img src="img/proyecto6.png" alt="API de traduccion en Python" loading="lazy">
+                <img src="img/proyecto6_2.png" alt="API de traduccion en Python" loading="lazy">
+                <img src="img/proyecto6_3.png" alt="API de traduccion en Python" loading="lazy">
+            </div>
+
+            <h2>Resumen del Proyecto</h2>
+            <p>Este proyecto es una API Traductora desarrollada en <strong>Python</strong> con <strong>Flask</strong>,
+                utilizando la librería <code>googletrans</code>. Permite traducir texto de un idioma a otro mediante una
+                interfaz web sencilla y funcional.</p>
+
+            <h3>Características principales</h3>
+            <ul style="list-style-type: disc; margin-left: 20px; color: var(--color-text-muted); margin-bottom: 20px;">
                 <li>Traducción entre múltiples idiomas soportados por Google Translate.</li>
                 <li>Interfaz web amigable desarrollada en HTML y CSS.</li>
-                <li>Despliegue local con Flask (http://127.0.0.1:5000).</li>
+                <li>Despliegue local con Flask.</li>
                 <li>Posibilidad de ampliarse y personalizarse fácilmente.</li>
             </ul>
+
             <h2>Tecnologías utilizadas</h2>
-            <div class="tecnologias">
-                <span class="tag">Python</span>
-                <span class="tag">Flask</span>
-                <span class="tag">Googletrans</span>
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-            </div>
+            <ul class="lista-herramientas">
+                <li>Python</li>
+                <li>Flask</li>
+                <li>Googletrans</li>
+                <li>HTML</li>
+                <li>CSS</li>
+            </ul>
+
             <h2>Repositorio</h2>
             <p>
-                Podés ver el código fuente en:  
-                <a href="https://github.com/tuusuario/proyecto-traductor" target="_blank">GitHub - API Traductor</a>
+                Podés ver el código fuente en: <br>
+                <a href="https://github.com/tuusuario/proyecto-traductor" target="_blank"
+                    style="color: var(--color-accent); font-weight: bold;">
+                    <i class="fab fa-github"></i> GitHub - API Traductor
+                </a>
             </p>
+
         </section>
     </main>
-
 
     <footer>
         <p>
             📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
             🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank">LinkedIn</a> |
-            <i class="fab fa-github"></i> <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md" target="_blank">GitHub</a>
+            <i class="fab fa-github"></i> <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md"
+                target="_blank">GitHub</a>
         </p>
     </footer>
+
 </body>
+
 </html>
-
-
-
-
-
-

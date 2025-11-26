@@ -1,45 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Control de Facturas - Power BI</title>
-    <link rel="stylesheet" href="Estilo.css">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Control de Facturas - Portfolio Esteban Gabrielloni</title>
 
-  gtag('config', 'G-D0D4EQQWC4');
-</script>
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="Estilo.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-D0D4EQQWC4');
+    </script>
 </head>
+
 <body>
+
     <header>
-        <h1>Control de Facturas en Power BI</h1>
-        <a href="index.html" class="volver">← Volver al portfolio</a>
+        <div class="container">
+            <div class="perfil">
+                <a href="index.html" class="btn-volver">
+                    <i class="fas fa-arrow-left"></i> Volver al portfolio
+                </a>
+                <h1>Control de Facturas</h1>
+            </div>
+        </div>
     </header>
- 
-    <main 
-        <section class="descripcion-proyecto visible">
-           <img src="img/proyecto5_1.png" alt="Dashboard de análisis de ventas en Python" style="max-width: 30%; height: auto; border-radius: 10px;">
-             <img src="img/proyecto5_2.png" alt="Dashboard de análisis de ventas en Python" style="max-width: 30%; height: auto; border-radius: 10px;">
+
+    <main class="container">
+        <section class="detalle-proyecto">
+
+            <!-- Galería de Imágenes -->
+            <div class="galeria-imagenes">
+                <img src="img/proyecto5_1.png" alt="Dashboard de Control de Facturas" loading="lazy">
+                <img src="img/proyecto5_2.png" alt="Dashboard de Control de Facturas" loading="lazy">
+            </div>
+
             <h2>Resumen del Proyecto</h2>
-            <p>
-                Este tablero fue desarrollado para verificar la correcta recepción de las facturas emitidas por proveedores.
-                El proceso compara dos fuentes distintas.
-            </p>
-            <p>
-                El objetivo principal es detectar discrepancias entre ambos reportes y generar un control claro para asegurar
-                que todas las facturas sean procesadas correctamente para su pago. Se utilizaron medidas DAX personalizadas
-                para comparar el número de factura, proveedor, importe y moneda. También se configuraron indicadores visuales
-                para marcar los diferentes casos.
-            </p>
-            <p>
-                Adicionalmente, se creó una lógica para mostrar un link al sistema de administración solo cuando la factura
-                está correctamente registrada, evitando errores en la navegación del usuario.
-            </p>         
-        
+            <p>Este tablero fue desarrollado para verificar la correcta recepción de las facturas emitidas por
+                proveedores. El proceso compara dos fuentes distintas.</p>
+            <p>El objetivo principal es detectar discrepancias entre ambos reportes y generar un control claro para
+                asegurar que todas las facturas sean procesadas correctamente para su pago. Se utilizaron medidas DAX
+                personalizadas para comparar el número de factura, proveedor, importe y moneda. También se configuraron
+                indicadores visuales para marcar los diferentes casos.</p>
+            <p>Adicionalmente, se creó una lógica para mostrar un link al sistema de administración solo cuando la
+                factura está correctamente registrada, evitando errores en la navegación del usuario.</p>
+
+            <h2>Herramientas Utilizadas</h2>
+            <ul class="lista-herramientas">
+                <li>Power BI</li>
+                <li>DAX</li>
+                <li>Modelado de Datos</li>
+            </ul>
+
         </section>
     </main>
 
@@ -47,15 +74,11 @@
         <p>
             📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
             🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank">LinkedIn</a> |
-            <i class="fab fa-github"></i> <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md" target="_blank">GitHub</a>
+            <i class="fab fa-github"></i> <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md"
+                target="_blank">GitHub</a>
         </p>
     </footer>
+
 </body>
+
 </html>
-
-
-
-
-
-
-

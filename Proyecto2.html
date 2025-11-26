@@ -1,43 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>KPIs de Gestión - Proyecto</title>
-    <link rel="stylesheet" href="Estilo.css">
-</head>
-<body>
-    <header>
-        <div class="perfil">
-            <a href="index.html">← Volver al portfolio</a>
-            <h1>KPIs de Gestión</h1>
-        </div>
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KPIs de Gestión - Portfolio Esteban Gabrielloni</title>
 
-  gtag('config', 'G-D0D4EQQWC4');
-</script>
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="Estilo.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-D0D4EQQWC4');
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="perfil">
+                <a href="index.html" class="btn-volver">
+                    <i class="fas fa-arrow-left"></i> Volver al portfolio
+                </a>
+                <h1>KPIs de Gestión</h1>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section class="detalle-proyecto visible">
-            <img src="img/proyecto2_1.png" alt="Dashboard Power BI - KPIs de Gestión" style="max-width: 30%; height: auto; border-radius: 10px;">
-            <img src="img/proyecto2.png" alt="Dashboard Power BI - KPIs de Gestión" style="max-width: 30%; height: auto; border-radius: 10px;">
+    <main class="container">
+        <section class="detalle-proyecto">
+
+            <!-- Galería de Imágenes -->
+            <div class="galeria-imagenes">
+                <img src="img/proyecto2_1.png" alt="Dashboard Power BI - KPIs de Gestión" loading="lazy">
+                <img src="img/proyecto2.png" alt="Dashboard Power BI - KPIs de Gestión" loading="lazy">
+            </div>
+
             <h2>Descripción del Proyecto</h2>
-            <p>Este dashboard fue creado en Power BI para visualizar los indicadores claves de desempeño para las áreas de recepción de facturas de proveedores, con alertas y filtros dinámicos.</p>
+            <p>Este dashboard fue creado en Power BI para visualizar los indicadores claves de desempeño para las áreas
+                de recepción de facturas de proveedores, con alertas y filtros dinámicos.</p>
 
             <h2>Herramientas Utilizadas</h2>
-            <ul>
+            <ul class="lista-herramientas">
                 <li>Power BI</li>
                 <li>Excel (fuentes de datos)</li>
-                <li>Transformaciones en Power Query</li>
-                <li>Modelado de datos y DAX</li>
+                <li>Power Query</li>
+                <li>DAX</li>
             </ul>
 
-            
         </section>
     </main>
 
@@ -45,15 +69,11 @@
         <p>
             📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
             🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank">LinkedIn</a> |
-            <i class="fab fa-github"></i> <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md" target="_blank">GitHub</a>
+            <i class="fab fa-github"></i> <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md"
+                target="_blank">GitHub</a>
         </p>
     </footer>
+
 </body>
+
 </html>
-
-
-
-
-
-
-

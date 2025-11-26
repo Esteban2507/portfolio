@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- ---------- Metadatos básicos y SEO ---------- -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portfolio – Esteban Gabrielloni | Analista de Datos</title>
     <meta name="description"
-          content="Portfolio de Esteban Gabrielloni, Analista de Datos especializado en Power BI, Python y Excel avanzado. Descubre sus proyectos y experiencia profesional.">
+        content="Portfolio de Esteban Gabrielloni, Analista de Datos especializado en Power BI, Python y Excel avanzado. Descubre sus proyectos y experiencia profesional.">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="img/favicon.png" type="image/png">
 
     <!-- ---------- Conexiones a CDN (optimiza la carga) ---------- -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
 
     <!-- ---------- Hojas de estilo ---------- -->
     <link rel="stylesheet" href="Estilo.css">
 
     <!-- Font Awesome (integrity + crossorigin) -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-          integrity="sha512-8hL5YtKZgZsM2fQfA5bB5EoM9NwT9F6KjE/4v2EJ4N+R+M2I9V5cN6eZ+S1c2B2iG6VJp1tM2Vt8f7s1zG9Vw=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-8hL5YtKZgZsM2fQfA5bB5EoM9NwT9F6KjE/4v2EJ4N+R+M2I9V5cN6eZ+S1c2B2iG6VJp1tM2Vt8f7s1zG9Vw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- ---------- Datos estructurados (JSON‑LD) ---------- -->
     <script type="application/ld+json">
@@ -57,16 +60,17 @@
             height: 1px;
             overflow: hidden;
         }
+
         .skip-link:focus {
             left: 1rem;
             top: 1rem;
-            background:#fff;
-            color:#000;
-            padding:.5rem 1rem;
-            z-index:1000;
-            width:auto;
-            height:auto;
-            overflow:visible;
+            background: #fff;
+            color: #000;
+            padding: .5rem 1rem;
+            z-index: 1000;
+            width: auto;
+            height: auto;
+            overflow: visible;
         }
 
         /* Animaciones de aparición de secciones */
@@ -75,20 +79,21 @@
             transform: translateY(30px);
             transition: opacity .6s ease-out, transform .6s ease-out;
         }
+
         section.visible {
             opacity: 1;
             transform: none;
         }
     </style>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-D0D4EQQWC4');
-</script>
+        gtag('config', 'G-D0D4EQQWC4');
+    </script>
 </head>
 
 <body>
@@ -98,10 +103,8 @@
     <!-- ---------- Cabecera ---------- -->
     <header>
         <div class="perfil">
-            <img src="img/perfil.jpg"
-                 alt="Foto de Esteban Gabrielloni, analista de datos"
-                 width="150" height="150"
-                 loading="lazy">
+            <img src="img/perfil.jpg" alt="Foto de Esteban Gabrielloni, analista de datos" width="150" height="150"
+                loading="lazy">
             <h1>Esteban Gabrielloni</h1>
             <p>Analista de Datos • Power BI • Python • HTML</p>
         </div>
@@ -125,10 +128,30 @@
         <section id="sobre-mi" class="sobre-mi">
             <div class="container">
                 <h2>Sobre mí</h2>
-                <p><strong>¡Bienvenidos!</strong> Soy Esteban, me dedico al data analytics y me encanta automatizar, simplificar procesos y encontrar soluciones que hagan el trabajo más fácil y ágil. Actualmente trabajo con Excel, Power BI, Python y Celonis para extraer valor de los datos.</p>
-                <p>Siempre estoy aprendiendo algo nuevo, porque me gusta crecer y mantenerme actualizado. Los datos no son solo números: son pistas, historias y oportunidades que esperan ser descubiertas.</p>
-                <p>Fuera del trabajo, soy fan del asado <em>(dicen que me sale bastante bien 😄)</em>, practico boxeo —algo que empecé de curioso y ahora me tiene metido hasta los guantes— y ciclismo urbano cuando tengo tiempo. Con mi pareja compartimos el amor por el buen vino y asistimos a catas.</p>
-                <p>Soy curioso, práctico y disfruto lo que hago, tanto en lo profesional como en lo personal. Los datos son lo mío, pero lo más importante son las personas y las conexiones que uno va creando en el camino.</p>
+                <p><strong>Soy un Analista de Datos</strong> con un enfoque en la eficiencia y la innovación. Mi pasión
+                    es transformar la complejidad en soluciones ágiles y funcionales: me dedico a automatizar,
+                    simplificar procesos y extraer valor actionable de la información.</p>
+                <p>Para mí, los datos no son solo números, sino historias y oportunidades que impulsan la toma de
+                    decisiones.</p>
+
+                <p><strong>Dominio Técnico:</strong> Trabajo con Python, Power BI, Excel avanzado y la plataforma
+                    Celonis (Process Mining).</p>
+
+                <p><strong>Mentalidad:</strong> Soy un aprendiz constante. Busco la forma más inteligente y actualizada
+                    de generar un impacto medible.</p>
+
+                <p><strong>Perfil Personal:</strong> Me defino como una persona curiosa, práctica y enfocada en las
+                    conexiones. Mi filosofía es que, aunque los datos son mi campo, lo más importante son las personas y
+                    los equipos que se crean en el camino.</p>
+
+                <p><strong>Valores Clave:</strong> Curiosidad, Disciplina y Pragmatismo.</p>
+
+                <p><strong>Intereses:</strong> Encuentro disciplina y enfoque en el boxeo, y disfruto del ciclismo
+                    urbano. Soy fanático del asado <em>(dicen que me sale bastante bien)</em>, y comparto con mi pareja
+                    el gusto por el buen vino y las catas.</p>
+
+                <p><strong>Conectemos.</strong> Estoy siempre abierto a nuevas oportunidades y a generar valor juntos.
+                </p>
             </div>
         </section>
 
@@ -153,90 +176,69 @@
         <!-- Experiencia profesional -->
         <section id="experiencia" class="experiencia">
             <h2>Experiencia Profesional</h2>
-            <p><strong>Analista de Datos –</strong> Desarrollo de dashboards en Power BI y automatización de reportes en Excel.</p>
+            <p><strong>Analista de Datos –</strong> Desarrollo de dashboards en Power BI y automatización de reportes en
+                Excel.</p>
         </section>
 
         <!-- Proyectos (carrusel) -->
         <section id="proyectos">
             <h2 class="titulo">Mis Proyectos</h2>
 
-            <div class="carrusel-container" role="region"
-                 aria-roledescription="carrusel de proyectos"
-                 aria-label="Galería de proyectos"
-                 aria-live="polite">
-                <button class="btn" id="prev" type="button"
-                        aria-label="Proyecto anterior">&#10094;</button>
+            <div class="carrusel-container" role="region" aria-roledescription="carrusel de proyectos"
+                aria-label="Galería de proyectos" aria-live="polite">
+                <button class="btn" id="prev" type="button" aria-label="Proyecto anterior">&#10094;</button>
 
                 <div class="carrusel" id="carrusel">
                     <!-- Cada proyecto como <article> (contenido independiente) -->
                     <article class="proyecto">
-                        <img src="img/proyecto1.png"
-                             srcset="img/proyecto1_1.png 480w,
-                                     img/proyecto1_2.png 800w,
-                                     img/proyecto1_3.png 1200w"
-                             sizes="(max-width: 600px) 90vw, 260px"
-                             alt="Controles de pagos creado con Power BI"
-                             width="260" height="150"
-                             loading="lazy">
+                        <img src="img/proyecto1.png" alt="Controles de pagos creado con Power BI" width="260"
+                            height="150" loading="lazy">
                         <h3>Control de pagos</h3>
                         <p>Cruce de reportes de pagos con Power BI.</p>
                         <a href="Proyecto1.html" class="vermas">Ver más</a>
                     </article>
 
                     <article class="proyecto">
-                        <img src="img/proyecto2.png"
-                             alt="KPIs de gestión"
-                             width="260" height="150"
-                             loading="lazy">
+                        <img src="img/proyecto2.png" alt="KPIs de gestión" width="260" height="150" loading="lazy">
                         <h3>KPIs de gestión</h3>
                         <p>Panel dinámico para reportes mensuales en Power BI.</p>
                         <a href="Proyecto2.html" class="vermas">Ver más</a>
                     </article>
 
                     <article class="proyecto">
-                        <img src="img/proyecto3.png"
-                             alt="Macros de Validación"
-                             width="260" height="150"
-                             loading="lazy">
+                        <img src="img/proyecto3.png" alt="Macros de Validación" width="260" height="150" loading="lazy">
                         <h3>Automatización de procesos de validación contable</h3>
                         <p>Aplicación realizada .</p>
                         <a href="Proyecto3.html" class="vermas">Ver más</a>
                     </article>
 
                     <article class="proyecto">
-                        <img src="img/proyecto4.png"
-                             alt="Análisis de ventas con Python (pandas, matplotlib)"
-                             width="260" height="150"
-                             loading="lazy">
+                        <img src="img/proyecto4.png" alt="Análisis de ventas con Python (pandas, matplotlib)"
+                            width="260" height="150" loading="lazy">
                         <h3>Análisis de Ventas (Python)</h3>
                         <p>Estudio de datos históricos y predicción con pandas y matplotlib.</p>
                         <a href="Proyecto4.html" class="vermas">Ver más</a>
                     </article>
 
-                      <article class="proyecto">
-                        <img src="img/proyecto5.png"
-                             alt="Control de recepcion de Facturas"
-                             width="260" height="150"
-                             loading="lazy">
+                    <article class="proyecto">
+                        <img src="img/proyecto5.png" alt="Control de recepcion de Facturas" width="260" height="150"
+                            loading="lazy">
                         <h3>Control de recepcion de Facturas</h3>
-                        <p>Este tablero fue desarrollado para verificar la correcta recepción de las facturas emitidas.</p>
+                        <p>Este tablero fue desarrollado para verificar la correcta recepción de las facturas emitidas.
+                        </p>
                         <a href="Proyecto5.html" class="vermas">Ver más</a>
                     </article>
-                    
-                     <article class="proyecto">
-                        <img src="img/proyecto6.png"
-                             alt="API Traductor"
-                             width="260" height="150"
-                             loading="lazy">
+                    <article class="proyecto">
+                        <img src="img/proyecto6.png" alt="API Traductor" width="260" height="150" loading="lazy">
                         <h3>API de traductor de textos</h3>
-                        <p>API desarrollada con Flask y Googletrans que traduce textos entre múltiples idiomas con una interfaz web amigable.</p>
+                        <p>API desarrollada con Flask y Googletrans que traduce textos entre múltiples idiomas con una
+                            interfaz web amigable.</p>
                         <a href="Proyecto6.html" class="vermas">Ver más</a>
                     </article>
-                    
+
                 </div>
 
-                <button class="btn" id="next" type="button"
-                        aria-label="Proyecto siguiente">&#10095;</button>
+                <button class="btn" id="next" type="button" aria-label="Proyecto siguiente">&#10095;</button>
             </div>
         </section>
 
@@ -246,13 +248,11 @@
     <footer id="contacto">
         <address>
             📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
-            🌐 <a href="https://www.linkedin.com/in/egabrielloni"
-                 target="_blank"
-                 rel="noopener noreferrer">LinkedIn</a> |
+            🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            |
             <i class="fab fa-github" aria-hidden="true"></i>
-            <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md"
-               target="_blank"
-               rel="noopener noreferrer">GitHub</a>
+            <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md" target="_blank"
+                rel="noopener noreferrer">GitHub</a>
         </address>
     </footer>
 
@@ -305,26 +305,27 @@
         }
     </script>
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const secs = document.querySelectorAll('section');
+        document.addEventListener('DOMContentLoaded', () => {
+            const secs = document.querySelectorAll('section');
 
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            },
-            {
-                rootMargin: '0px 0px -15% 0px',
-                threshold: 0.1
-            }
-        );
+            const observer = new IntersectionObserver(
+                entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                },
+                {
+                    rootMargin: '0px 0px -15% 0px',
+                    threshold: 0.1
+                }
+            );
 
-        secs.forEach(sec => observer.observe(sec));
-    });
-</script>
+            secs.forEach(sec => observer.observe(sec));
+        });
+    </script>
 
 </body>
+
 </html>
