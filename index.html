@@ -34,57 +34,24 @@
       "@type": "Person",
       "name": "Esteban Gabrielloni",
       "jobTitle": "Analista de Datos",
-      "url": "https://www.tusitio.com",
+      "url": "https://esteban2507.github.io/portfolio",
       "sameAs": [
         "https://www.linkedin.com/in/egabrielloni",
         "https://github.com/Esteban2507"
       ],
-      "email": "mailto:egabrielloni@yahoo.com.ar",
-      "image": "https://esteban2507.github.io/portfolio/perfil.jpg",
+      "email": "egabrielloni@yahoo.com.ar",
+      "image": "https://esteban2507.github.io/portfolio/img/perfil.jpg",
       "knowsAbout": [
         "Power BI",
         "Python",
         "Excel avanzado",
-        "Análisis de datos"
+        "Análisis de datos",
+        "Celonis",
+        "Process Mining"
       ]
     }
     </script>
 
-    <!-- ---------- Estilos rápidos para skip‑link y transiciones (puedes moverlos a Estilo.css) ---------- -->
-    <style>
-        .skip-link {
-            position: absolute;
-            left: -9999px;
-            top: auto;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-        }
-
-        .skip-link:focus {
-            left: 1rem;
-            top: 1rem;
-            background: #fff;
-            color: #000;
-            padding: .5rem 1rem;
-            z-index: 1000;
-            width: auto;
-            height: auto;
-            overflow: visible;
-        }
-
-        /* Animaciones de aparición de secciones */
-        section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity .6s ease-out, transform .6s ease-out;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: none;
-        }
-    </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
     <script>
@@ -99,6 +66,9 @@
 <body>
     <!-- ---------- Skip link (salto rápido al contenido principal) ---------- -->
     <a href="#principal" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Ruido sutil para estética 2026 -->
+    <div class="noise-overlay"></div>
 
     <!-- ---------- Cabecera ---------- -->
     <header>
@@ -151,6 +121,8 @@
                     el gusto por el buen vino y las catas.</p>
 
                 <p><strong>Conectemos.</strong> Estoy siempre abierto a nuevas oportunidades y a generar valor juntos.
+                    Hechale un vistazo a mi hoja de vida <strong><a href="https://esteban2507.github.io/CV-Esteban/"
+                            target="_blank">aquí</a></strong>
                 </p>
             </div>
         </section>
@@ -180,65 +152,79 @@
                 Excel.</p>
         </section>
 
-        <!-- Proyectos (carrusel) -->
-        <section id="proyectos">
-            <h2 class="titulo">Mis Proyectos</h2>
-
-            <div class="carrusel-container" role="region" aria-roledescription="carrusel de proyectos"
-                aria-label="Galería de proyectos" aria-live="polite">
-                <button class="btn" id="prev" type="button" aria-label="Proyecto anterior">&#10094;</button>
-
-                <div class="carrusel" id="carrusel">
-                    <!-- Cada proyecto como <article> (contenido independiente) -->
-                    <article class="proyecto">
-                        <img src="img/proyecto1.png" alt="Controles de pagos creado con Power BI" width="260"
-                            height="150" loading="lazy">
-                        <h3>Control de pagos</h3>
-                        <p>Cruce de reportes de pagos con Power BI.</p>
-                        <a href="Proyecto1.html" class="vermas">Ver más</a>
+        <!-- Proyectos (Bento Grid 2026) -->
+        <section id="proyectos" class="proyectos-section">
+            <div class="container">
+                <h2 class="titulo">Proyectos Destacados</h2>
+                <div class="bento-grid">
+                    <!-- Proyecto Grande (Destacado) -->
+                    <article class="proyecto bento-item featured" data-tilt>
+                        <div class="proyecto-content">
+                            <img src="img/proyecto1.png" alt="Controles de pagos" loading="lazy">
+                            <div class="proyecto-info">
+                                <h3>Control de Pagos</h3>
+                                <p>Cruce automatizado de reportes con Power BI. Reducción del 90% en errores de
+                                    validación.</p>
+                                <div class="tags">
+                                    <span>Power BI</span>
+                                    <span>DAX</span>
+                                </div>
+                                <a href="Proyecto1.html" class="vermas">Explorar Proyecto <i
+                                        class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
                     </article>
 
-                    <article class="proyecto">
-                        <img src="img/proyecto2.png" alt="KPIs de gestión" width="260" height="150" loading="lazy">
-                        <h3>KPIs de gestión</h3>
-                        <p>Panel dinámico para reportes mensuales en Power BI.</p>
-                        <a href="Proyecto2.html" class="vermas">Ver más</a>
+                    <!-- Proyecto Mediano -->
+                    <article class="proyecto bento-item" data-tilt>
+                        <div class="proyecto-content">
+                            <img src="img/proyecto4.png" alt="Análisis de Ventas" loading="lazy">
+                            <div class="proyecto-info">
+                                <h3>Análisis de Ventas</h3>
+                                <p>EDA avanzado y predicción de tendencias con Python y Pandas.</p>
+                                <a href="Proyecto4.html" class="vermas">Ver más</a>
+                            </div>
+                        </div>
                     </article>
 
-                    <article class="proyecto">
-                        <img src="img/proyecto3.png" alt="Macros de Validación" width="260" height="150" loading="lazy">
-                        <h3>Automatización de procesos de validación contable</h3>
-                        <p>Aplicación realizada .</p>
-                        <a href="Proyecto3.html" class="vermas">Ver más</a>
+                    <!-- Proyecto Pequeño -->
+                    <article class="proyecto bento-item" data-tilt>
+                        <div class="proyecto-content">
+                            <img src="img/proyecto6.png" alt="API Traductor" loading="lazy">
+                            <div class="proyecto-info">
+                                <h3>API Traductor</h3>
+                                <p>Microservicio Flask para traducción multi-idioma.</p>
+                                <a href="Proyecto6.html" class="vermas">GitHub</a>
+                            </div>
+                        </div>
                     </article>
 
-                    <article class="proyecto">
-                        <img src="img/proyecto4.png" alt="Análisis de ventas con Python (pandas, matplotlib)"
-                            width="260" height="150" loading="lazy">
-                        <h3>Análisis de Ventas (Python)</h3>
-                        <p>Estudio de datos históricos y predicción con pandas y matplotlib.</p>
-                        <a href="Proyecto4.html" class="vermas">Ver más</a>
+                    <!-- Proyecto Mediano 2 -->
+                    <article class="proyecto bento-item" data-tilt>
+                        <div class="proyecto-content">
+                            <img src="img/proyecto2.png" alt="KPIs de Gestión" loading="lazy">
+                            <div class="proyecto-info">
+                                <h3>KPIs de Gestión</h3>
+                                <p>Dashboard dinámico de performance operativa.</p>
+                                <a href="Proyecto2.html" class="vermas">Ver más</a>
+                            </div>
+                        </div>
                     </article>
 
-                    <article class="proyecto">
-                        <img src="img/proyecto5.png" alt="Control de recepcion de Facturas" width="260" height="150"
-                            loading="lazy">
-                        <h3>Control de recepcion de Facturas</h3>
-                        <p>Este tablero fue desarrollado para verificar la correcta recepción de las facturas emitidas.
-                        </p>
-                        <a href="Proyecto5.html" class="vermas">Ver más</a>
+                    <!-- Proyecto Pequeño 2 -->
+                    <article class="proyecto bento-item" data-tilt>
+                        <div class="proyecto-content">
+                            <div class="proyecto-info mini">
+                                <h3>Más Proyectos</h3>
+                                <p>Validación Contable, Recepción de Facturas y automatizaciones en VBA.</p>
+                                <div class="links-grid">
+                                    <a href="Proyecto3.html">Proyecto 3</a>
+                                    <a href="Proyecto5.html">Proyecto 5</a>
+                                </div>
+                            </div>
+                        </div>
                     </article>
-                    <article class="proyecto">
-                        <img src="img/proyecto6.png" alt="API Traductor" width="260" height="150" loading="lazy">
-                        <h3>API de traductor de textos</h3>
-                        <p>API desarrollada con Flask y Googletrans que traduce textos entre múltiples idiomas con una
-                            interfaz web amigable.</p>
-                        <a href="Proyecto6.html" class="vermas">Ver más</a>
-                    </article>
-
                 </div>
-
-                <button class="btn" id="next" type="button" aria-label="Proyecto siguiente">&#10095;</button>
             </div>
         </section>
 
@@ -282,47 +268,40 @@
         });
     </script>
 
-    <!-- 2) Carrusel con botones y scroll suave -->
+    <!-- JS para Micro-interacciones 2026 -->
     <script>
-        const carrusel = document.getElementById('carrusel');
-        const btnPrev = document.getElementById('prev');
-        const btnNext = document.getElementById('next');
+        // Efecto de inclinación 3D (Tilt) suave
+        document.querySelectorAll('.bento-item').forEach(item => {
+            item.addEventListener('mousemove', e => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
-        const STEP = 260; // ancho de cada tarjeta + margen (ajusta si cambias el CSS)
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
 
-        btnPrev.addEventListener('click', () => {
-            carrusel.scrollBy({ left: -STEP, behavior: 'smooth' });
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+
+                item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
         });
 
-        btnNext.addEventListener('click', () => {
-            carrusel.scrollBy({ left: STEP, behavior: 'smooth' });
-        });
-
-        // Respeta la preferencia de movimiento reducido
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            btnPrev.disabled = true;
-            btnNext.disabled = true;
-        }
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const secs = document.querySelectorAll('section');
-
-            const observer = new IntersectionObserver(
-                entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                },
-                {
-                    rootMargin: '0px 0px -15% 0px',
-                    threshold: 0.1
-                }
-            );
-
-            secs.forEach(sec => observer.observe(sec));
+        // Botones Magnéticos (Sencillo)
+        document.querySelectorAll('.btn, .vermas').forEach(btn => {
+            btn.addEventListener('mousemove', e => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0, 0)`;
+            });
         });
     </script>
 
