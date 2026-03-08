@@ -10,7 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Cargar firmas existentes
     loadSignatures();
 
-    // 2. Manejar envío del formulario
+    // 2. Generar visitas aleatorias si está vacío
+    if (JSON.parse(localStorage.getItem('portfolio_signatures') || '[]').length === 0) {
+        generateRandomSignatures();
+    }
+
+    // 3. Manejar envío del formulario
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -25,19 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     name,
                     message,
                     sentiment,
-                    date: new Date().toLocaleDateString('es-ES', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    })
+                    date: formatDate(new Date())
                 };
 
                 saveSignature(newSignature);
                 form.reset();
                 renderSignature(newSignature, true);
-                
+
                 // Scroll suave a la nueva firma
                 const firstCard = list.firstElementChild;
                 if (firstCard) {
@@ -47,15 +46,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function generateRandomSignatures() {
+        const randomVisitors = [
+            { name: "Beñat Alfonso", message: "¡Increíble portfolio! Me encantaron las visualizaciones en Power BI.", sentiment: "🚀 Excelente" },
+            { name: "Amando Rivera", message: "Muy buen trabajo con la automatización de reportes. Inspirador.", sentiment: "✨ Muy Bueno" },
+            { name: "Eugenia Salvador Gómez", message: "La sección de proyectos está muy bien organizada. ¡Genial!", sentiment: "👍 Bueno" },
+            { name: "Lizeth Santamaría", message: "Me interesa mucho tu enfoque en Celonis. Saludos.", sentiment: "🤔 Interesante" }
+        ];
+
+        // Generar fechas realistas (últimos 3 días)
+        randomVisitors.forEach((visitor, index) => {
+            const date = new Date();
+            date.setHours(date.getHours() - (index * 4 + Math.random() * 10)); // Espaciar un poco las firmas
+
+            const sig = {
+                id: Date.now() - (index * 1000),
+                ...visitor,
+                date: formatDate(date)
+            };
+            saveSignature(sig);
+            renderSignature(sig);
+        });
+    }
+
+    function formatDate(date) {
+        return date.toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+
     function saveSignature(sig) {
         const signatures = JSON.parse(localStorage.getItem('portfolio_signatures') || '[]');
         signatures.unshift(sig); // Agregar al inicio
-        localStorage.setItem('portfolio_signatures', JSON.stringify(signatures));
+        // Evitar duplicados por ID si se llama varias veces por error
+        const uniqueSignatures = Array.from(new Map(signatures.map(item => [item.id, item])).values());
+        localStorage.setItem('portfolio_signatures', JSON.stringify(uniqueSignatures));
     }
 
     function loadSignatures() {
         const signatures = JSON.parse(localStorage.getItem('portfolio_signatures') || '[]');
-        
+
         if (signatures.length === 0) {
             list.innerHTML = '<div class="loading-signatures">Aún no hay mensajes. ¡Sé el primero en firmar!</div>';
             return;
