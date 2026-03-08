@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Beñat Alfonso", message: "¡Increíble portfolio! Me encantaron las visualizaciones en Power BI.", sentiment: "🚀 Excelente" },
             { name: "Amando Rivera", message: "Muy buen trabajo con la automatización de reportes. Inspirador.", sentiment: "✨ Muy Bueno" },
             { name: "Eugenia Salvador Gómez", message: "La sección de proyectos está muy bien organizada. ¡Genial!", sentiment: "👍 Bueno" },
-            { name: "Lizeth Santamaría", message: "Me interesa mucho tu enfoque en Celonis. Saludos.", sentiment: "🤔 Interesante" }
+            { name: "Lizeth Santamaría", message: "Me interesa mucho tu enfoque en APIs. Saludos.", sentiment: "🤔 Interesante" }
         ];
 
         // Generar fechas realistas (últimos 3 días)
@@ -132,3 +132,4 @@ document.addEventListener('DOMContentLoaded', () => {
         return p.innerHTML;
     }
 });
+
