@@ -227,8 +227,51 @@
                 </div>
             </div>
         </section>
+        <!-- Libro de Firmas (Guestbook) -->
+        <section id="firmas" class="guestbook-section">
+            <div class="container">
+                <h2 class="titulo">Libro de Firmas</h2>
+                <p class="intro-guestbook">¿Te gusta mi trabajo? ¡Deja tu feedback o un saludo aquí!</p>
+
+                <div class="guestbook-container">
+                    <!-- Formulario -->
+                    <form id="guestbook-form" class="glass-form">
+                        <div class="form-group">
+                            <label for="gb-name">Nombre</label>
+                            <input type="text" id="gb-name" placeholder="Tu nombre o alias" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gb-message">Mensaje / Feedback</label>
+                            <textarea id="gb-message" rows="4" placeholder="¿Qué te pareció mi portfolio?"
+                                required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gb-sentiment">¿Cómo calificarías la experiencia?</label>
+                                <select id="gb-sentiment">
+                                    <option value="🚀 Excelente">🚀 Excelente</option>
+                                    <option value="✨ Muy Bueno" selected>✨ Muy Bueno</option>
+                                    <option value="👍 Bueno">👍 Bueno</option>
+                                    <option value="🤔 Interesante">🤔 Interesante</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn">Firmar Libro <i class="fas fa-pen-nib"></i></button>
+                        </div>
+                    </form>
+
+                    <!-- Lista de Firmas -->
+                    <div id="signatures-list" class="signatures-grid">
+                        <!-- Las firmas se cargarán dinámicamente aquí -->
+                        <div class="loading-signatures">Cargando firmas...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
+
+    <!-- Scripts del Proyecto -->
+    <script src="guestbook.js"></script>
 
     <!-- ---------- Footer ---------- -->
     <footer id="contacto">
