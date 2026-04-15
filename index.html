@@ -1,411 +1,353 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <!-- ---------- Metadatos básicos y SEO ---------- -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio – Esteban Gabrielloni | Analista de Datos</title>
-  <meta name="description"
-    content="Portfolio de Esteban Gabrielloni, Analista de Datos especializado en Power BI, Python y Excel avanzado. Descubre sus proyectos y experiencia profesional.">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="icon" href="img/favicon.png" type="image/png">
+    <!-- ---------- Metadatos básicos y SEO ---------- -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio – Esteban Gabrielloni | Analista de Datos</title>
+    <meta name="description"
+        content="Portfolio de Esteban Gabrielloni, Analista de Datos especializado en Power BI, Python y Excel avanzado. Descubre sus proyectos y experiencia profesional.">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="img/favicon.png" type="image/png">
 
-  <!-- ---------- Conexiones a CDN ---------- -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
-    rel="stylesheet">
+    <!-- ---------- Conexiones a CDN (optimiza la carga) ---------- -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
 
-  <!-- ---------- Hojas de estilo ---------- -->
-  <link rel="stylesheet" href="Estilo.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-8hL5YtKZgZsM2fQfA5bB5EoM9NwT9F6KjE/4v2EJ4N+R+M2I9V5cN6eZ+S1c2B2iG6VJp1tM2Vt8f7s1zG9Vw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- ---------- Hojas de estilo ---------- -->
+    <link rel="stylesheet" href="Estilo.css">
 
-  <!-- ---------- Datos estructurados (JSON-LD) ---------- -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Esteban Gabrielloni",
-    "jobTitle": "Analista de Datos",
-    "url": "https://esteban2507.github.io/portfolio",
-    "sameAs": [
-      "https://www.linkedin.com/in/egabrielloni",
-      "https://github.com/Esteban2507"
-    ],
-    "email": "egabrielloni@yahoo.com.ar",
-    "image": "https://esteban2507.github.io/portfolio/img/perfil.jpg",
-    "knowsAbout": ["Power BI","Python","Excel avanzado","Análisis de datos","Celonis","Process Mining"]
-  }
-  </script>
+    <!-- Font Awesome (integrity + crossorigin) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-8hL5YtKZgZsM2fQfA5bB5EoM9NwT9F6KjE/4v2EJ4N+R+M2I9V5cN6eZ+S1c2B2iG6VJp1tM2Vt8f7s1zG9Vw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-D0D4EQQWC4');
-  </script>
+    <!-- ---------- Datos estructurados (JSON‑LD) ---------- -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Esteban Gabrielloni",
+      "jobTitle": "Analista de Datos",
+      "url": "https://esteban2507.github.io/portfolio",
+      "sameAs": [
+        "https://www.linkedin.com/in/egabrielloni",
+        "https://github.com/Esteban2507"
+      ],
+      "email": "egabrielloni@yahoo.com.ar",
+      "image": "https://esteban2507.github.io/portfolio/img/perfil.jpg",
+      "knowsAbout": [
+        "Power BI",
+        "Python",
+        "Excel avanzado",
+        "Análisis de datos",
+        "Celonis",
+        "Process Mining"
+      ]
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-D0D4EQQWC4');
+    </script>
 </head>
+
 <body>
+    <!-- ---------- Skip link (salto rápido al contenido principal) ---------- -->
+    <a href="#principal" class="skip-link">Saltar al contenido principal</a>
 
-  <!-- Skip link -->
-  <a href="#principal" class="skip-link">Saltar al contenido principal</a>
-  <div class="noise-overlay"></div>
+    <!-- Ruido sutil para estética 2026 -->
+    <div class="noise-overlay"></div>
 
-  <!-- ---------- Cabecera ---------- -->
-  <header>
-    <div class="perfil">
-      <img src="img/perfil.jpg" alt="Foto de Esteban Gabrielloni, analista de datos" width="150" height="150" loading="lazy">
-      <h1>Esteban Gabrielloni</h1>
-      <p>Analista de Datos • Power BI • Python • HTML</p>
-    </div>
-  </header>
-
-  <!-- ---------- Navegación ---------- -->
-  <nav aria-label="Navegación principal">
-    <ul>
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#habilidades">Habilidades</a></li>
-      <li><a href="#experiencia">Experiencia</a></li>
-      <li><a href="#proyectos">Proyectos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <!-- ---------- Contenido principal ---------- -->
-  <main id="principal">
-
-    <!-- Sobre mí -->
-    <section id="sobre-mi" class="sobre-mi">
-      <div class="container">
-        <h2>Sobre mí</h2>
-        <p><strong>Soy un Analista de Datos</strong> con un enfoque en la eficiencia y la innovación. Mi pasión
-          es transformar la complejidad en soluciones ágiles y funcionales: me dedico a automatizar,
-          simplificar procesos y extraer valor actionable de la información.</p>
-        <p>Para mí, los datos no son solo números, sino historias y oportunidades que impulsan la toma de decisiones.</p>
-        <p><strong>Dominio Técnico:</strong> Trabajo con Python, Power BI, Excel avanzado y la plataforma Celonis (Process Mining).</p>
-        <p><strong>Mentalidad:</strong> Soy un aprendiz constante. Busco la forma más inteligente y actualizada de generar un impacto medible.</p>
-        <p><strong>Perfil Personal:</strong> Me defino como una persona curiosa, práctica y enfocada en las conexiones. Mi filosofía es que, aunque los datos son mi campo, lo más importante son las personas y los equipos que se crean en el camino.</p>
-        <p><strong>Valores Clave:</strong> Curiosidad, Disciplina y Pragmatismo.</p>
-        <p><strong>Intereses:</strong> Encuentro disciplina y enfoque en el boxeo, y disfruto del ciclismo urbano. Soy fanático del asado <em>(dicen que me sale bastante bien)</em>, y comparto con mi pareja el gusto por el buen vino y las catas.</p>
-        <p><strong>Conectemos.</strong> Estoy siempre abierto a nuevas oportunidades y a generar valor juntos.
-          Hechale un vistazo a mi hoja de vida <strong><a href="https://esteban2507.github.io/CV-Esteban/" target="_blank" rel="noopener noreferrer">aquí</a></strong>
-        </p>
-      </div>
-    </section>
-
-    <!-- Frase destacada -->
-    <section class="frase-destacada">
-      <blockquote cite="https://esteban2507.github.io/portfolio/">
-        Los datos no son solo números; son oportunidades esperando ser descubiertas.
-      </blockquote>
-    </section>
-
-    <!-- Habilidades técnicas -->
-    <section id="habilidades" class="habilidades">
-      <h2>Habilidades Técnicas</h2>
-      <ul>
-        <li>Power BI</li>
-        <li>Python</li>
-        <li>Excel avanzado</li>
-        <li>ERPs: SAP, JDE, FTS</li>
-      </ul>
-    </section>
-
-    <!-- ============================================================
-         EXPERIENCIA PROFESIONAL — EXPANDIDA
-    ============================================================ -->
-    <section id="experiencia" class="experiencia">
-      <div class="container">
-        <h2>Experiencia Profesional</h2>
-
-        <div class="exp-timeline">
-
-          <!-- Rol 1 -->
-          <article class="exp-item">
-            <div class="exp-header">
-              <div class="exp-meta">
-                <h3 class="exp-rol">Analista de Datos & Control de Pagos</h3>
-                <span class="exp-empresa">Empresa del sector industrial · Rosario, Argentina</span>
-              </div>
-              <span class="exp-periodo">2022 — Presente</span>
-            </div>
-            <ul class="exp-logros">
-              <li>
-                <i class="fas fa-chart-line" aria-hidden="true"></i>
-                Desarrollé dashboards en <strong>Power BI</strong> para el monitoreo de KPIs operativos y financieros,
-                reduciendo el tiempo de generación de reportes de 4 horas a menos de 15 minutos.
-              </li>
-              <li>
-                <i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>
-                Implementé un proceso de <strong>auditoría de facturas de proveedores</strong> que cruza datos entre
-                múltiples ERPs (JDE y FTS) contra el sistema de gestión documental (DMS), detectando
-                inconsistencias antes del pago y reduciendo errores en un <strong>90%</strong>.
-              </li>
-              <li>
-                <i class="fas fa-robot" aria-hidden="true"></i>
-                Automaticé validaciones contables con <strong>macros VBA y Python</strong> (pandas + openpyxl),
-                eliminando tareas manuales repetitivas que consumían ~8 horas semanales del equipo.
-              </li>
-              <li>
-                <i class="fas fa-database" aria-hidden="true"></i>
-                Administré y concilié reportes de múltiples fuentes (FTS, Almacén, Aduana) garantizando
-                la integridad de los datos antes de cada cierre contable.
-              </li>
-              <li>
-                <i class="fas fa-users" aria-hidden="true"></i>
-                Colaboré con equipos de finanzas, compras y logística para mapear flujos de proceso
-                e identificar cuellos de botella usando principios de <strong>Process Mining (Celonis)</strong>.
-              </li>
-            </ul>
-            <div class="exp-tags">
-              <span>Power BI</span><span>Python</span><span>Excel VBA</span>
-              <span>JDE</span><span>FTS</span><span>SAP</span><span>Process Mining</span>
-            </div>
-          </article>
-
-          <!-- Rol 2 — podés editar o eliminar si no aplica -->
-          <article class="exp-item">
-            <div class="exp-header">
-              <div class="exp-meta">
-                <h3 class="exp-rol">Analista Administrativo / Cuentas a Pagar</h3>
-                <span class="exp-empresa">Empresa del sector industrial · Rosario, Argentina</span>
-              </div>
-              <span class="exp-periodo">2019 — 2022</span>
-            </div>
-            <ul class="exp-logros">
-              <li>
-                <i class="fas fa-search-dollar" aria-hidden="true"></i>
-                Gestioné el proceso completo de cuentas a pagar: recepción, validación y registro de
-                facturas de proveedores en sistemas ERP.
-              </li>
-              <li>
-                <i class="fas fa-check-double" aria-hidden="true"></i>
-                Implementé controles manuales de triple verificación (cantidad, precio, condición de pago)
-                que redujeron las devoluciones de facturas en un <strong>40%</strong>.
-              </li>
-              <li>
-                <i class="fas fa-table" aria-hidden="true"></i>
-                Construí planillas de seguimiento en <strong>Excel avanzado</strong> (VLOOKUP, tablas dinámicas,
-                formato condicional) adoptadas por todo el equipo contable.
-              </li>
-            </ul>
-            <div class="exp-tags">
-              <span>Cuentas a Pagar</span><span>Excel Avanzado</span><span>ERP</span><span>Conciliación</span>
-            </div>
-          </article>
-
-        </div><!-- /.exp-timeline -->
-      </div>
-    </section>
-    <!-- ============================================================ -->
-
-    <!-- Proyectos (Bento Grid) -->
-    <section id="proyectos" class="proyectos-section">
-      <div class="container">
-        <h2 class="titulo">Proyectos Destacados</h2>
-        <div class="bento-grid">
-
-          <!-- Proyecto 1 — Grande (Destacado) -->
-          <article class="proyecto bento-item featured" data-tilt>
-            <div class="proyecto-content">
-              <img src="img/proyecto1.png" alt="Dashboard de control de pagos en Power BI" loading="lazy">
-              <div class="proyecto-info">
-                <h3>Control de Pagos</h3>
-                <p>Cruce automatizado de reportes con Power BI. Reducción del 90% en errores de validación.</p>
-                <div class="tags">
-                  <span>Power BI</span>
-                  <span>DAX</span>
-                </div>
-                <a href="Proyecto1.html" class="vermas">Explorar Proyecto <i class="fas fa-arrow-right"></i></a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Proyecto 4 — Mediano -->
-          <article class="proyecto bento-item" data-tilt>
-            <div class="proyecto-content">
-              <img src="img/proyecto4.png" alt="Análisis exploratorio de ventas con Python" loading="lazy">
-              <div class="proyecto-info">
-                <h3>Análisis de Ventas</h3>
-                <p>EDA avanzado y predicción de tendencias con Python y Pandas.</p>
-                <div class="tags">
-                  <span>Python</span>
-                  <span>Pandas</span>
-                </div>
-                <a href="Proyecto4.html" class="vermas">Ver más <i class="fas fa-arrow-right"></i></a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Proyecto 6 — Pequeño -->
-          <article class="proyecto bento-item" data-tilt>
-            <div class="proyecto-content">
-              <img src="img/proyecto6.png" alt="API de traducción multi-idioma con Flask" loading="lazy">
-              <div class="proyecto-info">
-                <h3>API Traductor</h3>
-                <p>Microservicio Flask para traducción multi-idioma.</p>
-                <div class="tags">
-                  <span>Python</span>
-                  <span>Flask</span>
-                </div>
-                <a href="Proyecto6.html" class="vermas">GitHub <i class="fas fa-arrow-right"></i></a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Proyecto 2 — Mediano -->
-          <article class="proyecto bento-item" data-tilt>
-            <div class="proyecto-content">
-              <img src="img/proyecto2.png" alt="Dashboard de KPIs de gestión operativa" loading="lazy">
-              <div class="proyecto-info">
-                <h3>KPIs de Gestión</h3>
-                <p>Dashboard dinámico de performance operativa.</p>
-                <div class="tags">
-                  <span>Power BI</span>
-                  <span>DAX</span>
-                </div>
-                <a href="Proyecto2.html" class="vermas">Ver más <i class="fas fa-arrow-right"></i></a>
-              </div>
-            </div>
-          </article>
-
-          <!-- ✅ NUEVO — Proyecto 3: Validación Contable -->
-          <article class="proyecto bento-item" data-tilt>
-            <div class="proyecto-content">
-              <img src="img/proyecto3.png" alt="Macros VBA para validación contable en Excel" loading="lazy">
-              <div class="proyecto-info">
-                <h3>Validación Contable</h3>
-                <p>Automatización con macros VBA para cruzar reportes de FTS, Almacén y Aduana, eliminando errores manuales en el cierre contable.</p>
-                <div class="tags">
-                  <span>Excel VBA</span>
-                  <span>Automatización</span>
-                </div>
-                <a href="Proyecto3.html" class="vermas">Ver más <i class="fas fa-arrow-right"></i></a>
-              </div>
-            </div>
-          </article>
-
-          <!-- ✅ NUEVO — Proyecto 5: Recepción de Facturas -->
-          <article class="proyecto bento-item" data-tilt>
-            <div class="proyecto-content">
-              <img src="img/proyecto5.png" alt="Tablero de control de recepción de facturas" loading="lazy">
-              <div class="proyecto-info">
-                <h3>Recepción de Facturas</h3>
-                <p>Tablero de control en Power BI para verificar la correcta recepción y procesamiento de facturas emitidas por proveedores.</p>
-                <div class="tags">
-                  <span>Power BI</span>
-                  <span>Cuentas a Pagar</span>
-                </div>
-                <a href="Proyecto5.html" class="vermas">Ver más <i class="fas fa-arrow-right"></i></a>
-              </div>
-            </div>
-          </article>
-
-        </div><!-- /.bento-grid -->
-      </div>
-    </section>
-
-    <!-- Libro de Firmas -->
-    <section id="firmas" class="guestbook-section">
-      <div class="container">
-        <h2 class="titulo">Libro de Firmas</h2>
-        <p class="intro-guestbook">¿Te gusta mi trabajo? ¡Deja tu feedback o un saludo aquí!</p>
-        <div class="guestbook-container">
-          <form id="guestbook-form" class="glass-form">
-            <div class="form-group">
-              <label for="gb-name">Nombre</label>
-              <input type="text" id="gb-name" placeholder="Tu nombre o alias" required>
-            </div>
-            <div class="form-group">
-              <label for="gb-message">Mensaje / Feedback</label>
-              <textarea id="gb-message" rows="4" placeholder="¿Qué te pareció mi portfolio?" required></textarea>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="gb-sentiment">¿Cómo calificarías la experiencia?</label>
-                <select id="gb-sentiment">
-                  <option value="🚀 Excelente">🚀 Excelente</option>
-                  <option value="✨ Muy Bueno" selected>✨ Muy Bueno</option>
-                  <option value="👍 Bueno">👍 Bueno</option>
-                  <option value="🤔 Interesante">🤔 Interesante</option>
-                </select>
-              </div>
-              <button type="submit" class="btn">Firmar Libro <i class="fas fa-pen-nib"></i></button>
-            </div>
-          </form>
-          <div id="signatures-list" class="signatures-grid">
-            <div class="loading-signatures">Cargando firmas...</div>
-          </div>
+    <!-- ---------- Cabecera ---------- -->
+    <header>
+        <div class="perfil">
+            <img src="img/perfil.jpg" alt="Foto de Esteban Gabrielloni, analista de datos" width="150" height="150"
+                loading="lazy">
+            <h1>Esteban Gabrielloni</h1>
+            <p>Analista de Datos • Power BI • Python • HTML</p>
         </div>
-      </div>
-    </section>
+    </header>
 
-  </main>
+    <!-- ---------- Navegación interna (opcional pero recomendable) ---------- -->
+    <nav aria-label="Navegación principal">
+        <ul>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 
-  <script src="guestbook.js"></script>
+    <!-- ---------- Contenido principal ---------- -->
+    <main id="principal">
 
-  <!-- ---------- Footer ---------- -->
-  <footer id="contacto">
-    <address>
-      📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
-      🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
-      <i class="fab fa-github" aria-hidden="true"></i>
-      <a href="https://github.com/Esteban2507" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </address>
-  </footer>
+        <!-- Sobre mí -->
+        <section id="sobre-mi" class="sobre-mi">
+            <div class="container">
+                <h2>Sobre mí</h2>
+                <p><strong>Soy un Analista de Datos</strong> con un enfoque en la eficiencia y la innovación. Mi pasión
+                    es transformar la complejidad en soluciones ágiles y funcionales: me dedico a automatizar,
+                    simplificar procesos y extraer valor actionable de la información.</p>
+                <p>Para mí, los datos no son solo números, sino historias y oportunidades que impulsan la toma de
+                    decisiones.</p>
 
-  <!-- ---------- Scripts ---------- -->
-  <script>
-    // Animación de aparición con IntersectionObserver
-    document.addEventListener('DOMContentLoaded', () => {
-      const secs = document.querySelectorAll('section');
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-          });
-        },
-        { rootMargin: '0px 0px -15% 0px', threshold: 0.1 }
-      );
-      secs.forEach(sec => observer.observe(sec));
-    });
-  </script>
+                <p><strong>Dominio Técnico:</strong> Trabajo con Python, Power BI, Excel avanzado y la plataforma
+                    Celonis (Process Mining).</p>
 
-  <script>
-    // Efecto Tilt 3D en bento cards
-    document.querySelectorAll('.bento-item').forEach(item => {
-      item.addEventListener('mousemove', e => {
-        const rect = item.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateX = (y - rect.height / 2) / 20;
-        const rotateY = (rect.width / 2 - x) / 20;
-        item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-      });
-      item.addEventListener('mouseleave', () => {
-        item.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-      });
-    });
+                <p><strong>Mentalidad:</strong> Soy un aprendiz constante. Busco la forma más inteligente y actualizada
+                    de generar un impacto medible.</p>
 
-    // Botones magnéticos
-    document.querySelectorAll('.btn, .vermas').forEach(btn => {
-      btn.addEventListener('mousemove', e => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-      });
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = 'translate(0, 0)';
-      });
-    });
-  </script>
+                <p><strong>Perfil Personal:</strong> Me defino como una persona curiosa, práctica y enfocada en las
+                    conexiones. Mi filosofía es que, aunque los datos son mi campo, lo más importante son las personas y
+                    los equipos que se crean en el camino.</p>
+
+                <p><strong>Valores Clave:</strong> Curiosidad, Disciplina y Pragmatismo.</p>
+
+                <p><strong>Intereses:</strong> Encuentro disciplina y enfoque en el boxeo, y disfruto del ciclismo
+                    urbano. Soy fanático del asado <em>(dicen que me sale bastante bien)</em>, y comparto con mi pareja
+                    el gusto por el buen vino y las catas.</p>
+
+                <p><strong>Conectemos.</strong> Estoy siempre abierto a nuevas oportunidades y a generar valor juntos.
+                    Hechale un vistazo a mi hoja de vida <strong><a href="https://esteban2507.github.io/CV-Esteban/"
+                            target="_blank">aquí</a></strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- Frase destacada -->
+        <section class="frase-destacada">
+            <blockquote cite="https://esteban2507.github.io/portfolio/">
+                Los datos no son solo números; son oportunidades esperando ser descubiertas.
+            </blockquote>
+        </section>
+
+        <!-- Habilidades técnicas -->
+        <section id="habilidades" class="habilidades">
+            <h2>Habilidades Técnicas</h2>
+            <ul>
+                <li>Power BI</li>
+                <li>Python</li>
+                <li>Excel avanzado</li>
+                <li>ERPs: SAP, JDE, FTS</li>
+            </ul>
+        </section>
+
+        <!-- Experiencia profesional -->
+        <section id="experiencia" class="experiencia">
+            <h2>Experiencia Profesional</h2>
+            <p><strong>Analista de Datos –</strong> Desarrollo de dashboards en Power BI y automatización de reportes en
+                Excel.</p>
+        </section>
+
+        <!-- Proyectos (Bento Grid 2026) -->
+        <section id="proyectos" class="proyectos-section">
+            <div class="container">
+                <h2 class="titulo">Proyectos Destacados</h2>
+                <div class="bento-grid">
+                    <!-- Proyecto Grande (Destacado) -->
+                    <article class="proyecto bento-item featured" data-tilt>
+                        <div class="proyecto-content">
+                            <img src="img/proyecto1.png" alt="Controles de pagos" loading="lazy">
+                            <div class="proyecto-info">
+                                <h3>Control de Pagos</h3>
+                                <p>Cruce automatizado de reportes con Power BI. Reducción del 90% en errores de
+                                    validación.</p>
+                                <div class="tags">
+                                    <span>Power BI</span>
+                                    <span>DAX</span>
+                                </div>
+                                <a href="Proyecto1.html" class="vermas">Explorar Proyecto <i
+                                        class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto Mediano -->
+                    <article class="proyecto bento-item" data-tilt>
+                        <div class="proyecto-content">
+                            <img src="img/proyecto4.png" alt="Análisis de Ventas" loading="lazy">
+                            <div class="proyecto-info">
+                                <h3>Análisis de Ventas</h3>
+                                <p>EDA avanzado y predicción de tendencias con Python y Pandas.</p>
+                                <a href="Proyecto4.html" class="vermas">Ver más</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto Pequeño -->
+                    <article class="proyecto bento-item" data-tilt>
+                        <div class="proyecto-content">
+                            <img src="img/proyecto6.png" alt="API Traductor" loading="lazy">
+                            <div class="proyecto-info">
+                                <h3>API Traductor</h3>
+                                <p>Microservicio Flask para traducción multi-idioma.</p>
+                                <a href="Proyecto6.html" class="vermas">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto Mediano 2 -->
+                    <article class="proyecto bento-item" data-tilt>
+                        <div class="proyecto-content">
+                            <img src="img/proyecto2.png" alt="KPIs de Gestión" loading="lazy">
+                            <div class="proyecto-info">
+                                <h3>KPIs de Gestión</h3>
+                                <p>Dashboard dinámico de performance operativa.</p>
+                                <a href="Proyecto2.html" class="vermas">Ver más</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto Pequeño 2 -->
+                    <article class="proyecto bento-item" data-tilt>
+                        <div class="proyecto-content">
+                            <div class="proyecto-info mini">
+                                <h3>Más Proyectos</h3>
+                                <p>Validación Contable, Recepción de Facturas y automatizaciones en VBA.</p>
+                                <div class="links-grid">
+                                    <a href="Proyecto3.html">Proyecto 3</a>
+                                    <a href="Proyecto5.html">Proyecto 5</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Libro de Firmas (Guestbook) -->
+        <section id="firmas" class="guestbook-section">
+            <div class="container">
+                <h2 class="titulo">Libro de Firmas</h2>
+                <p class="intro-guestbook">¿Te gusta mi trabajo? ¡Deja tu feedback o un saludo aquí!</p>
+
+                <div class="guestbook-container">
+                    <!-- Formulario -->
+                    <form id="guestbook-form" class="glass-form">
+                        <div class="form-group">
+                            <label for="gb-name">Nombre</label>
+                            <input type="text" id="gb-name" placeholder="Tu nombre o alias" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gb-message">Mensaje / Feedback</label>
+                            <textarea id="gb-message" rows="4" placeholder="¿Qué te pareció mi portfolio?"
+                                required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gb-sentiment">¿Cómo calificarías la experiencia?</label>
+                                <select id="gb-sentiment">
+                                    <option value="🚀 Excelente">🚀 Excelente</option>
+                                    <option value="✨ Muy Bueno" selected>✨ Muy Bueno</option>
+                                    <option value="👍 Bueno">👍 Bueno</option>
+                                    <option value="🤔 Interesante">🤔 Interesante</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn">Firmar Libro <i class="fas fa-pen-nib"></i></button>
+                        </div>
+                    </form>
+
+                    <!-- Lista de Firmas -->
+                    <div id="signatures-list" class="signatures-grid">
+                        <!-- Las firmas se cargarán dinámicamente aquí -->
+                        <div class="loading-signatures">Cargando firmas...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts del Proyecto -->
+    <script src="guestbook.js"></script>
+
+    <!-- ---------- Footer ---------- -->
+    <footer id="contacto">
+        <address>
+            📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
+            🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            |
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md" target="_blank"
+                rel="noopener noreferrer">GitHub</a>
+        </address>
+    </footer>
+
+    <!-- ---------- Scripts ---------- -->
+    <!-- 1) Animación de aparición usando IntersectionObserver -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const secs = document.querySelectorAll('section');
+
+            const observer = new IntersectionObserver(
+                entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            // Si solo quieres la animación una vez, descomenta la siguiente línea:
+                            // observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    rootMargin: '0px 0px -15% 0px', // similar a 85% de la altura de la ventana
+                    threshold: 0.1
+                }
+            );
+
+            secs.forEach(sec => observer.observe(sec));
+        });
+    </script>
+
+    <!-- JS para Micro-interacciones 2026 -->
+    <script>
+        // Efecto de inclinación 3D (Tilt) suave
+        document.querySelectorAll('.bento-item').forEach(item => {
+            item.addEventListener('mousemove', e => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+
+                item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+        // Botones Magnéticos (Sencillo)
+        document.querySelectorAll('.btn, .vermas').forEach(btn => {
+            btn.addEventListener('mousemove', e => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0, 0)`;
+            });
+        });
+    </script>
 
 </body>
+
 </html>
