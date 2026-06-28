@@ -1,0 +1,111 @@
+/* Mejoras de accesibilidad, legibilidad y componentes reutilizables */
+:root {
+    color-scheme: dark;
+}
+
+img {
+    max-width: 100%;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+.hero-actions,
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--glass-border);
+    box-shadow: none;
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+}
+
+.case-card,
+.notice-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+}
+
+.case-card strong,
+.notice-card strong {
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.lista-detalle {
+    list-style: disc;
+    margin: 0 0 1.5rem 1.25rem;
+    color: var(--color-text-muted);
+}
+
+.lista-detalle li {
+    margin-bottom: 0.55rem;
+}
+
+.detalle-proyecto code {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    color: var(--color-accent);
+    padding: 0.1rem 0.35rem;
+}
+
+.signatures-grid[aria-live] {
+    min-height: 4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .bento-item,
+    .btn,
+    .vermas {
+        transform: none !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-actions,
+    .project-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .hero-actions .btn,
+    .project-actions .btn {
+        width: 100%;
+    }
+}
