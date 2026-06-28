@@ -6,16 +6,16 @@
 
   *Transformando datos complejos en decisiones estratégicas claras.*
 
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/estebangabriel)
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/egabrielloni)
   [![Email](https://img.shields.io/badge/Email-Contact_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:egabrielloni@yahoo.com.ar)
   [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github)](https://github.com/Esteban2507)
 
-  [🇬🇧 English Version](README_EN.md)
+  [🌐 Demo online](https://esteban2507.github.io/portfolio/) · [🇬🇧 English Version](README_EN.md)
 </div>
 
 ---
 
-## 🚀 Sobre Mí
+## 🚀 Sobre mí
 
 ¡Hola! Soy **Esteban**, un apasionado por la eficiencia y la inteligencia de negocios. Mi objetivo es simple: **automatizar lo repetitivo para enfocarnos en lo estratégico**.
 
@@ -34,16 +34,42 @@ Me especializo en conectar puntos: cruzar reportes contables, visualizar tendenc
 
 ---
 
-## 📂 Portafolio de Proyectos
+## 📂 Portafolio de proyectos
 
 | Proyecto | Descripción | Tecnologías | Ver |
 | :--- | :--- | :---: | :---: |
 | **Control de Pagos** | Dashboard interactivo para el cruce de reportes de pagos. Detecta inconsistencias y asegura la integridad financiera. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto1.html) |
-| **KPIs de Gestión** | Panel dinámico para el seguimiento mensual de indicadores clave de desempeño. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto2.html) |
-| **Validación Contable** | Herramienta de automatización para comparar reportes (FTS, Almacén, Aduana) y validar pagos a proveedores. | ![Excel](https://img.shields.io/badge/-Excel%20VBA-217346) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto3.html) |
-| **Análisis de Ventas** | Script de Python para análisis exploratorio de datos (EDA), tendencias estacionales y proyecciones. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto4.html) |
-| **Recepción de Facturas** | Tablero de control para verificar la correcta recepción y procesamiento de facturas emitidas. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto5.html) |
+| **KPIs de Gestión** | Panel dinámico para el seguimiento mensual de indicadores clave, alertas y desvíos operativos. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto2.html) |
+| **Validación Contable** | Herramienta de automatización para comparar reportes y validar pagos a proveedores. | ![Excel](https://img.shields.io/badge/-Excel%20VBA-217346) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto3.html) |
+| **Análisis de Ventas** | Script de Python para EDA, tendencias estacionales, segmentación y visualizaciones accionables. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto4.html) |
+| **Recepción de Facturas** | Tablero de control para verificar la recepción y procesamiento de facturas emitidas por proveedores. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto5.html) |
 | **Traductor API** | API RESTful desarrollada con Flask para traducción de textos multi-idioma. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 Ver](https://esteban2507.github.io/portfolio/Proyecto6.html) |
+
+---
+
+## 📁 Estructura del sitio
+
+```text
+.
+├── index.html
+├── Estilo.css
+├── mejoras.css
+├── guestbook.js
+├── Proyecto1.html ... Proyecto6.html
+├── robots.txt
+├── sitemap.xml
+└── img/
+```
+
+---
+
+## 🧪 Calidad y mantenimiento
+
+- HTML semántico con navegación interna y enlace de salto al contenido.
+- Diseño responsive con cards tipo bento y páginas individuales por proyecto.
+- SEO básico, JSON-LD, Open Graph y Twitter Cards en la home.
+- Soporte para `prefers-reduced-motion` en usuarios sensibles al movimiento.
+- Workflow de GitHub Actions para validar HTML, assets locales y placeholders.
 
 ---
 
