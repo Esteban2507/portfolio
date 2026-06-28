@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://esteban2507.github.io/portfolio/sitemap.xml
