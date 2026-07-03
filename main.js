@@ -3,12 +3,17 @@
  * Keeps content usable when JavaScript is unavailable and respects reduced-motion preferences.
  */
 (() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.classList.add('js-enabled');
+
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const finePointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
 
     document.addEventListener('DOMContentLoaded', () => {
+        const prefersReducedMotion = reducedMotionQuery.matches;
+
         revealSections(prefersReducedMotion);
 
-        if (prefersReducedMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        if (prefersReducedMotion || !finePointerQuery.matches) {
             return;
         }
 

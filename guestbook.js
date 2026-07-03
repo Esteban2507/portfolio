@@ -1,72 +1,56 @@
 /**
  * Guestbook Logic - Portfolio 2026
- * Handles persistence via localStorage and dynamic rendering.
+ * Handles local persistence and dynamic rendering with safe text escaping.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const STORAGE_KEY = 'portfolio_signatures';
+    const MAX_SIGNATURES = 25;
+    const MAX_NAME_LENGTH = 60;
+    const MAX_MESSAGE_LENGTH = 500;
+
     const form = document.getElementById('guestbook-form');
     const list = document.getElementById('signatures-list');
 
-    // 1. Cargar firmas existentes
+    if (!form || !list) {
+        return;
+    }
+
+    list.setAttribute('aria-live', 'polite');
     loadSignatures();
 
-    // 2. Generar visitas aleatorias si está vacío
-    if (JSON.parse(localStorage.getItem('portfolio_signatures') || '[]').length === 0) {
-        generateRandomSignatures();
-    }
+    form.addEventListener('submit', event => {
+        event.preventDefault();
 
-    // 3. Manejar envío del formulario
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
+        const name = sanitizeInput(document.getElementById('gb-name').value, MAX_NAME_LENGTH);
+        const message = sanitizeInput(document.getElementById('gb-message').value, MAX_MESSAGE_LENGTH);
+        const sentiment = document.getElementById('gb-sentiment').value;
 
-            const name = document.getElementById('gb-name').value.trim();
-            const message = document.getElementById('gb-message').value.trim();
-            const sentiment = document.getElementById('gb-sentiment').value;
+        if (!name || !message) {
+            return;
+        }
 
-            if (name && message) {
-                const newSignature = {
-                    id: Date.now(),
-                    name,
-                    message,
-                    sentiment,
-                    date: formatDate(new Date())
-                };
+        const newSignature = {
+            id: Date.now(),
+            name,
+            message,
+            sentiment,
+            date: formatDate(new Date())
+        };
 
-                saveSignature(newSignature);
-                form.reset();
-                renderSignature(newSignature, true);
+        if (saveSignature(newSignature)) {
+            form.reset();
+            renderSignature(newSignature, true);
 
-                // Scroll suave a la nueva firma
-                const firstCard = list.firstElementChild;
-                if (firstCard) {
-                    firstCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+            const firstCard = list.firstElementChild;
+            if (firstCard) {
+                firstCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-        });
-    }
+        }
+    });
 
-    function generateRandomSignatures() {
-        const randomVisitors = [
-            { name: "Beñat Alfonso", message: "¡Increíble portfolio! Me encantaron las visualizaciones en Power BI.", sentiment: "🚀 Excelente" },
-            { name: "Amando Rivera", message: "Muy buen trabajo con la automatización de reportes. Inspirador.", sentiment: "✨ Muy Bueno" },
-            { name: "Eugenia Salvador Gómez", message: "La sección de proyectos está muy bien organizada. ¡Genial!", sentiment: "👍 Bueno" },
-            { name: "Lizeth Santamaría", message: "Me interesa mucho tu enfoque en APIs. Saludos.", sentiment: "🤔 Interesante" }
-        ];
-
-        // Generar fechas realistas (últimos 3 días)
-        randomVisitors.forEach((visitor, index) => {
-            const date = new Date();
-            date.setHours(date.getHours() - (index * 4 + Math.random() * 10)); // Espaciar un poco las firmas
-
-            const sig = {
-                id: Date.now() - (index * 1000),
-                ...visitor,
-                date: formatDate(date)
-            };
-            saveSignature(sig);
-            renderSignature(sig);
-        });
+    function sanitizeInput(value, maxLength) {
+        return value.trim().slice(0, maxLength);
     }
 
     function formatDate(date) {
@@ -79,44 +63,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function saveSignature(sig) {
-        const signatures = JSON.parse(localStorage.getItem('portfolio_signatures') || '[]');
-        signatures.unshift(sig); // Agregar al inicio
-        // Evitar duplicados por ID si se llama varias veces por error
-        const uniqueSignatures = Array.from(new Map(signatures.map(item => [item.id, item])).values());
-        localStorage.setItem('portfolio_signatures', JSON.stringify(uniqueSignatures));
+    function readSignatures() {
+        try {
+            const storedValue = localStorage.getItem(STORAGE_KEY);
+            const signatures = JSON.parse(storedValue || '[]');
+            return Array.isArray(signatures) ? signatures : [];
+        } catch (error) {
+            console.warn('No se pudieron leer las firmas guardadas.', error);
+            return [];
+        }
+    }
+
+    function writeSignatures(signatures) {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(signatures));
+            return true;
+        } catch (error) {
+            console.warn('No se pudieron guardar las firmas.', error);
+            showStatus('No se pudo guardar el mensaje en este navegador.');
+            return false;
+        }
+    }
+
+    function saveSignature(signature) {
+        const signatures = readSignatures().filter(item => item.id !== signature.id);
+        signatures.unshift(signature);
+        return writeSignatures(signatures.slice(0, MAX_SIGNATURES));
     }
 
     function loadSignatures() {
-        const signatures = JSON.parse(localStorage.getItem('portfolio_signatures') || '[]');
+        const signatures = readSignatures();
 
         if (signatures.length === 0) {
-            list.innerHTML = '<div class="loading-signatures">Aún no hay mensajes. ¡Sé el primero en firmar!</div>';
+            showStatus('Aún no hay mensajes. ¡Sé el primero en firmar!');
             return;
         }
 
-        list.innerHTML = ''; // Limpiar cargando
-        signatures.forEach(sig => renderSignature(sig));
+        list.innerHTML = '';
+        signatures.forEach(signature => renderSignature(signature));
     }
 
-    function renderSignature(sig, isNew = false) {
-        // Eliminar mensaje de "no hay firmas" si existe
-        const emptyMsg = list.querySelector('.loading-signatures');
-        if (emptyMsg) emptyMsg.remove();
+    function renderSignature(signature, isNew = false) {
+        const emptyMessage = list.querySelector('.loading-signatures');
+        if (emptyMessage) {
+            emptyMessage.remove();
+        }
 
         const card = document.createElement('div');
         card.className = 'signature-card';
-        if (isNew) card.style.borderColor = 'var(--color-accent)';
+        if (isNew) {
+            card.style.borderColor = 'var(--color-accent)';
+        }
 
         card.innerHTML = `
             <div class="signature-header">
-                <span class="signature-name">${escapeHTML(sig.name)}</span>
-                <span class="signature-sentiment">${sig.sentiment}</span>
+                <span class="signature-name">${escapeHTML(signature.name)}</span>
+                <span class="signature-sentiment">${escapeHTML(signature.sentiment)}</span>
             </div>
             <div class="signature-body">
-                ${escapeHTML(sig.message)}
+                ${escapeHTML(signature.message)}
             </div>
-            <span class="signature-date">${sig.date}</span>
+            <span class="signature-date">${escapeHTML(signature.date)}</span>
         `;
 
         if (isNew) {
@@ -126,10 +133,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function escapeHTML(str) {
+    function showStatus(message) {
+        list.innerHTML = `<div class="loading-signatures">${escapeHTML(message)}</div>`;
+    }
+
+    function escapeHTML(value) {
         const p = document.createElement('p');
-        p.textContent = str;
+        p.textContent = String(value || '');
         return p.innerHTML;
     }
 });
-

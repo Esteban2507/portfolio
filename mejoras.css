@@ -7,6 +7,24 @@ img {
     max-width: 100%;
 }
 
+/* El contenido queda visible por defecto si JavaScript falla o está desactivado. */
+section {
+    opacity: 1;
+    transform: none;
+}
+
+/* La animación de aparición se activa solo cuando main.js carga correctamente. */
+html.js-enabled section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity var(--animation-duration) ease-out, transform var(--animation-duration) ease-out;
+}
+
+html.js-enabled section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -81,6 +99,10 @@ select:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     *,
     *::before,
     *::after {
@@ -90,7 +112,26 @@ select:focus-visible {
         transition-duration: 0.01ms !important;
     }
 
+    body {
+        animation: none !important;
+        background-attachment: scroll;
+    }
+
+    html.js-enabled section,
+    html.js-enabled section.visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .noise-overlay {
+        display: none;
+    }
+
+    .perfil img:hover,
     .bento-item,
+    .bento-item:hover img,
+    .galeria-imagenes img:hover,
     .btn,
     .vermas {
         transform: none !important;

@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="img/favicon.png" type="image/png">
 
-    <!-- ---------- Conexiones a CDN (optimiza la carga) ---------- -->
+    <!-- ---------- Conexiones a CDN ---------- -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +21,9 @@
 
     <!-- ---------- Hojas de estilo ---------- -->
     <link rel="stylesheet" href="Estilo.css">
+    <link rel="stylesheet" href="mejoras.css">
 
-    <!-- Font Awesome (integrity + crossorigin) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-8hL5YtKZgZsM2fQfA5bB5EoM9NwT9F6KjE/4v2EJ4N+R+M2I9V5cN6eZ+S1c2B2iG6VJp1tM2Vt8f7s1zG9Vw=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -58,29 +59,28 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-D0D4EQQWC4');
     </script>
 </head>
 
 <body>
-    <!-- ---------- Skip link (salto rápido al contenido principal) ---------- -->
+    <!-- ---------- Skip link ---------- -->
     <a href="#principal" class="skip-link">Saltar al contenido principal</a>
 
     <!-- Ruido sutil para estética 2026 -->
-    <div class="noise-overlay"></div>
+    <div class="noise-overlay" aria-hidden="true"></div>
 
     <!-- ---------- Cabecera ---------- -->
     <header>
         <div class="perfil">
-            <img src="img/perfil.jpg" alt="Foto de Esteban Gabrielloni, analista de datos" width="150" height="150"
-                loading="lazy">
+            <img src="img/perfil.jpg" alt="Foto de Esteban Gabrielloni, analista de datos" width="160" height="160"
+                loading="eager" decoding="async" fetchpriority="high">
             <h1>Esteban Gabrielloni</h1>
             <p>Analista de Datos • Power BI • Python • HTML</p>
         </div>
     </header>
 
-    <!-- ---------- Navegación interna (opcional pero recomendable) ---------- -->
+    <!-- ---------- Navegación interna ---------- -->
     <nav aria-label="Navegación principal">
         <ul>
             <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -93,14 +93,12 @@
 
     <!-- ---------- Contenido principal ---------- -->
     <main id="principal">
-
-        <!-- Sobre mí -->
         <section id="sobre-mi" class="sobre-mi">
             <div class="container">
                 <h2>Sobre mí</h2>
                 <p><strong>Soy un Analista de Datos</strong> con un enfoque en la eficiencia y la innovación. Mi pasión
                     es transformar la complejidad en soluciones ágiles y funcionales: me dedico a automatizar,
-                    simplificar procesos y extraer valor actionable de la información.</p>
+                    simplificar procesos y extraer valor accionable de la información.</p>
                 <p>Para mí, los datos no son solo números, sino historias y oportunidades que impulsan la toma de
                     decisiones.</p>
 
@@ -122,19 +120,17 @@
 
                 <p><strong>Conectemos.</strong> Estoy siempre abierto a nuevas oportunidades y a generar valor juntos.
                     Hechale un vistazo a mi hoja de vida <strong><a href="https://esteban2507.github.io/CV-Esteban/"
-                            target="_blank">aquí</a></strong>
+                            target="_blank" rel="noopener noreferrer">aquí</a></strong>.
                 </p>
             </div>
         </section>
 
-        <!-- Frase destacada -->
         <section class="frase-destacada">
             <blockquote cite="https://esteban2507.github.io/portfolio/">
                 Los datos no son solo números; son oportunidades esperando ser descubiertas.
             </blockquote>
         </section>
 
-        <!-- Habilidades técnicas -->
         <section id="habilidades" class="habilidades">
             <h2>Habilidades Técnicas</h2>
             <ul>
@@ -145,22 +141,19 @@
             </ul>
         </section>
 
-        <!-- Experiencia profesional -->
         <section id="experiencia" class="experiencia">
             <h2>Experiencia Profesional</h2>
             <p><strong>Analista de Datos –</strong> Desarrollo de dashboards en Power BI y automatización de reportes en
                 Excel.</p>
         </section>
 
-        <!-- Proyectos (Bento Grid 2026) -->
         <section id="proyectos" class="proyectos-section">
             <div class="container">
                 <h2 class="titulo">Proyectos Destacados</h2>
                 <div class="bento-grid">
-                    <!-- Proyecto Grande (Destacado) -->
                     <article class="proyecto bento-item featured" data-tilt>
                         <div class="proyecto-content">
-                            <img src="img/proyecto1.png" alt="Controles de pagos" loading="lazy">
+                            <img src="img/proyecto1.png" alt="Controles de pagos" loading="lazy" decoding="async">
                             <div class="proyecto-info">
                                 <h3>Control de Pagos</h3>
                                 <p>Cruce automatizado de reportes con Power BI. Reducción del 90% en errores de
@@ -169,49 +162,45 @@
                                     <span>Power BI</span>
                                     <span>DAX</span>
                                 </div>
-                                <a href="Proyecto1.html" class="vermas">Explorar Proyecto <i
-                                        class="fas fa-arrow-right"></i></a>
+                                <a href="Proyecto1.html" class="vermas" aria-label="Explorar proyecto Control de Pagos">Explorar Proyecto <i
+                                        class="fas fa-arrow-right" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Proyecto Mediano -->
                     <article class="proyecto bento-item" data-tilt>
                         <div class="proyecto-content">
-                            <img src="img/proyecto4.png" alt="Análisis de Ventas" loading="lazy">
+                            <img src="img/proyecto4.png" alt="Análisis de Ventas" loading="lazy" decoding="async">
                             <div class="proyecto-info">
                                 <h3>Análisis de Ventas</h3>
                                 <p>EDA avanzado y predicción de tendencias con Python y Pandas.</p>
-                                <a href="Proyecto4.html" class="vermas">Ver más</a>
+                                <a href="Proyecto4.html" class="vermas" aria-label="Ver más sobre Análisis de Ventas">Ver más</a>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Proyecto Pequeño -->
                     <article class="proyecto bento-item" data-tilt>
                         <div class="proyecto-content">
-                            <img src="img/proyecto6.png" alt="API Traductor" loading="lazy">
+                            <img src="img/proyecto6.png" alt="API Traductor" loading="lazy" decoding="async">
                             <div class="proyecto-info">
                                 <h3>API Traductor</h3>
                                 <p>Microservicio Flask para traducción multi-idioma.</p>
-                                <a href="Proyecto6.html" class="vermas">GitHub</a>
+                                <a href="Proyecto6.html" class="vermas" aria-label="Ver más sobre API Traductor">Ver más</a>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Proyecto Mediano 2 -->
                     <article class="proyecto bento-item" data-tilt>
                         <div class="proyecto-content">
-                            <img src="img/proyecto2.png" alt="KPIs de Gestión" loading="lazy">
+                            <img src="img/proyecto2.png" alt="KPIs de Gestión" loading="lazy" decoding="async">
                             <div class="proyecto-info">
                                 <h3>KPIs de Gestión</h3>
                                 <p>Dashboard dinámico de performance operativa.</p>
-                                <a href="Proyecto2.html" class="vermas">Ver más</a>
+                                <a href="Proyecto2.html" class="vermas" aria-label="Ver más sobre KPIs de Gestión">Ver más</a>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Proyecto Pequeño 2 -->
                     <article class="proyecto bento-item" data-tilt>
                         <div class="proyecto-content">
                             <div class="proyecto-info mini">
@@ -227,23 +216,22 @@
                 </div>
             </div>
         </section>
-        <!-- Libro de Firmas (Guestbook) -->
+
         <section id="firmas" class="guestbook-section">
             <div class="container">
                 <h2 class="titulo">Libro de Firmas</h2>
                 <p class="intro-guestbook">¿Te gusta mi trabajo? ¡Deja tu feedback o un saludo aquí!</p>
 
                 <div class="guestbook-container">
-                    <!-- Formulario -->
                     <form id="guestbook-form" class="glass-form">
                         <div class="form-group">
                             <label for="gb-name">Nombre</label>
-                            <input type="text" id="gb-name" placeholder="Tu nombre o alias" required>
+                            <input type="text" id="gb-name" placeholder="Tu nombre o alias" maxlength="60" required>
                         </div>
                         <div class="form-group">
                             <label for="gb-message">Mensaje / Feedback</label>
                             <textarea id="gb-message" rows="4" placeholder="¿Qué te pareció mi portfolio?"
-                                required></textarea>
+                                maxlength="500" required></textarea>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
@@ -255,25 +243,18 @@
                                     <option value="🤔 Interesante">🤔 Interesante</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn">Firmar Libro <i class="fas fa-pen-nib"></i></button>
+                            <button type="submit" class="btn">Firmar Libro <i class="fas fa-pen-nib" aria-hidden="true"></i></button>
                         </div>
                     </form>
 
-                    <!-- Lista de Firmas -->
-                    <div id="signatures-list" class="signatures-grid">
-                        <!-- Las firmas se cargarán dinámicamente aquí -->
+                    <div id="signatures-list" class="signatures-grid" aria-live="polite">
                         <div class="loading-signatures">Cargando firmas...</div>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- Scripts del Proyecto -->
-    <script src="guestbook.js"></script>
-
-    <!-- ---------- Footer ---------- -->
     <footer id="contacto">
         <address>
             📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
@@ -285,69 +266,8 @@
         </address>
     </footer>
 
-    <!-- ---------- Scripts ---------- -->
-    <!-- 1) Animación de aparición usando IntersectionObserver -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const secs = document.querySelectorAll('section');
-
-            const observer = new IntersectionObserver(
-                entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            // Si solo quieres la animación una vez, descomenta la siguiente línea:
-                            // observer.unobserve(entry.target);
-                        }
-                    });
-                },
-                {
-                    rootMargin: '0px 0px -15% 0px', // similar a 85% de la altura de la ventana
-                    threshold: 0.1
-                }
-            );
-
-            secs.forEach(sec => observer.observe(sec));
-        });
-    </script>
-
-    <!-- JS para Micro-interacciones 2026 -->
-    <script>
-        // Efecto de inclinación 3D (Tilt) suave
-        document.querySelectorAll('.bento-item').forEach(item => {
-            item.addEventListener('mousemove', e => {
-                const rect = item.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-
-                item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-            });
-        });
-
-        // Botones Magnéticos (Sencillo)
-        document.querySelectorAll('.btn, .vermas').forEach(btn => {
-            btn.addEventListener('mousemove', e => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-            });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = `translate(0, 0)`;
-            });
-        });
-    </script>
-
+    <script src="main.js"></script>
+    <script src="guestbook.js"></script>
 </body>
 
 </html>
