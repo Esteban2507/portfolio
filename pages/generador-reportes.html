@@ -58,7 +58,71 @@
       { id:'cliente',  label:'Cliente externo' },
     ];
 
-    async function generateReport(apiKey, { rawData, reportType, tone, audience, period, extraCtx }) {
+    const PROVIDERS = [
+      {
+        id: 'claude',
+        label: 'Claude',
+        logo: '✦',
+        color: '#d97706',
+        placeholder: 'sk-ant-...',
+        hint: 'console.anthropic.com/settings/keys',
+        hintUrl: 'https://console.anthropic.com/settings/keys',
+        validate: k => k.startsWith('sk-'),
+        validateMsg: 'La clave de Anthropic debe comenzar con "sk-".',
+      },
+      {
+        id: 'gemini',
+        label: 'Gemini',
+        logo: '✶',
+        color: '#4285f4',
+        placeholder: 'AIza...',
+        hint: 'aistudio.google.com/app/apikey',
+        hintUrl: 'https://aistudio.google.com/app/apikey',
+        validate: k => k.length > 20,
+        validateMsg: 'Ingresá una clave de API de Google AI Studio.',
+      },
+      {
+        id: 'groq',
+        label: 'Groq',
+        logo: '⚡',
+        color: '#f55036',
+        placeholder: 'gsk_...',
+        hint: 'console.groq.com/keys',
+        hintUrl: 'https://console.groq.com/keys',
+        validate: k => k.startsWith('gsk_'),
+        validateMsg: 'La clave de Groq debe comenzar con "gsk_".',
+      },
+    ];
+
+    async function testKey(provider, key) {
+      if (provider === 'claude') {
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-calls': 'true' },
+          body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 10, messages: [{ role: 'user', content: 'test' }] }),
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message);
+      } else if (provider === 'gemini') {
+        const res = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,
+          { method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ contents: [{ parts: [{ text: 'test' }] }], generationConfig: { maxOutputTokens: 5 } }) }
+        );
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message);
+      } else if (provider === 'groq') {
+        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+          body: JSON.stringify({ model: 'llama-3.1-8b-instant', max_tokens: 5, messages: [{ role: 'user', content: 'test' }] })
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message);
+      }
+    }
+
+    async function generateReport(provider, apiKey, { rawData, reportType, tone, audience, period, extraCtx }) {
       const tLabel = REPORT_TYPES.find(t => t.id === reportType)?.label ?? reportType;
       const aLabel = AUDIENCES.find(a => a.id === audience)?.label ?? audience;
       const tDesc  = TONES.find(t => t.id === tone)?.desc ?? '';
@@ -103,23 +167,52 @@ Generá el reporte usando EXACTAMENTE estos marcadores (sin texto entre seccione
 
 Adaptá el nivel de detalle a la audiencia: para CEO más conciso y estratégico, para equipo más táctico.`;
 
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': apiKey,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-calls': 'true',
-        },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-6',
-          max_tokens: 1000,
-          messages: [{ role: 'user', content: prompt }],
-        }),
-      });
-      const data = await res.json();
-      if (data.error) throw new Error(data.error.message || 'Error de API');
-      return data.content?.[0]?.text ?? '';
+      if (provider === 'gemini') {
+        const res = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: prompt }] }],
+              generationConfig: { maxOutputTokens: 1000 },
+            }),
+          }
+        );
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message || 'Error de API');
+        return data.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+      } else if (provider === 'groq') {
+        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
+          body: JSON.stringify({
+            model: 'llama-3.1-8b-instant',
+            messages: [{ role: 'user', content: prompt }],
+          }),
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message || 'Error de API');
+        return data.choices?.[0]?.message?.content ?? '';
+      } else {
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey,
+            'anthropic-version': '2023-06-01',
+            'anthropic-dangerous-direct-browser-calls': 'true',
+          },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-6',
+            max_tokens: 1000,
+            messages: [{ role: 'user', content: prompt }],
+          }),
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message || 'Error de API');
+        return data.content?.[0]?.text ?? '';
+      }
     }
 
     function parseReport(raw) {
@@ -276,22 +369,18 @@ Adaptá el nivel de detalle a la audiencia: para CEO más conciso y estratégico
     }
 
     function KeySetup({ onConfirm }) {
+      const [selectedProvider, setSelectedProvider] = useState('gemini');
       const [key, setKey] = useState('');
       const [err, setErr] = useState('');
       const [testing, setTesting] = useState(false);
+      const prov = PROVIDERS.find(p => p.id === selectedProvider);
 
       async function confirm() {
-        if (!key.trim().startsWith('sk-')) { setErr('La clave debe comenzar con "sk-".'); return; }
+        if (!prov.validate(key.trim())) { setErr(prov.validateMsg); return; }
         setTesting(true); setErr('');
         try {
-          const res = await fetch('https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'x-api-key': key.trim(), 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-calls': 'true' },
-            body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 10, messages: [{ role: 'user', content: 'test' }] }),
-          });
-          const data = await res.json();
-          if (data.error) throw new Error(data.error.message);
-          onConfirm(key.trim());
+          await testKey(selectedProvider, key.trim());
+          onConfirm({ provider: selectedProvider, apiKey: key.trim() });
         } catch (e) {
           setErr('No se pudo validar la clave. Verificá que sea correcta y con saldo disponible.');
           setTesting(false);
@@ -300,14 +389,29 @@ Adaptá el nivel de detalle a la audiencia: para CEO más conciso y estratégico
 
       return (
         <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-          <div style={{ maxWidth: 440, width: '100%' }}>
+          <div style={{ maxWidth: 460, width: '100%' }}>
             <a href="index.html" style={{ color: P.muted, fontSize: 13, textDecoration: 'none', display: 'block', marginBottom: 40 }}>← Volver al portfolio</a>
             <div style={{ width: 48, height: 48, borderRadius: 12, background: P.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, marginBottom: 20, color: '#000', fontWeight: 700 }}>✎</div>
             <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 26, fontWeight: 700, marginBottom: 8 }}>Generador de Reportes</h1>
-            <p style={{ color: P.muted, fontSize: 14, lineHeight: 1.65, marginBottom: 32 }}>Pegá tus datos crudos —métricas, bullets, texto de un mail— y la IA genera un reporte ejecutivo profesional listo para presentar. Ingresá tu clave de API de Anthropic para comenzar.</p>
+            <p style={{ color: P.muted, fontSize: 14, lineHeight: 1.65, marginBottom: 28 }}>Pegá tus datos crudos —métricas, bullets, texto de un mail— y la IA genera un reporte ejecutivo profesional listo para presentar. Elegí tu proveedor de IA.</p>
+
+            <p style={{ fontSize: 11, color: P.muted, textTransform: 'uppercase', letterSpacing: .8, fontWeight: 600, marginBottom: 10 }}>Proveedor de IA</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: 10, marginBottom: 20 }}>
+              {PROVIDERS.map(p => (
+                <button key={p.id} onClick={() => { setSelectedProvider(p.id); setKey(''); setErr(''); }}
+                  style={{ background: selectedProvider === p.id ? `${p.color}18` : P.surface, border: `1.5px solid ${selectedProvider === p.id ? p.color : P.border}`, borderRadius: 10, padding: '12px 14px', cursor: 'pointer', textAlign: 'left', transition: 'all .15s', display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span style={{ fontSize: 20, color: selectedProvider === p.id ? p.color : P.muted, fontWeight: 700 }}>{p.logo}</span>
+                  <div>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: selectedProvider === p.id ? p.color : P.text, lineHeight: 1 }}>{p.label}</p>
+                    <p style={{ fontSize: 11, color: P.muted, marginTop: 3 }}>{p.id === 'claude' ? 'Anthropic' : p.id === 'gemini' ? 'Google AI' : 'GroqCloud'}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+
             <div style={{ background: P.surface, border: `1px solid ${P.border}`, borderRadius: 12, padding: 20, marginBottom: 14 }}>
-              <label style={{ fontSize: 12, color: P.muted, display: 'block', marginBottom: 8, fontWeight: 600, textTransform: 'uppercase', letterSpacing: .8 }}>Clave de API de Anthropic</label>
-              <input type="password" value={key} onChange={e => setKey(e.target.value)} onKeyDown={e => e.key === 'Enter' && confirm()} placeholder="sk-ant-..."
+              <label style={{ fontSize: 12, color: P.muted, display: 'block', marginBottom: 8, fontWeight: 600, textTransform: 'uppercase', letterSpacing: .8 }}>Clave de API — {prov.label}</label>
+              <input type="password" value={key} onChange={e => setKey(e.target.value)} onKeyDown={e => e.key === 'Enter' && confirm()} placeholder={prov.placeholder}
                 style={{ width: '100%', background: P.bg, border: `1px solid ${P.border}`, borderRadius: 8, padding: '10px 12px', color: P.text, fontSize: 14, marginBottom: 12 }} />
               {err && <p style={{ color: P.error, fontSize: 12, marginBottom: 12 }}>{err}</p>}
               <button onClick={confirm} disabled={!key.trim() || testing}
@@ -315,14 +419,17 @@ Adaptá el nivel de detalle a la audiencia: para CEO más conciso y estratégico
                 {testing ? 'Verificando…' : 'Empezar →'}
               </button>
             </div>
-            <p style={{ fontSize: 12, color: P.muted, lineHeight: 1.6 }}>La clave se usa solo en esta sesión y nunca se almacena. Obtené la tuya en <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" style={{ color: P.accent }}>console.anthropic.com</a>.</p>
+            <p style={{ fontSize: 12, color: P.muted, lineHeight: 1.6 }}>
+              La clave se usa solo en esta sesión y nunca se almacena. Obtené la tuya en{' '}
+              <a href={prov.hintUrl} target="_blank" rel="noopener noreferrer" style={{ color: P.accent }}>{prov.hint}</a>.
+            </p>
           </div>
         </div>
       );
     }
 
     function App() {
-      const [apiKey, setApiKey]     = useState('');
+      const [session, setSession]   = useState(null);
       const [step, setStep]         = useState('config');
       const [rawData, setRawData]   = useState('');
       const [reportType, setType]   = useState('ventas');
@@ -337,7 +444,7 @@ Adaptá el nivel de detalle a la audiencia: para CEO más conciso y estratégico
         if (!rawData.trim()) { setErr('Pegá los datos antes de generar el reporte.'); return; }
         setErr(''); setStep('generating');
         try {
-          const raw = await generateReport(apiKey, { rawData, reportType, tone, audience, period, extraCtx });
+          const raw = await generateReport(session.provider, session.apiKey, { rawData, reportType, tone, audience, period, extraCtx });
           setReport(parseReport(raw));
           setStep('result');
         } catch (e) {
@@ -348,7 +455,9 @@ Adaptá el nivel de detalle a la audiencia: para CEO más conciso y estratégico
 
       function reset() { setStep('config'); setReport(null); setRawData(''); setErr(''); }
 
-      if (!apiKey) return <KeySetup onConfirm={setApiKey} />;
+      if (!session) return <KeySetup onConfirm={setSession} />;
+
+      const provDef = PROVIDERS.find(p => p.id === session.provider);
 
       return (
         <div style={{ minHeight: '100vh' }}>
@@ -359,11 +468,17 @@ Adaptá el nivel de detalle a la audiencia: para CEO más conciso y estratégico
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, fontWeight: 700, lineHeight: 1 }}>Generador de Reportes Ejecutivos</h1>
               <p style={{ fontSize: 11, color: P.muted, marginTop: 2 }}>Datos crudos → reporte profesional con IA</p>
             </div>
-            {step === 'result' && (
-              <button onClick={reset} style={{ marginLeft: 'auto', background: 'transparent', border: `1px solid ${P.border}`, borderRadius: 8, padding: '7px 14px', color: P.muted, fontSize: 12, cursor: 'pointer' }}>
-                + Nuevo reporte
-              </button>
-            )}
+            <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 12 }}>
+              {step === 'result' && (
+                <button onClick={reset} style={{ background: 'transparent', border: `1px solid ${P.border}`, borderRadius: 8, padding: '7px 14px', color: P.muted, fontSize: 12, cursor: 'pointer' }}>
+                  + Nuevo reporte
+                </button>
+              )}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5, background: `${provDef.color}18`, border: `1px solid ${provDef.color}44`, borderRadius: 8, padding: '5px 10px' }}>
+                <span style={{ fontSize: 13, color: provDef.color, fontWeight: 700 }}>{provDef.logo}</span>
+                <span style={{ fontSize: 11, color: provDef.color, fontWeight: 600 }}>{provDef.label}</span>
+              </div>
+            </div>
           </header>
 
           <div style={{ maxWidth: 880, margin: '0 auto', padding: '28px 22px' }}>
