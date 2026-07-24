@@ -23,18 +23,28 @@
   <style>
     /* ── Separadores de sección ──────────────────────────── */
     .seccion-label {
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .seccion-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--glass-border);
     }
     .label-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
-      padding: 0.35rem 0.9rem;
+      letter-spacing: 1.5px;
+      padding: 0.4rem 1rem;
       border-radius: 999px;
+      white-space: nowrap;
     }
     .label-ia {
       background: rgba(167, 139, 250, 0.12);
@@ -47,60 +57,179 @@
       color: #F2C811;
     }
 
-    /* ── Badge "✦ IA" en esquina de card ────────────────── */
-    .bento-item {
-      position: relative;
+    /* ── Grid de proyectos: uniforme 3 columnas ──────────── */
+    .proyectos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
     }
-    .badge-nuevo {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      z-index: 2;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(167, 139, 250, 0.18);
-      border: 1px solid rgba(167, 139, 250, 0.4);
-      color: #a78bfa;
-      pointer-events: none;
-    }
-
-    /* ── Tags morados para proyectos IA ─────────────────── */
-    .tags-ia span {
-      background: rgba(167, 139, 250, 0.12) !important;
-      border: 1px solid rgba(167, 139, 250, 0.25) !important;
-      color: #a78bfa !important;
-    }
-
-    /* ── Botón "Probar demo" para IA ─────────────────────── */
-    .vermas-ia {
-      background: rgba(167, 139, 250, 0.12);
-      border: 1px solid rgba(167, 139, 250, 0.3);
-      color: #a78bfa !important;
-      padding: 0.45rem 1rem;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .vermas-ia:hover {
-      background: rgba(167, 139, 250, 0.22);
-      border-color: rgba(167, 139, 250, 0.55);
-    }
-
-    /* ── Grid de datos: 3 columnas uniformes ─────────────── */
-    .bento-grid-datos {
-      grid-template-columns: repeat(3, 1fr) !important;
-    }
-    @media (max-width: 768px) {
-      .bento-grid-datos {
-        grid-template-columns: 1fr !important;
+    @media (max-width: 1024px) {
+      .proyectos-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
+    }
+    @media (max-width: 640px) {
+      .proyectos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── Project Card ────────────────────────────────────── */
+    .project-card {
+      position: relative;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1),
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.4), 0 0 24px rgba(56,189,248,0.12);
+    }
+    .project-card:hover .card-img img {
+      transform: scale(1.06);
+    }
+
+    /* Imagen de la card */
+    .card-img {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .card-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(15,23,42,0.85) 100%);
+    }
+
+    /* Badge de categoría sobre la imagen */
+    .card-category-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+    .badge-ia {
+      background: rgba(167, 139, 250, 0.2);
+      border: 1px solid rgba(167, 139, 250, 0.45);
+      color: #c4b5fd;
+    }
+    .badge-datos {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #7dd3fc;
+    }
+
+    /* Cuerpo de la card */
+    .card-body {
+      padding: 1.4rem 1.5rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 0.6rem;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      line-height: 1.3;
+    }
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+    .card-tags span {
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .tag-ia {
+      background: rgba(167,139,250,0.1);
+      border: 1px solid rgba(167,139,250,0.25);
+      color: #a78bfa;
+    }
+    .tag-datos {
+      background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.2);
+      color: #38bdf8;
+    }
+    .card-footer {
+      padding: 0 1.5rem 1.4rem;
+      flex-shrink: 0;
+    }
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 1.1rem;
+      border-radius: 10px;
+      border: 1px solid;
+      transition: all 0.2s ease;
+    }
+    .card-btn-ia {
+      background: rgba(167,139,250,0.1);
+      border-color: rgba(167,139,250,0.3);
+      color: #a78bfa;
+    }
+    .card-btn-ia:hover {
+      background: rgba(167,139,250,0.2);
+      border-color: rgba(167,139,250,0.55);
+      color: #c4b5fd;
+    }
+    .card-btn-datos {
+      background: rgba(56,189,248,0.08);
+      border-color: rgba(56,189,248,0.25);
+      color: #38bdf8;
+    }
+    .card-btn-datos:hover {
+      background: rgba(56,189,248,0.18);
+      border-color: rgba(56,189,248,0.5);
+      color: #7dd3fc;
+    }
+    .card-btn i {
+      font-size: 0.75rem;
+      transition: transform 0.2s ease;
+    }
+    .card-btn:hover i {
+      transform: translateX(3px);
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-8hL5YtKZgZsM2fQfA5bB5EoM9NwT9F6KjE/4v2EJ4N+R+M2I9V5cN6eZ+S1c2B2iG6VJp1tM2Vt8f7s1zG9Vw=="
     crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <!-- ---------- Datos estructurados (JSON-LD) ---------- -->
@@ -284,117 +413,208 @@
     </section>
     <!-- ============================================================ -->
 
-    <!-- Proyectos (Bento Grid) -->
+    <!-- Proyectos (Grid Simétrico) -->
     <section id="proyectos" class="proyectos-section">
       <div class="container">
         <h2 class="titulo">Proyectos Destacados</h2>
 
-        <!-- Separador IA / Datos -->
-        <div class="seccion-label">
+        <!-- Bloque IA -->
+        <div class="seccion-label" style="margin-top: 2rem;">
           <span class="label-badge label-ia">✦ Inteligencia Artificial</span>
         </div>
 
-        <div class="bento-grid">
+        <div class="proyectos-grid">
 
-          <!-- IA 1 — FEATURED: Explorador de Datos con IA -->
-          <article class="proyecto bento-item featured" data-tilt>
-            <div class="proyecto-content">
-              <div class="badge-nuevo">✦ IA</div>
-              <!-- 📸 Reemplazá img/ia-explorador.png con un screenshot real de la app -->
+          <!-- IA 1: Explorador de Datos -->
+          <article class="project-card">
+            <div class="card-img">
               <img src="img/ia-explorador.png" alt="Explorador de datos en lenguaje natural con IA" loading="lazy" onerror="this.style.display='none'">
-              <div class="proyecto-info">
-                <h3>Explorador de Datos con IA</h3>
-                <p>Subí un CSV o Excel y hacé preguntas en español. La IA analiza, responde y genera gráficos automáticamente usando Claude.</p>
-                <div class="tags tags-ia">
-                  <span>Claude API</span>
-                  <span>React</span>
-                  <span>Chart.js</span>
-                </div>
-                <a href="pages/explorador-datos.html" class="vermas vermas-ia">
-                  Probar demo en vivo <i class="fas fa-arrow-right"></i>
-                </a>
+              <div class="card-img-overlay"></div>
+              <span class="card-category-badge badge-ia">✦ IA</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Explorador de Datos con IA</h3>
+              <p class="card-desc">Subí un CSV o Excel y hacé preguntas en español. La IA analiza, responde y genera gráficos automáticamente usando Claude.</p>
+              <div class="card-tags">
+                <span class="tag-ia">Claude API</span>
+                <span class="tag-ia">React</span>
+                <span class="tag-ia">Chart.js</span>
               </div>
+            </div>
+            <div class="card-footer">
+              <a href="pages/explorador-datos.html" class="card-btn card-btn-ia">
+                Probar demo <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </article>
 
-          <!-- IA 2 — Mediano: Generador de Reportes -->
-          <article class="proyecto bento-item" data-tilt>
-            <div class="proyecto-content">
-              <div class="badge-nuevo">✦ IA</div>
-              <!-- 📸 Reemplazá img/ia-reportes.png con un screenshot real de la app -->
+          <!-- IA 2: Generador de Reportes -->
+          <article class="project-card">
+            <div class="card-img">
               <img src="img/ia-reportes.png" alt="Generador de reportes ejecutivos con IA" loading="lazy" onerror="this.style.display='none'">
-              <div class="proyecto-info">
-                <h3>Generador de Reportes Ejecutivos</h3>
-                <p>Pegás datos crudos y la IA genera un informe profesional con métricas, análisis, riesgos y recomendaciones, listo para presentar.</p>
-                <div class="tags tags-ia">
-                  <span>Claude API</span>
-                  <span>React</span>
-                </div>
-                <a href="pages/generador-reportes.html" class="vermas vermas-ia">
-                  Probar demo en vivo <i class="fas fa-arrow-right"></i>
-                </a>
+              <div class="card-img-overlay"></div>
+              <span class="card-category-badge badge-ia">✦ IA</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Generador de Reportes Ejecutivos</h3>
+              <p class="card-desc">Pegás datos crudos y la IA genera un informe profesional con métricas, análisis, riesgos y recomendaciones, listo para presentar.</p>
+              <div class="card-tags">
+                <span class="tag-ia">Claude API</span>
+                <span class="tag-ia">React</span>
               </div>
+            </div>
+            <div class="card-footer">
+              <a href="pages/generador-reportes.html" class="card-btn card-btn-ia">
+                Probar demo <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </article>
 
-        </div><!-- /.bento-grid IA -->
+        </div><!-- /.proyectos-grid IA -->
 
-        <!-- Separador Datos -->
-        <div class="seccion-label" style="margin-top: 2.5rem;">
+        <!-- Bloque Análisis de Datos -->
+        <div class="seccion-label" style="margin-top: 3rem;">
           <span class="label-badge label-datos">📊 Análisis de Datos</span>
         </div>
 
-        <div class="bento-grid bento-grid-datos">
+        <div class="proyectos-grid">
 
           <!-- Datos 1: Control de Pagos -->
-          <article class="proyecto bento-item" data-tilt>
-            <div class="proyecto-content">
+          <article class="project-card">
+            <div class="card-img">
               <img src="img/proyecto1.png" alt="Dashboard de control de pagos en Power BI" loading="lazy">
-              <div class="proyecto-info">
-                <h3>Control de Pagos</h3>
-                <p>Cruce automatizado de reportes entre ERPs. Reducción del 90% en errores de validación de facturas.</p>
-                <div class="tags">
-                  <span>Power BI</span>
-                  <span>DAX</span>
-                </div>
-                <a href="Proyecto1.html" class="vermas">Ver proyecto <i class="fas fa-arrow-right"></i></a>
+              <div class="card-img-overlay"></div>
+              <span class="card-category-badge badge-datos">Power BI</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Control de Pagos</h3>
+              <p class="card-desc">Cruce automatizado de reportes entre ERPs. Reducción del 90% en errores de validación de facturas.</p>
+              <div class="card-tags">
+                <span class="tag-datos">Power BI</span>
+                <span class="tag-datos">DAX</span>
               </div>
+            </div>
+            <div class="card-footer">
+              <a href="pages/Proyecto1.html" class="card-btn card-btn-datos">
+                Ver proyecto <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </article>
 
           <!-- Datos 2: KPIs de Gestión -->
-          <article class="proyecto bento-item" data-tilt>
-            <div class="proyecto-content">
+          <article class="project-card">
+            <div class="card-img">
               <img src="img/proyecto2.png" alt="Dashboard de KPIs de gestión operativa" loading="lazy">
-              <div class="proyecto-info">
-                <h3>KPIs de Gestión</h3>
-                <p>Dashboard dinámico de performance operativa con seguimiento en tiempo real.</p>
-                <div class="tags">
-                  <span>Power BI</span>
-                  <span>DAX</span>
-                </div>
-                <a href="Proyecto2.html" class="vermas">Ver proyecto <i class="fas fa-arrow-right"></i></a>
+              <div class="card-img-overlay"></div>
+              <span class="card-category-badge badge-datos">Power BI</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">KPIs de Gestión</h3>
+              <p class="card-desc">Dashboard dinámico de performance operativa con seguimiento en tiempo real de indicadores clave.</p>
+              <div class="card-tags">
+                <span class="tag-datos">Power BI</span>
+                <span class="tag-datos">DAX</span>
               </div>
+            </div>
+            <div class="card-footer">
+              <a href="pages/Proyecto2.html" class="card-btn card-btn-datos">
+                Ver proyecto <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </article>
 
           <!-- Datos 3: Validación Contable -->
-          <article class="proyecto bento-item" data-tilt>
-            <div class="proyecto-content">
+          <article class="project-card">
+            <div class="card-img">
               <img src="img/proyecto3.png" alt="Macros VBA para validación contable" loading="lazy">
-              <div class="proyecto-info">
-                <h3>Validación Contable</h3>
-                <p>Automatización con VBA que cruza reportes de FTS, Almacén y Aduana eliminando errores en el cierre.</p>
-                <div class="tags">
-                  <span>Excel VBA</span>
-                  <span>Automatización</span>
-                </div>
-                <a href="Proyecto3.html" class="vermas">Ver proyecto <i class="fas fa-arrow-right"></i></a>
+              <div class="card-img-overlay"></div>
+              <span class="card-category-badge badge-datos">Excel VBA</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Validación Contable</h3>
+              <p class="card-desc">Automatización con VBA que cruza reportes de FTS, Almacén y Aduana eliminando errores en el cierre.</p>
+              <div class="card-tags">
+                <span class="tag-datos">Excel VBA</span>
+                <span class="tag-datos">Automatización</span>
               </div>
+            </div>
+            <div class="card-footer">
+              <a href="pages/Proyecto3.html" class="card-btn card-btn-datos">
+                Ver proyecto <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </article>
 
-        </div><!-- /.bento-grid datos -->
+          <!-- Datos 4: Análisis de Ventas -->
+          <article class="project-card">
+            <div class="card-img">
+              <img src="img/proyecto4.png" alt="Análisis de ventas en Python con Pandas y Matplotlib" loading="lazy">
+              <div class="card-img-overlay"></div>
+              <span class="card-category-badge badge-datos">Python</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Análisis de Ventas</h3>
+              <p class="card-desc">Análisis de ventas por región y producto con Python. Visualizaciones que detectan patrones y apoyan decisiones estratégicas.</p>
+              <div class="card-tags">
+                <span class="tag-datos">Python</span>
+                <span class="tag-datos">Pandas</span>
+                <span class="tag-datos">Matplotlib</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="pages/Proyecto4.html" class="card-btn card-btn-datos">
+                Ver proyecto <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Datos 5: Control de Facturas -->
+          <article class="project-card">
+            <div class="card-img">
+              <img src="img/proyecto5.png" alt="Dashboard de control de facturas en Power BI" loading="lazy">
+              <div class="card-img-overlay"></div>
+              <span class="card-category-badge badge-datos">Power BI</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Control de Facturas</h3>
+              <p class="card-desc">Tablero Power BI que detecta discrepancias entre dos fuentes de facturas, con medidas DAX e indicadores visuales automáticos.</p>
+              <div class="card-tags">
+                <span class="tag-datos">Power BI</span>
+                <span class="tag-datos">DAX</span>
+                <span class="tag-datos">Modelado</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="pages/Proyecto5.html" class="card-btn card-btn-datos">
+                Ver proyecto <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Datos 6: API Traductor -->
+          <article class="project-card">
+            <div class="card-img">
+              <img src="img/proyecto6.png" alt="API Traductora desarrollada con Python y Flask" loading="lazy">
+              <div class="card-img-overlay"></div>
+              <span class="card-category-badge badge-datos">Python</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">API Traductor</h3>
+              <p class="card-desc">API web con Flask y googletrans. Interfaz amigable que traduce texto entre múltiples idiomas via Google Translate.</p>
+              <div class="card-tags">
+                <span class="tag-datos">Python</span>
+                <span class="tag-datos">Flask</span>
+                <span class="tag-datos">API</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="pages/Proyecto6.html" class="card-btn card-btn-datos">
+                Ver proyecto <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+        </div><!-- /.proyectos-grid datos -->
       </div>
     </section>
 
