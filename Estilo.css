@@ -852,3 +852,242 @@ footer a:hover {
         width: 100%;
     }
 }
+
+/* ============================================================
+   SECCIÓN PROYECTOS IA/DATOS — cards, badges, separadores
+   Migrado desde <style> inline de index.html — Julio 2026
+   ============================================================ */
+
+/* ── Separadores de sección ──────────────────────────── */
+.seccion-label {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.seccion-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--glass-border);
+}
+
+.label-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.label-ia {
+    background: rgba(167, 139, 250, 0.12);
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    color: #a78bfa;
+}
+
+.label-datos {
+    background: rgba(242, 200, 17, 0.08);
+    border: 1px solid rgba(242, 200, 17, 0.2);
+    color: #F2C811;
+}
+
+/* ── Grid de proyectos: uniforme 3 columnas ──────────── */
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .proyectos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .proyectos-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Project Card ────────────────────────────────────── */
+.project-card {
+    position: relative;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4), 0 0 24px rgba(56, 189, 248, 0.12);
+}
+
+.project-card:hover .card-img img {
+    transform: scale(1.06);
+}
+
+/* Imagen de la card */
+.card-img {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(15, 23, 42, 0.85) 100%);
+}
+
+/* Badge de categoría sobre la imagen */
+.card-category-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+}
+
+.badge-ia {
+    background: rgba(167, 139, 250, 0.2);
+    border: 1px solid rgba(167, 139, 250, 0.45);
+    color: #c4b5fd;
+}
+
+.badge-datos {
+    background: rgba(242, 200, 17, 0.15);
+    border: 1px solid rgba(242, 200, 17, 0.35);
+    color: #F2C811;
+}
+
+/* Cuerpo de la card */
+.card-body {
+    padding: 1.4rem 1.5rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.6rem;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    line-height: 1.3;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+}
+
+.card-tags span {
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.tag-ia {
+    background: rgba(167, 139, 250, 0.1);
+    border: 1px solid rgba(167, 139, 250, 0.25);
+    color: #a78bfa;
+}
+
+.tag-datos {
+    background: rgba(242, 200, 17, 0.08);
+    border: 1px solid rgba(242, 200, 17, 0.2);
+    color: #F2C811;
+}
+
+.card-footer {
+    padding: 0 1.5rem 1.4rem;
+    flex-shrink: 0;
+}
+
+.card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1.1rem;
+    border-radius: 10px;
+    border: 1px solid;
+    transition: all 0.2s ease;
+}
+
+.card-btn-ia {
+    background: rgba(167, 139, 250, 0.1);
+    border-color: rgba(167, 139, 250, 0.3);
+    color: #a78bfa;
+}
+
+.card-btn-ia:hover {
+    background: rgba(167, 139, 250, 0.2);
+    border-color: rgba(167, 139, 250, 0.55);
+    color: #c4b5fd;
+}
+
+.card-btn-datos {
+    background: rgba(242, 200, 17, 0.08);
+    border-color: rgba(242, 200, 17, 0.25);
+    color: #F2C811;
+}
+
+.card-btn-datos:hover {
+    background: rgba(242, 200, 17, 0.18);
+    border-color: rgba(242, 200, 17, 0.5);
+    color: #f7db5e;
+}
+
+.card-btn i {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+.card-btn:hover i {
+    transform: translateX(3px);
+}
