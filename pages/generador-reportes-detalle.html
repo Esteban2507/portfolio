@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generador de Reportes Ejecutivos - Portfolio Esteban Gabrielloni</title>
+
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Estilo.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-D0D4EQQWC4');
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="perfil">
+                <a href="../index.html" class="btn-volver">
+                    <i class="fas fa-arrow-left"></i> Volver al portfolio
+                </a>
+                <h1>Generador de Reportes Ejecutivos</h1>
+                <a href="generador-reportes.html" class="card-btn card-btn-ia" style="margin-top: 1rem;">
+                    <i class="fas fa-play"></i> Probar demo en vivo
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="detalle-proyecto">
+
+            <!-- Galería de Imágenes -->
+            <div class="galeria-imagenes">
+                <img src="../img/Generador_Reportes_1.png" alt="Generador de Reportes Ejecutivos - Configuración del reporte" loading="lazy">
+                <img src="../img/Generador_Reportes_2.png" alt="Generador de Reportes Ejecutivos - Input de datos crudos" loading="lazy">
+                <img src="../img/Generador_Reportes_3.png" alt="Generador de Reportes Ejecutivos - Reporte generado" loading="lazy">
+                <img src="../img/Generador_Reportes_4.png" alt="Generador de Reportes Ejecutivos - Sección de métricas" loading="lazy">
+                <img src="../img/Generador_Reportes_5.png" alt="Generador de Reportes Ejecutivos - Recomendaciones y conclusión" loading="lazy">
+            </div>
+
+            <h2>Descripción del Proyecto</h2>
+            <p>Aplicación que convierte datos crudos (bullets, tablas, texto de un mail) en un reporte ejecutivo
+                estructurado. El usuario elige el tipo de reporte (Ventas, Financiero, Operaciones, RRHH, Proyecto o
+                General), el tono (Ejecutivo, Formal o Narrativo) y la audiencia (CEO, Gerencia, Equipo o Cliente), y
+                la IA redacta un documento con ocho secciones: título, resumen, métricas con tendencias, hallazgos,
+                análisis, riesgos, recomendaciones y conclusión. El resultado se puede copiar como texto plano para
+                pegar en Word o en un mail.</p>
+
+            <h2>Herramientas Utilizadas</h2>
+            <ul class="lista-herramientas">
+                <li>React 18 (Babel Standalone)</li>
+                <li>Claude API (claude-sonnet-4-6)</li>
+            </ul>
+
+            <h2>Impacto</h2>
+            <p>Reduce el tiempo de redacción de reportes ejecutivos de horas a minutos, manteniendo un formato
+                claro y consistente, y adaptando el tono y el nivel de detalle según quién vaya a leerlo.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
+            🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+            <i class="fab fa-github"></i> <a href="https://github.com/Esteban2507" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>

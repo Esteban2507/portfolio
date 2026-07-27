@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Explorador de Datos con IA - Portfolio Esteban Gabrielloni</title>
+
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Estilo.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-D0D4EQQWC4');
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="perfil">
+                <a href="../index.html" class="btn-volver">
+                    <i class="fas fa-arrow-left"></i> Volver al portfolio
+                </a>
+                <h1>Explorador de Datos con IA</h1>
+                <a href="explorador-datos.html" class="card-btn card-btn-ia" style="margin-top: 1rem;">
+                    <i class="fas fa-play"></i> Probar demo en vivo
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="detalle-proyecto">
+
+            <!-- Galería de Imágenes -->
+            <div class="galeria-imagenes">
+                <img src="../img/Explorador_Datos_1.png" alt="Explorador de Datos con IA - Pantalla de configuración" loading="lazy">
+                <img src="../img/Explorador_Datos_2.png" alt="Explorador de Datos con IA - Carga de dataset" loading="lazy">
+                <img src="../img/Explorador_Datos_3.png" alt="Explorador de Datos con IA - Chat con respuestas" loading="lazy">
+                <img src="../img/Explorador_Datos_4.png" alt="Explorador de Datos con IA - Gráfico generado" loading="lazy">
+            </div>
+
+            <h2>Descripción del Proyecto</h2>
+            <p>Aplicación de análisis de datos en lenguaje natural. El usuario carga un archivo CSV o Excel y
+                conversa con la IA para hacer preguntas sobre el dataset directamente en español, sin necesidad de
+                escribir fórmulas ni código. Según la pregunta, la IA responde con texto y, cuando corresponde,
+                genera automáticamente un gráfico (barras, líneas o torta) para visualizar el resultado.</p>
+
+            <h2>Herramientas Utilizadas</h2>
+            <ul class="lista-herramientas">
+                <li>React 18 (Babel Standalone)</li>
+                <li>Claude API (claude-sonnet-4-6)</li>
+                <li>Chart.js</li>
+                <li>PapaParse (CSV)</li>
+                <li>SheetJS (Excel)</li>
+            </ul>
+
+            <h2>Impacto</h2>
+            <p>Reduce la barrera técnica para explorar datos: cualquier persona, sin conocimientos de Power BI o
+                fórmulas, puede subir su información y obtener respuestas y gráficos en segundos, acortando el camino
+                entre datos crudos y decisiones.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
+            🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+            <i class="fab fa-github"></i> <a href="https://github.com/Esteban2507" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>
