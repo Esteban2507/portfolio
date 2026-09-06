@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auditor de Facturas con IA – Esteban Gabrielloni</title>
+  <meta name="description" content="Agente de IA que extrae los datos de una factura y valida reglas contables automáticamente, detectando inconsistencias y duplicados.">
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <style>
+    :root {
+      --bg-body: #0f172a;
+      --glass-bg: rgba(30, 41, 59, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      --color-text-main: #f8fafc;
+      --color-text-muted: #94a3b8;
+      --color-accent: #38bdf8;
+      --color-accent-glow: rgba(56, 189, 248, 0.5);
+      --accent-ia: #a78bfa;
+      --accent-ia-soft: rgba(167, 139, 250, 0.12);
+      --ok: #34d399;
+      --warn: #fbbf24;
+      --danger: #f87171;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #1e293b, #0f172a);
+      background-size: 200% 200%;
+      animation: gradientBG 15s ease infinite;
+      color: var(--color-text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+    }
+
+    @keyframes gradientBG {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    h1, h2, h3 { font-family: 'Outfit', sans-serif; font-weight: 700; margin: 0; }
+
+    .wrap { max-width: 840px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+    .volver {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--color-text-muted); text-decoration: none;
+      font-size: 0.9rem; transition: var(--transition-smooth);
+    }
+    .volver:hover { color: var(--color-accent); transform: translateX(-3px); }
+
+    .app-header { text-align: center; margin: 2rem 0 2.5rem; }
+    .app-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--accent-ia-soft); color: var(--accent-ia);
+      border: 1px solid rgba(167, 139, 250, 0.35);
+      padding: 0.3rem 0.9rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+    }
+    .app-header h1 { font-size: 2rem; margin-bottom: 0.6rem; }
+    .app-header p { color: var(--color-text-muted); max-width: 560px; margin: 0 auto; font-size: 0.98rem; }
+
+    .glass {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--glass-shadow);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* --- KeySetup --- */
+    .key-setup { padding: 2.5rem 2rem; max-width: 440px; margin: 3rem auto 0; text-align: center; }
+    .key-setup i.fa-key { font-size: 1.8rem; color: var(--accent-ia); margin-bottom: 1rem; }
+    .key-setup h2 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .key-setup p { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+    input[type="password"], textarea {
+      width: 100%; background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--glass-border); border-radius: var(--radius-md);
+      color: var(--color-text-main); font-family: 'Inter', sans-serif;
+      padding: 0.8rem 1rem; font-size: 0.95rem; outline: none;
+      transition: var(--transition-smooth);
+    }
+    input[type="password"]:focus, textarea:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-glow); }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background: var(--accent-ia); color: #0f172a; border: none;
+      padding: 0.85rem 1.6rem; border-radius: var(--radius-md);
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; transition: var(--transition-smooth); width: 100%; margin-top: 1rem;
+    }
+    .btn-primary:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .error-msg {
+      background: rgba(248, 113, 113, 0.1); border: 1px solid rgba(248, 113, 113, 0.3);
+      color: var(--danger); padding: 0.7rem 1rem; border-radius: var(--radius-md);
+      font-size: 0.85rem; margin-top: 1rem; text-align: left;
+    }
+    .privacy-note { font-size: 0.75rem; color: var(--color-text-muted); margin-top: 1.2rem; }
+
+    /* --- Main app --- */
+    .panel { padding: 1.8rem; margin-bottom: 1.8rem; }
+    .panel h3 { font-size: 1rem; margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
+    .panel h3 i { color: var(--accent-ia); }
+
+    textarea { min-height: 160px; resize: vertical; font-size: 0.9rem; }
+    .hint { font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.5rem; }
+
+    .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 1.4rem; }
+    @media (max-width: 560px) { .result-grid { grid-template-columns: 1fr; } }
+    .field { background: rgba(15, 23, 42, 0.4); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 0.8rem 1rem; }
+    .field-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-muted); margin-bottom: 0.25rem; }
+    .field-value { font-size: 1rem; font-weight: 600; }
+
+    .checks { display: flex; flex-direction: column; gap: 0.6rem; }
+    .check-item {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      padding: 0.8rem 1rem; border-radius: var(--radius-md);
+      border: 1px solid var(--glass-border); background: rgba(15, 23, 42, 0.35);
+    }
+    .check-item i { margin-top: 0.15rem; }
+    .check-item.ok i { color: var(--ok); }
+    .check-item.advertencia i { color: var(--warn); }
+    .check-item.error i { color: var(--danger); }
+    .check-nombre { font-weight: 600; font-size: 0.9rem; }
+    .check-detalle { color: var(--color-text-muted); font-size: 0.85rem; margin-top: 0.15rem; }
+
+    .items-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.5rem; }
+    .items-table th, .items-table td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--glass-border); }
+    .items-table th { color: var(--color-text-muted); font-weight: 500; font-size: 0.75rem; text-transform: uppercase; }
+
+    .history-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.7rem 1rem; border-radius: var(--radius-md);
+      border: 1px solid var(--glass-border); background: rgba(15, 23, 42, 0.35);
+      margin-bottom: 0.6rem; font-size: 0.85rem;
+    }
+    .history-item .status-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 0.6rem; }
+    .status-dot.ok { background: var(--ok); }
+    .status-dot.advertencia { background: var(--warn); }
+    .status-dot.error { background: var(--danger); }
+    .history-meta { color: var(--color-text-muted); font-size: 0.78rem; }
+    .empty-history { color: var(--color-text-muted); font-size: 0.85rem; text-align: center; padding: 1rem; }
+
+    .spinner {
+      width: 16px; height: 16px; border: 2px solid rgba(15,23,42,0.3);
+      border-top-color: #0f172a; border-radius: 50%; animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" crossorigin></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js" crossorigin></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function KeySetup({ onConfirm }) {
+      const [key, setKey] = useState('');
+      const [testing, setTesting] = useState(false);
+      const [error, setError] = useState('');
+
+      const handleConfirm = async () => {
+        setError('');
+        if (!key.startsWith('sk-')) {
+          setError('La API key de Anthropic debe empezar con "sk-".');
+          return;
+        }
+        setTesting(true);
+        try {
+          const res = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-api-key': key,
+              'anthropic-version': '2023-06-01',
+              'anthropic-dangerous-direct-browser-calls': 'true',
+            },
+            body: JSON.stringify({
+              model: 'claude-sonnet-4-6',
+              max_tokens: 10,
+              messages: [{ role: 'user', content: 'Responde solo "ok"' }],
+            }),
+          });
+          const data = await res.json();
+          if (data.error) throw new Error(data.error.message);
+          onConfirm(key);
+        } catch (e) {
+          setError('No se pudo validar la key: ' + e.message);
+        } finally {
+          setTesting(false);
+        }
+      };
+
+      return (
+        <div className="wrap">
+          <a className="volver" href="../index.html"><i className="fas fa-arrow-left"></i> Volver al portfolio</a>
+          <div className="glass key-setup">
+            <i className="fas fa-key"></i>
+            <h2>Auditor de Facturas con IA</h2>
+            <p>Ingresá tu API key de Anthropic para probar la demo. No se guarda en ningún servidor, solo vive en la memoria de esta pestaña.</p>
+            <input
+              type="password"
+              placeholder="sk-ant-..."
+              value={key}
+              onChange={e => setKey(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && handleConfirm()}
+            />
+            <button className="btn-primary" onClick={handleConfirm} disabled={testing}>
+              {testing ? <><span className="spinner"></span> Validando...</> : <>Empezar <i className="fas fa-arrow-right"></i></>}
+            </button>
+            {error && <div className="error-msg">{error}</div>}
+            <p className="privacy-note">Tu key nunca se envía a ningún servidor propio: se usa directo contra la API de Anthropic desde tu navegador.</p>
+          </div>
+        </div>
+      );
+    }
+
+    function StatusIcon({ estado }) {
+      const map = {
+        ok: 'fa-circle-check',
+        advertencia: 'fa-triangle-exclamation',
+        error: 'fa-circle-xmark',
+      };
+      return <i className={`fas ${map[estado] || 'fa-circle-check'}`}></i>;
+    }
+
+    function CheckItem({ nombre, estado, detalle }) {
+      return (
+        <div className={`check-item ${estado}`}>
+          <StatusIcon estado={estado} />
+          <div>
+            <div className="check-nombre">{nombre}</div>
+            <div className="check-detalle">{detalle}</div>
+          </div>
+        </div>
+      );
+    }
+
+    function fmtMoney(n, moneda) {
+      if (n === null || n === undefined || isNaN(n)) return '—';
+      return `${moneda || ''} ${Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2 })}`.trim();
+    }
+
+    function runClientChecks(data, history) {
+      const checks = Array.isArray(data.checks) ? [...data.checks] : [];
+
+      // Duplicado dentro de la sesión
+      const dup = history.find(h => h.numero_factura === data.numero_factura && h.proveedor === data.proveedor);
+      if (dup) {
+        checks.push({
+          nombre: 'Factura duplicada',
+          estado: 'error',
+          detalle: `Ya se cargó una factura N° ${data.numero_factura} del mismo proveedor en esta sesión.`,
+        });
+      }
+
+      // Formato de CUIT (Argentina: 11 dígitos, con o sin guiones)
+      if (data.cuit) {
+        const digits = String(data.cuit).replace(/\D/g, '');
+        checks.push({
+          nombre: 'Formato de CUIT',
+          estado: digits.length === 11 ? 'ok' : 'advertencia',
+          detalle: digits.length === 11
+            ? 'El CUIT tiene 11 dígitos, formato válido.'
+            : `El CUIT detectado (${data.cuit}) no tiene 11 dígitos. Revisar manualmente.`,
+        });
+      }
+
+      // Fecha no futura
+      if (data.fecha) {
+        const fechaFactura = new Date(data.fecha);
+        const hoy = new Date();
+        if (!isNaN(fechaFactura) && fechaFactura > hoy) {
+          checks.push({
+            nombre: 'Fecha de emisión',
+            estado: 'advertencia',
+            detalle: `La fecha (${data.fecha}) es posterior a hoy. Verificar que no sea un error de carga.`,
+          });
+        }
+      }
+
+      // Total vs. suma de items + IVA
+      if (Array.isArray(data.items) && data.items.length > 0 && data.total != null) {
+        const sumaItems = data.items.reduce((acc, it) => acc + (Number(it.subtotal) || 0), 0);
+        const esperado = sumaItems + (Number(data.iva) || 0);
+        const diff = Math.abs(esperado - Number(data.total));
+        checks.push({
+          nombre: 'Consistencia de totales',
+          estado: diff <= 0.5 ? 'ok' : 'error',
+          detalle: diff <= 0.5
+            ? 'El total coincide con la suma de ítems + IVA.'
+            : `Diferencia de ${diff.toFixed(2)} entre el total declarado y la suma de ítems + IVA.`,
+        });
+      }
+
+      return checks;
+    }
+
+    function App() {
+      const [apiKey, setApiKey] = useState(null);
+      const [invoiceText, setInvoiceText] = useState('');
+      const [loading, setLoading] = useState(false);
+      const [error, setError] = useState('');
+      const [result, setResult] = useState(null);
+      const [history, setHistory] = useState([]);
+
+      if (!apiKey) return <KeySetup onConfirm={setApiKey} />;
+
+      const handleAnalyze = async () => {
+        if (!invoiceText.trim()) return;
+        setLoading(true);
+        setError('');
+        setResult(null);
+
+        const prompt = `Sos un asistente contable. Analizá el siguiente texto de una factura (puede venir de un PDF copiado, un mail o una tabla) y devolvé SOLO un objeto JSON válido, sin texto adicional, sin markdown, con esta forma exacta:
+
+{
+  "proveedor": string,
+  "cuit": string o null,
+  "numero_factura": string,
+  "fecha": string en formato YYYY-MM-DD o null,
+  "moneda": string (ej "ARS", "USD"),
+  "subtotal": number o null,
+  "iva": number o null,
+  "total": number,
+  "items": [{"descripcion": string, "cantidad": number, "precio_unitario": number, "subtotal": number}],
+  "checks": [{"nombre": string, "estado": "ok" | "advertencia" | "error", "detalle": string}]
+}
+
+En "checks" incluí al menos: si están todos los campos obligatorios (proveedor, numero_factura, fecha, total), y si el cálculo de IVA es coherente con el subtotal (para Argentina, tasas usuales 21% o 10.5%). Si un dato no aparece en el texto, usá null y agregá un check de advertencia.
+
+Texto de la factura:
+"""
+${invoiceText}
+"""`;
+
+        try {
+          const res = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-api-key': apiKey,
+              'anthropic-version': '2023-06-01',
+              'anthropic-dangerous-direct-browser-calls': 'true',
+            },
+            body: JSON.stringify({
+              model: 'claude-sonnet-4-6',
+              max_tokens: 1500,
+              messages: [{ role: 'user', content: prompt }],
+            }),
+          });
+          const data = await res.json();
+          if (data.error) throw new Error(data.error.message);
+          const raw = data.content?.[0]?.text ?? '';
+          const clean = raw.replace(/```json|```/g, '').trim();
+          const parsed = JSON.parse(clean);
+
+          const checks = runClientChecks(parsed, history);
+          const peorEstado = checks.some(c => c.estado === 'error') ? 'error'
+            : checks.some(c => c.estado === 'advertencia') ? 'advertencia' : 'ok';
+
+          const finalResult = { ...parsed, checks, estadoGeneral: peorEstado };
+          setResult(finalResult);
+          setHistory(prev => [{ ...finalResult, ts: new Date() }, ...prev]);
+        } catch (e) {
+          setError('No se pudo analizar la factura: ' + e.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      return (
+        <div className="wrap">
+          <a className="volver" href="../index.html"><i className="fas fa-arrow-left"></i> Volver al portfolio</a>
+
+          <div className="app-header">
+            <span className="app-badge">✦ IA · Cuentas a pagar</span>
+            <h1>Auditor de Facturas con IA</h1>
+            <p>Pegá el texto de una factura y el agente extrae los datos clave y corre validaciones contables automáticas, detectando errores y duplicados antes de que lleguen al ERP.</p>
+          </div>
+
+          <div className="glass panel">
+            <h3><i className="fas fa-file-invoice"></i> Texto de la factura</h3>
+            <textarea
+              placeholder={'Pegá acá el texto de la factura (proveedor, CUIT, N° de factura, fecha, ítems, totales)...'}
+              value={invoiceText}
+              onChange={e => setInvoiceText(e.target.value)}
+            />
+            <p className="hint">Funciona con texto copiado de un PDF, un mail o una tabla de Excel. No hace falta un formato específico.</p>
+            <button className="btn-primary" onClick={handleAnalyze} disabled={loading || !invoiceText.trim()}>
+              {loading ? <><span className="spinner"></span> Analizando...</> : <>Analizar factura <i className="fas fa-magnifying-glass"></i></>}
+            </button>
+            {error && <div className="error-msg">{error}</div>}
+          </div>
+
+          {result && (
+            <div className="glass panel">
+              <h3><i className="fas fa-clipboard-check"></i> Resultado del análisis</h3>
+
+              <div className="result-grid">
+                <div className="field">
+                  <div className="field-label">Proveedor</div>
+                  <div className="field-value">{result.proveedor || '—'}</div>
+                </div>
+                <div className="field">
+                  <div className="field-label">CUIT</div>
+                  <div className="field-value">{result.cuit || '—'}</div>
+                </div>
+                <div className="field">
+                  <div className="field-label">N° de factura</div>
+                  <div className="field-value">{result.numero_factura || '—'}</div>
+                </div>
+                <div className="field">
+                  <div className="field-label">Fecha</div>
+                  <div className="field-value">{result.fecha || '—'}</div>
+                </div>
+                <div className="field">
+                  <div className="field-label">Subtotal</div>
+                  <div className="field-value">{fmtMoney(result.subtotal, result.moneda)}</div>
+                </div>
+                <div className="field">
+                  <div className="field-label">Total</div>
+                  <div className="field-value">{fmtMoney(result.total, result.moneda)}</div>
+                </div>
+              </div>
+
+              {Array.isArray(result.items) && result.items.length > 0 && (
+                <table className="items-table">
+                  <thead>
+                    <tr><th>Ítem</th><th>Cant.</th><th>P. unitario</th><th>Subtotal</th></tr>
+                  </thead>
+                  <tbody>
+                    {result.items.map((it, i) => (
+                      <tr key={i}>
+                        <td>{it.descripcion}</td>
+                        <td>{it.cantidad}</td>
+                        <td>{fmtMoney(it.precio_unitario, result.moneda)}</td>
+                        <td>{fmtMoney(it.subtotal, result.moneda)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+
+              <div className="checks" style={{ marginTop: '1.2rem' }}>
+                {result.checks.map((c, i) => (
+                  <CheckItem key={i} nombre={c.nombre} estado={c.estado} detalle={c.detalle} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="glass panel">
+            <h3><i className="fas fa-clock-rotate-left"></i> Historial de esta sesión</h3>
+            {history.length === 0 && <div className="empty-history">Todavía no analizaste ninguna factura.</div>}
+            {history.map((h, i) => (
+              <div className="history-item" key={i}>
+                <div>
+                  <span className={`status-dot ${h.estadoGeneral}`}></span>
+                  {h.proveedor || 'Proveedor sin datos'} — N° {h.numero_factura || '—'}
+                </div>
+                <div className="history-meta">{fmtMoney(h.total, h.moneda)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+
+</html>
