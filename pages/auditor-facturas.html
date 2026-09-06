@@ -1,263 +1,205 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Auditor de Facturas con IA – Esteban Gabrielloni</title>
-  <meta name="description" content="Agente de IA que extrae los datos de una factura y valida reglas contables automáticamente, detectando inconsistencias y duplicados.">
-
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auditor de Facturas con IA — Esteban Gabrielloni</title>
+  <meta name="description" content="Agente de IA que extrae los datos de una factura y valida reglas contables automáticamente.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    crossorigin="anonymous" referrerpolicy="no-referrer">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
   <style>
-    :root {
-      --bg-body: #0f172a;
-      --glass-bg: rgba(30, 41, 59, 0.7);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-      --color-text-main: #f8fafc;
-      --color-text-muted: #94a3b8;
-      --color-accent: #38bdf8;
-      --color-accent-glow: rgba(56, 189, 248, 0.5);
-      --accent-ia: #a78bfa;
-      --accent-ia-soft: rgba(167, 139, 250, 0.12);
-      --ok: #34d399;
-      --warn: #fbbf24;
-      --danger: #f87171;
-      --radius-lg: 16px;
-      --radius-md: 12px;
-      --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: radial-gradient(circle at top left, #1e293b, #0f172a);
-      background-size: 200% 200%;
-      animation: gradientBG 15s ease infinite;
-      color: var(--color-text-main);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.5;
-    }
-
-    @keyframes gradientBG {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    h1, h2, h3 { font-family: 'Outfit', sans-serif; font-weight: 700; margin: 0; }
-
-    .wrap { max-width: 840px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
-
-    .volver {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      color: var(--color-text-muted); text-decoration: none;
-      font-size: 0.9rem; transition: var(--transition-smooth);
-    }
-    .volver:hover { color: var(--color-accent); transform: translateX(-3px); }
-
-    .app-header { text-align: center; margin: 2rem 0 2.5rem; }
-    .app-badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: var(--accent-ia-soft); color: var(--accent-ia);
-      border: 1px solid rgba(167, 139, 250, 0.35);
-      padding: 0.3rem 0.9rem; border-radius: 999px;
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em;
-      margin-bottom: 1rem;
-    }
-    .app-header h1 { font-size: 2rem; margin-bottom: 0.6rem; }
-    .app-header p { color: var(--color-text-muted); max-width: 560px; margin: 0 auto; font-size: 0.98rem; }
-
-    .glass {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--glass-shadow);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-
-    /* --- KeySetup --- */
-    .key-setup { padding: 2.5rem 2rem; max-width: 440px; margin: 3rem auto 0; text-align: center; }
-    .key-setup i.fa-key { font-size: 1.8rem; color: var(--accent-ia); margin-bottom: 1rem; }
-    .key-setup h2 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .key-setup p { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
-
-    input[type="password"], textarea {
-      width: 100%; background: rgba(15, 23, 42, 0.6);
-      border: 1px solid var(--glass-border); border-radius: var(--radius-md);
-      color: var(--color-text-main); font-family: 'Inter', sans-serif;
-      padding: 0.8rem 1rem; font-size: 0.95rem; outline: none;
-      transition: var(--transition-smooth);
-    }
-    input[type="password"]:focus, textarea:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-glow); }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-      background: var(--accent-ia); color: #0f172a; border: none;
-      padding: 0.85rem 1.6rem; border-radius: var(--radius-md);
-      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem;
-      cursor: pointer; transition: var(--transition-smooth); width: 100%; margin-top: 1rem;
-    }
-    .btn-primary:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-1px); }
-    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
-
-    .error-msg {
-      background: rgba(248, 113, 113, 0.1); border: 1px solid rgba(248, 113, 113, 0.3);
-      color: var(--danger); padding: 0.7rem 1rem; border-radius: var(--radius-md);
-      font-size: 0.85rem; margin-top: 1rem; text-align: left;
-    }
-    .privacy-note { font-size: 0.75rem; color: var(--color-text-muted); margin-top: 1.2rem; }
-
-    /* --- Main app --- */
-    .panel { padding: 1.8rem; margin-bottom: 1.8rem; }
-    .panel h3 { font-size: 1rem; margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
-    .panel h3 i { color: var(--accent-ia); }
-
-    textarea { min-height: 160px; resize: vertical; font-size: 0.9rem; }
-    .hint { font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.5rem; }
-
-    .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 1.4rem; }
-    @media (max-width: 560px) { .result-grid { grid-template-columns: 1fr; } }
-    .field { background: rgba(15, 23, 42, 0.4); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 0.8rem 1rem; }
-    .field-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-muted); margin-bottom: 0.25rem; }
-    .field-value { font-size: 1rem; font-weight: 600; }
-
-    .checks { display: flex; flex-direction: column; gap: 0.6rem; }
-    .check-item {
-      display: flex; align-items: flex-start; gap: 0.7rem;
-      padding: 0.8rem 1rem; border-radius: var(--radius-md);
-      border: 1px solid var(--glass-border); background: rgba(15, 23, 42, 0.35);
-    }
-    .check-item i { margin-top: 0.15rem; }
-    .check-item.ok i { color: var(--ok); }
-    .check-item.advertencia i { color: var(--warn); }
-    .check-item.error i { color: var(--danger); }
-    .check-nombre { font-weight: 600; font-size: 0.9rem; }
-    .check-detalle { color: var(--color-text-muted); font-size: 0.85rem; margin-top: 0.15rem; }
-
-    .items-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.5rem; }
-    .items-table th, .items-table td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--glass-border); }
-    .items-table th { color: var(--color-text-muted); font-weight: 500; font-size: 0.75rem; text-transform: uppercase; }
-
-    .history-item {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.7rem 1rem; border-radius: var(--radius-md);
-      border: 1px solid var(--glass-border); background: rgba(15, 23, 42, 0.35);
-      margin-bottom: 0.6rem; font-size: 0.85rem;
-    }
-    .history-item .status-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 0.6rem; }
-    .status-dot.ok { background: var(--ok); }
-    .status-dot.advertencia { background: var(--warn); }
-    .status-dot.error { background: var(--danger); }
-    .history-meta { color: var(--color-text-muted); font-size: 0.78rem; }
-    .empty-history { color: var(--color-text-muted); font-size: 0.85rem; text-align: center; padding: 1rem; }
-
-    .spinner {
-      width: 16px; height: 16px; border: 2px solid rgba(15,23,42,0.3);
-      border-top-color: #0f172a; border-radius: 50%; animation: spin 0.7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:#0e0e10;color:#e8e8ec;-webkit-font-smoothing:antialiased;min-height:100vh}
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-thumb{background:#2a2a30;border-radius:3px}
+    textarea,input,select,button{font-family:inherit}
+    textarea:focus,input:focus{outline:none}
+    @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .fade-in{animation:fadeIn .3s ease forwards}
+    .report-grid{display:grid;grid-template-columns:1fr 1.3fr}
+    @media(max-width:640px){.report-grid{grid-template-columns:1fr}}
   </style>
 </head>
-
 <body>
   <div id="root"></div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" crossorigin></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js" crossorigin></script>
-
   <script type="text/babel">
     const { useState } = React;
 
-    function KeySetup({ onConfirm }) {
-      const [key, setKey] = useState('');
-      const [testing, setTesting] = useState(false);
-      const [error, setError] = useState('');
+    const P = {
+      bg:'#0e0e10',surface:'#17171b',card:'#1c1c22',
+      border:'#2a2a30',accent:'#F2C811',text:'#e8e8ec',
+      muted:'#6b6b7a',success:'#4ade80',error:'#f87171',warn:'#fbbf24'
+    };
 
-      const handleConfirm = async () => {
-        setError('');
-        if (!key.startsWith('sk-')) {
-          setError('La API key de Anthropic debe empezar con "sk-".');
-          return;
-        }
-        setTesting(true);
-        try {
-          const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const PROVIDERS = [
+      {
+        id: 'claude',
+        label: 'Claude',
+        logo: '✦',
+        color: '#d97706',
+        placeholder: 'sk-ant-...',
+        hint: 'console.anthropic.com/settings/keys',
+        hintUrl: 'https://console.anthropic.com/settings/keys',
+        validate: k => k.startsWith('sk-'),
+        validateMsg: 'La clave de Anthropic debe comenzar con "sk-".',
+      },
+      {
+        id: 'gemini',
+        label: 'Gemini',
+        logo: '✶',
+        color: '#4285f4',
+        placeholder: 'AIza...',
+        hint: 'aistudio.google.com/app/apikey',
+        hintUrl: 'https://aistudio.google.com/app/apikey',
+        validate: k => k.length > 20,
+        validateMsg: 'Ingresá una clave de API de Google AI Studio.',
+      },
+      {
+        id: 'groq',
+        label: 'Groq',
+        logo: '⚡',
+        color: '#f55036',
+        placeholder: 'gsk_...',
+        hint: 'console.groq.com/keys',
+        hintUrl: 'https://console.groq.com/keys',
+        validate: k => k.startsWith('gsk_'),
+        validateMsg: 'La clave de Groq debe comenzar con "gsk_".',
+      },
+    ];
+
+    async function testKey(provider, key) {
+      if (provider === 'claude') {
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-calls': 'true' },
+          body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 10, messages: [{ role: 'user', content: 'test' }] }),
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message);
+      } else if (provider === 'gemini') {
+        const res = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,
+          { method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ contents: [{ parts: [{ text: 'test' }] }], generationConfig: { maxOutputTokens: 5 } }) }
+        );
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message);
+      } else if (provider === 'groq') {
+        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+          body: JSON.stringify({ model: 'llama-3.1-8b-instant', max_tokens: 5, messages: [{ role: 'user', content: 'test' }] })
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message);
+      }
+    }
+
+    async function analyzeInvoice(provider, apiKey, invoiceText) {
+      const prompt = `Sos un asistente contable. Analizá el siguiente texto de una factura y devolvé SOLO un objeto JSON válido, sin markdown ni texto extra, con esta estructura exacta:
+{
+  "proveedor": "string",
+  "cuit": "string o null",
+  "numero_factura": "string",
+  "fecha": "string YYYY-MM-DD o null",
+  "moneda": "string (ej ARS, USD)",
+  "subtotal": "number o null",
+  "iva": "number o null",
+  "total": "number",
+  "items": [{"descripcion": "string", "cantidad": 1, "precio_unitario": 100, "subtotal": 100}],
+  "checks": [{"nombre": "string", "estado": "ok" | "advertencia" | "error", "detalle": "string"}]
+}
+
+En "checks" incluí al menos si están los datos clave (proveedor, número, fecha, total) y la coherencia del IVA. Usa null si un dato falta.
+
+Factura:
+"""
+${invoiceText}
+"""`;
+
+      let rawJson = '';
+      if (provider === 'gemini') {
+        const res = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+          {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-key': key,
-              'anthropic-version': '2023-06-01',
-              'anthropic-dangerous-direct-browser-calls': 'true',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              model: 'claude-sonnet-4-6',
-              max_tokens: 10,
-              messages: [{ role: 'user', content: 'Responde solo "ok"' }],
+              contents: [{ parts: [{ text: prompt }] }],
+              generationConfig: { maxOutputTokens: 1500, responseMimeType: "application/json" },
             }),
-          });
-          const data = await res.json();
-          if (data.error) throw new Error(data.error.message);
-          onConfirm(key);
-        } catch (e) {
-          setError('No se pudo validar la key: ' + e.message);
-        } finally {
-          setTesting(false);
+          }
+        );
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message || 'Error de API');
+        rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+      } else if (provider === 'groq') {
+        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
+          body: JSON.stringify({
+            model: 'llama-3.1-8b-instant',
+            response_format: { type: "json_object" },
+            messages: [{ role: 'user', content: prompt }],
+          }),
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message || 'Error de API');
+        rawJson = data.choices?.[0]?.message?.content ?? '';
+      } else {
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey,
+            'anthropic-version': '2023-06-01',
+            'anthropic-dangerous-direct-browser-calls': 'true',
+          },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-6',
+            max_tokens: 1500,
+            messages: [{ role: 'user', content: prompt }],
+          }),
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error.message || 'Error de API');
+        rawJson = data.content?.[0]?.text ?? '';
+      }
+
+      const clean = rawJson.replace(/```json|```/g, '').trim();
+      return JSON.parse(clean);
+    }
+
+    function runClientChecks(data, history) {
+      const checks = Array.isArray(data.checks) ? [...data.checks] : [];
+      const dup = history.find(h => h.numero_factura === data.numero_factura && h.proveedor === data.proveedor);
+      if (dup) checks.push({ nombre: 'Factura duplicada', estado: 'error', detalle: `Ya se cargó una factura N° ${data.numero_factura} del mismo proveedor en esta sesión.` });
+      
+      if (data.cuit) {
+        const digits = String(data.cuit).replace(/\D/g, '');
+        checks.push({ nombre: 'Formato de CUIT', estado: digits.length === 11 ? 'ok' : 'advertencia', detalle: digits.length === 11 ? 'El CUIT tiene 11 dígitos, formato válido.' : `El CUIT detectado (${data.cuit}) no tiene 11 dígitos.` });
+      }
+      
+      if (data.fecha) {
+        const fechaFactura = new Date(data.fecha);
+        if (!isNaN(fechaFactura) && fechaFactura > new Date()) {
+          checks.push({ nombre: 'Fecha de emisión', estado: 'advertencia', detalle: `La fecha (${data.fecha}) es futura. Verificar.` });
         }
-      };
-
-      return (
-        <div className="wrap">
-          <a className="volver" href="../index.html"><i className="fas fa-arrow-left"></i> Volver al portfolio</a>
-          <div className="glass key-setup">
-            <i className="fas fa-key"></i>
-            <h2>Auditor de Facturas con IA</h2>
-            <p>Ingresá tu API key de Anthropic para probar la demo. No se guarda en ningún servidor, solo vive en la memoria de esta pestaña.</p>
-            <input
-              type="password"
-              placeholder="sk-ant-..."
-              value={key}
-              onChange={e => setKey(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && handleConfirm()}
-            />
-            <button className="btn-primary" onClick={handleConfirm} disabled={testing}>
-              {testing ? <><span className="spinner"></span> Validando...</> : <>Empezar <i className="fas fa-arrow-right"></i></>}
-            </button>
-            {error && <div className="error-msg">{error}</div>}
-            <p className="privacy-note">Tu key nunca se envía a ningún servidor propio: se usa directo contra la API de Anthropic desde tu navegador.</p>
-          </div>
-        </div>
-      );
-    }
-
-    function StatusIcon({ estado }) {
-      const map = {
-        ok: 'fa-circle-check',
-        advertencia: 'fa-triangle-exclamation',
-        error: 'fa-circle-xmark',
-      };
-      return <i className={`fas ${map[estado] || 'fa-circle-check'}`}></i>;
-    }
-
-    function CheckItem({ nombre, estado, detalle }) {
-      return (
-        <div className={`check-item ${estado}`}>
-          <StatusIcon estado={estado} />
-          <div>
-            <div className="check-nombre">{nombre}</div>
-            <div className="check-detalle">{detalle}</div>
-          </div>
-        </div>
-      );
+      }
+      
+      if (Array.isArray(data.items) && data.items.length > 0 && data.total != null) {
+        const sumaItems = data.items.reduce((acc, it) => acc + (Number(it.subtotal) || 0), 0);
+        const esperado = sumaItems + (Number(data.iva) || 0);
+        const diff = Math.abs(esperado - Number(data.total));
+        checks.push({ nombre: 'Consistencia de totales', estado: diff <= 0.5 ? 'ok' : 'error', detalle: diff <= 0.5 ? 'El total coincide con la suma de ítems + IVA.' : `Diferencia de ${diff.toFixed(2)} entre el total declarado y la suma de ítems + IVA.` });
+      }
+      return checks;
     }
 
     function fmtMoney(n, moneda) {
@@ -265,227 +207,265 @@
       return `${moneda || ''} ${Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2 })}`.trim();
     }
 
-    function runClientChecks(data, history) {
-      const checks = Array.isArray(data.checks) ? [...data.checks] : [];
+    function KeySetup({ onConfirm }) {
+      const [selectedProvider, setSelectedProvider] = useState('gemini');
+      const [key, setKey] = useState('');
+      const [err, setErr] = useState('');
+      const [testing, setTesting] = useState(false);
+      const prov = PROVIDERS.find(p => p.id === selectedProvider);
 
-      // Duplicado dentro de la sesión
-      const dup = history.find(h => h.numero_factura === data.numero_factura && h.proveedor === data.proveedor);
-      if (dup) {
-        checks.push({
-          nombre: 'Factura duplicada',
-          estado: 'error',
-          detalle: `Ya se cargó una factura N° ${data.numero_factura} del mismo proveedor en esta sesión.`,
-        });
-      }
-
-      // Formato de CUIT (Argentina: 11 dígitos, con o sin guiones)
-      if (data.cuit) {
-        const digits = String(data.cuit).replace(/\D/g, '');
-        checks.push({
-          nombre: 'Formato de CUIT',
-          estado: digits.length === 11 ? 'ok' : 'advertencia',
-          detalle: digits.length === 11
-            ? 'El CUIT tiene 11 dígitos, formato válido.'
-            : `El CUIT detectado (${data.cuit}) no tiene 11 dígitos. Revisar manualmente.`,
-        });
-      }
-
-      // Fecha no futura
-      if (data.fecha) {
-        const fechaFactura = new Date(data.fecha);
-        const hoy = new Date();
-        if (!isNaN(fechaFactura) && fechaFactura > hoy) {
-          checks.push({
-            nombre: 'Fecha de emisión',
-            estado: 'advertencia',
-            detalle: `La fecha (${data.fecha}) es posterior a hoy. Verificar que no sea un error de carga.`,
-          });
+      async function confirm() {
+        if (!prov.validate(key.trim())) { setErr(prov.validateMsg); return; }
+        setTesting(true); setErr('');
+        try {
+          await testKey(selectedProvider, key.trim());
+          onConfirm({ provider: selectedProvider, apiKey: key.trim() });
+        } catch (e) {
+          setErr('No se pudo validar la clave. Verificá que sea correcta y con saldo disponible.');
+          setTesting(false);
         }
       }
 
-      // Total vs. suma de items + IVA
-      if (Array.isArray(data.items) && data.items.length > 0 && data.total != null) {
-        const sumaItems = data.items.reduce((acc, it) => acc + (Number(it.subtotal) || 0), 0);
-        const esperado = sumaItems + (Number(data.iva) || 0);
-        const diff = Math.abs(esperado - Number(data.total));
-        checks.push({
-          nombre: 'Consistencia de totales',
-          estado: diff <= 0.5 ? 'ok' : 'error',
-          detalle: diff <= 0.5
-            ? 'El total coincide con la suma de ítems + IVA.'
-            : `Diferencia de ${diff.toFixed(2)} entre el total declarado y la suma de ítems + IVA.`,
-        });
-      }
+      return (
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+          <div style={{ maxWidth: 460, width: '100%' }}>
+            <a href="index.html" style={{ color: P.muted, fontSize: 13, textDecoration: 'none', display: 'block', marginBottom: 40 }}>← Volver al portfolio</a>
+            <div style={{ width: 48, height: 48, borderRadius: 12, background: P.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, marginBottom: 20, color: '#000', fontWeight: 700 }}>
+              <i className="fas fa-file-invoice"></i>
+            </div>
+            <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 26, fontWeight: 700, marginBottom: 8 }}>Auditor de Facturas</h1>
+            <p style={{ color: P.muted, fontSize: 14, lineHeight: 1.65, marginBottom: 28 }}>Pegá el texto de una factura y el agente extraerá los datos clave, validando reglas contables automáticamente. Elegí tu proveedor de IA para empezar.</p>
 
-      return checks;
+            <p style={{ fontSize: 11, color: P.muted, textTransform: 'uppercase', letterSpacing: .8, fontWeight: 600, marginBottom: 10 }}>Proveedor de IA</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: 10, marginBottom: 20 }}>
+              {PROVIDERS.map(p => (
+                <button key={p.id} onClick={() => { setSelectedProvider(p.id); setKey(''); setErr(''); }}
+                  style={{ background: selectedProvider === p.id ? `${p.color}18` : P.surface, border: `1.5px solid ${selectedProvider === p.id ? p.color : P.border}`, borderRadius: 10, padding: '12px 14px', cursor: 'pointer', textAlign: 'left', transition: 'all .15s', display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span style={{ fontSize: 20, color: selectedProvider === p.id ? p.color : P.muted, fontWeight: 700 }}>{p.logo}</span>
+                  <div>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: selectedProvider === p.id ? p.color : P.text, lineHeight: 1 }}>{p.label}</p>
+                    <p style={{ fontSize: 11, color: P.muted, marginTop: 3 }}>{p.id === 'claude' ? 'Anthropic' : p.id === 'gemini' ? 'Google AI' : 'GroqCloud'}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <div style={{ background: P.surface, border: `1px solid ${P.border}`, borderRadius: 12, padding: 20, marginBottom: 14 }}>
+              <label style={{ fontSize: 12, color: P.muted, display: 'block', marginBottom: 8, fontWeight: 600, textTransform: 'uppercase', letterSpacing: .8 }}>Clave de API — {prov.label}</label>
+              <input type="password" value={key} onChange={e => setKey(e.target.value)} onKeyDown={e => e.key === 'Enter' && confirm()} placeholder={prov.placeholder}
+                style={{ width: '100%', background: P.bg, border: `1px solid ${P.border}`, borderRadius: 8, padding: '10px 12px', color: P.text, fontSize: 14, marginBottom: 12 }} />
+              {err && <p style={{ color: P.error, fontSize: 12, marginBottom: 12 }}>{err}</p>}
+              <button onClick={confirm} disabled={!key.trim() || testing}
+                style={{ width: '100%', background: P.accent, border: 'none', borderRadius: 8, padding: 11, color: '#000', fontSize: 14, fontWeight: 700, cursor: 'pointer', opacity: (!key.trim() || testing) ? .6 : 1 }}>
+                {testing ? 'Verificando…' : 'Empezar →'}
+              </button>
+            </div>
+            <p style={{ fontSize: 12, color: P.muted, lineHeight: 1.6 }}>
+              La clave se usa solo en esta sesión y nunca se almacena. Obtené la tuya en{' '}
+              <a href={prov.hintUrl} target="_blank" rel="noopener noreferrer" style={{ color: P.accent }}>{prov.hint}</a>.
+            </p>
+          </div>
+        </div>
+      );
+    }
+
+    function StatusIcon({ estado }) {
+      const map = { ok: 'fa-circle-check', advertencia: 'fa-triangle-exclamation', error: 'fa-circle-xmark' };
+      const colorMap = { ok: P.success, advertencia: P.warn, error: P.error };
+      return <i className={`fas ${map[estado]}`} style={{ color: colorMap[estado] }}></i>;
+    }
+
+    function MetricCard({ nombre, valor }) {
+      return (
+        <div style={{ background: P.bg, border: `1px solid ${P.border}`, borderRadius: 10, padding: '14px 16px', minWidth: 110 }}>
+          <p style={{ fontSize: 11, color: P.muted, textTransform: 'uppercase', letterSpacing: .8, marginBottom: 6 }}>{nombre}</p>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+            <p style={{ fontSize: 20, fontWeight: 700, color: P.text, lineHeight: 1 }}>{valor}</p>
+          </div>
+        </div>
+      );
     }
 
     function App() {
-      const [apiKey, setApiKey] = useState(null);
+      const [session, setSession] = useState(null);
+      const [step, setStep] = useState('config');
       const [invoiceText, setInvoiceText] = useState('');
-      const [loading, setLoading] = useState(false);
-      const [error, setError] = useState('');
       const [result, setResult] = useState(null);
       const [history, setHistory] = useState([]);
+      const [err, setErr] = useState('');
 
-      if (!apiKey) return <KeySetup onConfirm={setApiKey} />;
-
-      const handleAnalyze = async () => {
-        if (!invoiceText.trim()) return;
-        setLoading(true);
-        setError('');
-        setResult(null);
-
-        const prompt = `Sos un asistente contable. Analizá el siguiente texto de una factura (puede venir de un PDF copiado, un mail o una tabla) y devolvé SOLO un objeto JSON válido, sin texto adicional, sin markdown, con esta forma exacta:
-
-{
-  "proveedor": string,
-  "cuit": string o null,
-  "numero_factura": string,
-  "fecha": string en formato YYYY-MM-DD o null,
-  "moneda": string (ej "ARS", "USD"),
-  "subtotal": number o null,
-  "iva": number o null,
-  "total": number,
-  "items": [{"descripcion": string, "cantidad": number, "precio_unitario": number, "subtotal": number}],
-  "checks": [{"nombre": string, "estado": "ok" | "advertencia" | "error", "detalle": string}]
-}
-
-En "checks" incluí al menos: si están todos los campos obligatorios (proveedor, numero_factura, fecha, total), y si el cálculo de IVA es coherente con el subtotal (para Argentina, tasas usuales 21% o 10.5%). Si un dato no aparece en el texto, usá null y agregá un check de advertencia.
-
-Texto de la factura:
-"""
-${invoiceText}
-"""`;
-
+      async function generate() {
+        if (!invoiceText.trim()) { setErr('Pegá el texto de la factura antes de analizar.'); return; }
+        setErr(''); setStep('generating');
         try {
-          const res = await fetch('https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-key': apiKey,
-              'anthropic-version': '2023-06-01',
-              'anthropic-dangerous-direct-browser-calls': 'true',
-            },
-            body: JSON.stringify({
-              model: 'claude-sonnet-4-6',
-              max_tokens: 1500,
-              messages: [{ role: 'user', content: prompt }],
-            }),
-          });
-          const data = await res.json();
-          if (data.error) throw new Error(data.error.message);
-          const raw = data.content?.[0]?.text ?? '';
-          const clean = raw.replace(/```json|```/g, '').trim();
-          const parsed = JSON.parse(clean);
-
+          const parsed = await analyzeInvoice(session.provider, session.apiKey, invoiceText);
           const checks = runClientChecks(parsed, history);
           const peorEstado = checks.some(c => c.estado === 'error') ? 'error'
             : checks.some(c => c.estado === 'advertencia') ? 'advertencia' : 'ok';
-
+          
           const finalResult = { ...parsed, checks, estadoGeneral: peorEstado };
           setResult(finalResult);
           setHistory(prev => [{ ...finalResult, ts: new Date() }, ...prev]);
+          setStep('result');
         } catch (e) {
-          setError('No se pudo analizar la factura: ' + e.message);
-        } finally {
-          setLoading(false);
+          setErr(e.message || 'Error al analizar la factura.');
+          setStep('config');
         }
-      };
+      }
+
+      function reset() { setStep('config'); setResult(null); setInvoiceText(''); setErr(''); }
+
+      if (!session) return <KeySetup onConfirm={setSession} />;
+
+      const provDef = PROVIDERS.find(p => p.id === session.provider);
 
       return (
-        <div className="wrap">
-          <a className="volver" href="../index.html"><i className="fas fa-arrow-left"></i> Volver al portfolio</a>
-
-          <div className="app-header">
-            <span className="app-badge">✦ IA · Cuentas a pagar</span>
-            <h1>Auditor de Facturas con IA</h1>
-            <p>Pegá el texto de una factura y el agente extrae los datos clave y corre validaciones contables automáticas, detectando errores y duplicados antes de que lleguen al ERP.</p>
-          </div>
-
-          <div className="glass panel">
-            <h3><i className="fas fa-file-invoice"></i> Texto de la factura</h3>
-            <textarea
-              placeholder={'Pegá acá el texto de la factura (proveedor, CUIT, N° de factura, fecha, ítems, totales)...'}
-              value={invoiceText}
-              onChange={e => setInvoiceText(e.target.value)}
-            />
-            <p className="hint">Funciona con texto copiado de un PDF, un mail o una tabla de Excel. No hace falta un formato específico.</p>
-            <button className="btn-primary" onClick={handleAnalyze} disabled={loading || !invoiceText.trim()}>
-              {loading ? <><span className="spinner"></span> Analizando...</> : <>Analizar factura <i className="fas fa-magnifying-glass"></i></>}
-            </button>
-            {error && <div className="error-msg">{error}</div>}
-          </div>
-
-          {result && (
-            <div className="glass panel">
-              <h3><i className="fas fa-clipboard-check"></i> Resultado del análisis</h3>
-
-              <div className="result-grid">
-                <div className="field">
-                  <div className="field-label">Proveedor</div>
-                  <div className="field-value">{result.proveedor || '—'}</div>
-                </div>
-                <div className="field">
-                  <div className="field-label">CUIT</div>
-                  <div className="field-value">{result.cuit || '—'}</div>
-                </div>
-                <div className="field">
-                  <div className="field-label">N° de factura</div>
-                  <div className="field-value">{result.numero_factura || '—'}</div>
-                </div>
-                <div className="field">
-                  <div className="field-label">Fecha</div>
-                  <div className="field-value">{result.fecha || '—'}</div>
-                </div>
-                <div className="field">
-                  <div className="field-label">Subtotal</div>
-                  <div className="field-value">{fmtMoney(result.subtotal, result.moneda)}</div>
-                </div>
-                <div className="field">
-                  <div className="field-label">Total</div>
-                  <div className="field-value">{fmtMoney(result.total, result.moneda)}</div>
-                </div>
-              </div>
-
-              {Array.isArray(result.items) && result.items.length > 0 && (
-                <table className="items-table">
-                  <thead>
-                    <tr><th>Ítem</th><th>Cant.</th><th>P. unitario</th><th>Subtotal</th></tr>
-                  </thead>
-                  <tbody>
-                    {result.items.map((it, i) => (
-                      <tr key={i}>
-                        <td>{it.descripcion}</td>
-                        <td>{it.cantidad}</td>
-                        <td>{fmtMoney(it.precio_unitario, result.moneda)}</td>
-                        <td>{fmtMoney(it.subtotal, result.moneda)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+        <div style={{ minHeight: '100vh' }}>
+          <header style={{ borderBottom: `1px solid ${P.border}`, padding: '12px 26px', display: 'flex', alignItems: 'center', gap: 12, background: P.surface, position: 'sticky', top: 0, zIndex: 10 }}>
+            <a href="index.html" style={{ color: P.muted, fontSize: 12, textDecoration: 'none', marginRight: 4 }}>←</a>
+            <div style={{ width: 30, height: 30, borderRadius: 8, background: P.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 700, color: '#000' }}><i className="fas fa-file-invoice"></i></div>
+            <div>
+              <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, fontWeight: 700, lineHeight: 1 }}>Auditor de Facturas</h1>
+              <p style={{ fontSize: 11, color: P.muted, marginTop: 2 }}>Factura cruda → Datos y validaciones</p>
+            </div>
+            <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 12 }}>
+              {step === 'result' && (
+                <button onClick={reset} style={{ background: 'transparent', border: `1px solid ${P.border}`, borderRadius: 8, padding: '7px 14px', color: P.muted, fontSize: 12, cursor: 'pointer' }}>
+                  + Nueva auditoría
+                </button>
               )}
-
-              <div className="checks" style={{ marginTop: '1.2rem' }}>
-                {result.checks.map((c, i) => (
-                  <CheckItem key={i} nombre={c.nombre} estado={c.estado} detalle={c.detalle} />
-                ))}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5, background: `${provDef.color}18`, border: `1px solid ${provDef.color}44`, borderRadius: 8, padding: '5px 10px' }}>
+                <span style={{ fontSize: 13, color: provDef.color, fontWeight: 700 }}>{provDef.logo}</span>
+                <span style={{ fontSize: 11, color: provDef.color, fontWeight: 600 }}>{provDef.label}</span>
               </div>
             </div>
-          )}
+          </header>
 
-          <div className="glass panel">
-            <h3><i className="fas fa-clock-rotate-left"></i> Historial de esta sesión</h3>
-            {history.length === 0 && <div className="empty-history">Todavía no analizaste ninguna factura.</div>}
-            {history.map((h, i) => (
-              <div className="history-item" key={i}>
+          <div style={{ maxWidth: 880, margin: '0 auto', padding: '28px 22px' }}>
+            
+            {/* Input y Config */}
+            {step === 'config' && (
+              <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
                 <div>
-                  <span className={`status-dot ${h.estadoGeneral}`}></span>
-                  {h.proveedor || 'Proveedor sin datos'} — N° {h.numero_factura || '—'}
+                  <label style={{ fontSize: 13, fontWeight: 600, display: 'block', marginBottom: 4 }}><i className="fas fa-file-invoice" style={{color:P.accent, marginRight:6}}></i> Texto de la factura</label>
+                  <p style={{ fontSize: 12, color: P.muted, marginBottom: 10 }}>Pegá datos copiados de un PDF, email o tabla de Excel. No necesita formato específico.</p>
+                  <textarea value={invoiceText} onChange={e => setInvoiceText(e.target.value)} rows={12}
+                    placeholder={'Ejemplo:\nProveedor: ACME Corp\nCUIT: 30-11111111-9\nFactura: A-0001-00000045\nFecha: 25/10/2025\nServicios profesionales $ 100.000\nIVA $ 21.000\nTotal $ 121.000'}
+                    style={{ width: '100%', background: P.surface, border: `1px solid ${P.border}`, borderRadius: 10, padding: '13px 15px', color: P.text, fontSize: 13, lineHeight: 1.6, resize: 'vertical' }} />
                 </div>
-                <div className="history-meta">{fmtMoney(h.total, h.moneda)}</div>
+                {err && <p style={{ color: P.error, fontSize: 13 }}>{err}</p>}
+                
+                <button onClick={generate}
+                  style={{ background: P.accent, border: 'none', borderRadius: 10, padding: '13px 28px', color: '#000', fontSize: 14, fontWeight: 700, cursor: 'pointer', alignSelf: 'flex-start', transition: 'opacity .2s' }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = '.85'}
+                  onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
+                  Auditar factura →
+                </button>
+
+                {history.length > 0 && (
+                  <div style={{ marginTop: 20, borderTop: `1px solid ${P.border}`, paddingTop: 20 }}>
+                    <p style={{ fontSize: 11, color: P.muted, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 14 }}>Historial de la sesión</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      {history.map((h, i) => (
+                        <div key={i} style={{ background: P.surface, border: `1px solid ${P.border}`, borderRadius: 8, padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                             <span style={{ width: 10, height: 10, borderRadius: '50%', background: h.estadoGeneral === 'ok' ? P.success : h.estadoGeneral === 'advertencia' ? P.warn : P.error }}></span>
+                             <span style={{ fontSize: 13, fontWeight: 600 }}>{h.proveedor || 'Sin proveedor'}</span>
+                             <span style={{ fontSize: 12, color: P.muted }}>N° {h.numero_factura || '—'}</span>
+                           </div>
+                           <div style={{ fontSize: 13, fontWeight: 600 }}>{fmtMoney(h.total, h.moneda)}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            ))}
+            )}
+
+            {/* Generando */}
+            {step === 'generating' && (
+              <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 380, gap: 20 }}>
+                <div style={{ width: 54, height: 54, borderRadius: 14, background: P.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, color: '#000', fontWeight: 700, animation: 'spin 2s linear infinite' }}>
+                  <i className="fas fa-spinner"></i>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 18, fontWeight: 700 }}>Analizando factura…</p>
+                  <p style={{ color: P.muted, fontSize: 13, marginTop: 6 }}>Extrayendo datos y corriendo validaciones contables</p>
+                </div>
+              </div>
+            )}
+
+            {/* Resultado */}
+            {step === 'result' && result && (
+              <div className="fade-in">
+                {/* Cabecera Resultado */}
+                <div style={{ background: 'linear-gradient(135deg,#1a1a00,#0e0e10)', border: `1px solid ${P.accent}33`, borderBottom: `2px solid ${P.accent}`, borderRadius: '12px 12px 0 0', padding: '22px 26px' }}>
+                  <p style={{ fontSize: 11, color: P.accent, textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: 8 }}>Auditoría Completada</p>
+                  <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 20, fontWeight: 700, lineHeight: 1.3 }}>{result.proveedor || 'Proveedor Indeterminado'}</h2>
+                  <p style={{ fontSize: 12, color: P.muted, marginTop: 6 }}>Factura N° {result.numero_factura || '—'} · Fecha: {result.fecha || '—'}</p>
+                </div>
+
+                <div className="report-grid" style={{ border: `1px solid ${P.border}`, borderTop: 'none', background: P.card }}>
+                  <div style={{ padding: '18px 22px', borderRight: `1px solid ${P.border}` }}>
+                    <p style={{ fontSize: 11, color: P.muted, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 14 }}>Datos extraídos</p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: 10, marginBottom: 16 }}>
+                      <MetricCard nombre="Subtotal" valor={fmtMoney(result.subtotal, result.moneda)} />
+                      <MetricCard nombre="IVA" valor={fmtMoney(result.iva, result.moneda)} />
+                      <MetricCard nombre="Total" valor={fmtMoney(result.total, result.moneda)} />
+                      <MetricCard nombre="CUIT" valor={result.cuit || '—'} />
+                    </div>
+                    
+                    {Array.isArray(result.items) && result.items.length > 0 && (
+                      <div style={{ marginTop: 20 }}>
+                         <p style={{ fontSize: 11, color: P.muted, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 10 }}>Ítems</p>
+                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+                           <thead>
+                             <tr style={{ borderBottom: `1px solid ${P.border}` }}>
+                               <th style={{ textAlign: 'left', padding: '6px 4px', color: P.muted, fontWeight: 600 }}>Desc</th>
+                               <th style={{ textAlign: 'left', padding: '6px 4px', color: P.muted, fontWeight: 600 }}>Cant</th>
+                               <th style={{ textAlign: 'right', padding: '6px 4px', color: P.muted, fontWeight: 600 }}>Precio</th>
+                               <th style={{ textAlign: 'right', padding: '6px 4px', color: P.muted, fontWeight: 600 }}>Subt</th>
+                             </tr>
+                           </thead>
+                           <tbody>
+                             {result.items.map((it, i) => (
+                               <tr key={i} style={{ borderBottom: `1px solid ${P.border}44` }}>
+                                 <td style={{ padding: '8px 4px' }}>{it.descripcion}</td>
+                                 <td style={{ padding: '8px 4px' }}>{it.cantidad}</td>
+                                 <td style={{ textAlign: 'right', padding: '8px 4px' }}>{fmtMoney(it.precio_unitario, result.moneda)}</td>
+                                 <td style={{ textAlign: 'right', padding: '8px 4px', fontWeight: 600 }}>{fmtMoney(it.subtotal, result.moneda)}</td>
+                               </tr>
+                             ))}
+                           </tbody>
+                         </table>
+                      </div>
+                    )}
+                  </div>
+
+                  <div style={{ padding: '18px 22px' }}>
+                    <p style={{ fontSize: 11, color: P.muted, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 14 }}>Validaciones contables</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                      {result.checks.map((c, i) => (
+                        <div key={i} style={{ display: 'flex', gap: 12, background: P.bg, border: `1px solid ${P.border}`, padding: '12px 14px', borderRadius: 8 }}>
+                          <div style={{ marginTop: 2 }}><StatusIcon estado={c.estado} /></div>
+                          <div>
+                            <p style={{ fontSize: 13, fontWeight: 600, color: P.text, marginBottom: 2 }}>{c.nombre}</p>
+                            <p style={{ fontSize: 12, color: P.muted, lineHeight: 1.5 }}>{c.detalle}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ background: P.bg, border: `1px solid ${P.border}`, borderTop: 'none', borderRadius: '0 0 12px 12px', padding: '16px 22px' }}>
+                   <button onClick={reset} style={{ width: '100%', background: 'transparent', border: `1px solid ${P.border}`, borderRadius: 8, padding: '10px 14px', color: P.text, fontSize: 13, cursor: 'pointer', fontWeight: 600 }}>
+                     Analizar otra factura
+                   </button>
+                </div>
+              </div>
+            )}
+
           </div>
         </div>
       );
@@ -494,5 +474,4 @@ ${invoiceText}
     ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   </script>
 </body>
-
 </html>
