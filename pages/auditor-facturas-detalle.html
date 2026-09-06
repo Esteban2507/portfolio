@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auditor de Facturas con IA – Detalle del proyecto | Esteban Gabrielloni</title>
+  <meta name="description" content="Agente de IA que extrae los datos de una factura y valida reglas contables automáticamente, con Claude API y React.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Estilo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body>
+  <main id="principal">
+    <section class="detalle-proyecto-section">
+      <div class="container">
+        <a href="../index.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver al portfolio</a>
+
+        <div class="detalle-proyecto">
+          <span class="card-category-badge badge-ia">✦ IA</span>
+          <h1>Auditor de Facturas con IA</h1>
+          <p class="proyecto-info">
+            Un agente que automatiza uno de los procesos más repetitivos de cuentas a pagar: revisar que una
+            factura esté bien cargada antes de que llegue al ERP. Pegás el texto de la factura (copiado de un
+            PDF, un mail o una tabla) y la IA extrae los datos clave y corre validaciones contables en segundos.
+          </p>
+
+          <div class="galeria-imagenes">
+            <img src="../img/ia-auditor.png" alt="Vista previa del Auditor de Facturas con IA" loading="lazy">
+          </div>
+
+          <h2>Qué valida automáticamente</h2>
+          <p class="proyecto-info">
+            Los chequeos de campos obligatorios y coherencia del IVA los evalúa Claude a partir del texto de la
+            factura. La detección de duplicados, el formato de CUIT y el cruce de totales contra la suma de
+            ítems se corren directamente en el código, para que esas validaciones no dependan de la IA.
+          </p>
+          <ul>
+            <li>Campos obligatorios: proveedor, CUIT, número de factura, fecha y total</li>
+            <li>Formato de CUIT válido (11 dígitos)</li>
+            <li>Fecha de emisión no futura</li>
+            <li>Total coincide con la suma de ítems + IVA</li>
+            <li>Detección de facturas duplicadas dentro de la misma sesión</li>
+          </ul>
+
+          <h2>Stack</h2>
+          <div class="lista-herramientas">
+            <span>Claude API</span>
+            <span>React 18</span>
+            <span>Babel Standalone</span>
+            <span>JavaScript</span>
+          </div>
+
+          <div class="card-footer" style="margin-top: 2rem;">
+            <a href="auditor-facturas.html" class="card-btn card-btn-ia">
+              Probar demo en vivo <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
