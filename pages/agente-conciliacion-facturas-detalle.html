@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agente para Conciliación de Facturas | Caso de estudio</title>
+  <meta name="description" content="Caso de estudio anonimizado sobre un agente conversacional que coordina la preparación de reportes y la conciliación automatizada de facturas.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../Estilo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body>
+  <main id="principal">
+    <section class="detalle-proyecto-section visible">
+      <div class="container">
+        <a href="../index.html#proyectos" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver a proyectos</a>
+
+        <article class="detalle-proyecto">
+          <span class="card-category-badge badge-ia">✦ Automatización con IA</span>
+          <h1>Agente para Conciliación de Facturas</h1>
+          <p class="proyecto-info">
+            Caso de estudio profesional anonimizado. Diseñé una solución conversacional para coordinar tareas de
+            preparación y conciliación de reportes de facturas entre sistemas empresariales, y hacer que los resultados
+            y las excepciones sean más fáciles de consultar.
+          </p>
+
+          <h2>El problema</h2>
+          <p>
+            La revisión de facturas requiere comparar datos distribuidos entre reportes operativos y registros del
+            sistema de gestión. Hacer estas verificaciones manualmente puede volver el trabajo repetitivo, dificultar
+            la aplicación consistente de criterios y hacer más lenta la identificación de casos que necesitan atención.
+          </p>
+
+          <h2>La solución</h2>
+          <p>
+            Un agente conversacional recibe la solicitud del usuario y coordina flujos automatizados para preparar
+            los archivos, ejecutar las comparaciones y registrar los resultados. Las reglas explícitas validan campos
+            clave y clasifican coincidencias y excepciones. Los casos con diferencias quedan visibles para revisión
+            humana; el agente no libera pagos ni reemplaza la aprobación del responsable.
+          </p>
+
+          <h2>Arquitectura general</h2>
+          <ol>
+            <li><strong>Interacción:</strong> el usuario solicita una preparación o un control mediante lenguaje natural.</li>
+            <li><strong>Orquestación:</strong> Copilot Studio interpreta la intención y llama al flujo correspondiente.</li>
+            <li><strong>Preparación y control:</strong> Power Automate y Office Scripts procesan reportes y aplican validaciones definidas.</li>
+            <li><strong>Registro:</strong> SharePoint conserva el resultado de la conciliación y el estado de cada caso.</li>
+            <li><strong>Seguimiento:</strong> Power BI presenta los resultados para facilitar su consulta y análisis.</li>
+          </ol>
+
+          <h2>Funcionalidades implementadas</h2>
+          <ul>
+            <li>Recepción guiada de reportes ERP y preparación de sus datos.</li>
+            <li>Conciliación de facturas con controles de identificadores, fechas, monedas e importes.</li>
+            <li>Clasificación de resultados para distinguir coincidencias de casos que requieren revisión.</li>
+            <li>Registro centralizado de resultados para apoyar el seguimiento y evitar reprocesos innecesarios.</li>
+            <li>Respuestas de cierre que resumen el estado de la ejecución y orientan al usuario sobre el siguiente paso.</li>
+          </ul>
+
+          <h2>Tecnologías</h2>
+          <ul class="lista-herramientas">
+            <li>Microsoft Copilot Studio</li>
+            <li>Power Automate</li>
+            <li>Office Scripts</li>
+            <li>SharePoint</li>
+            <li>Power BI</li>
+          </ul>
+
+          <h2>Beneficios operativos</h2>
+          <ul>
+            <li>Reduce tareas manuales repetitivas al coordinar preparación y validaciones en flujos automatizados.</li>
+            <li>Aplica criterios de revisión definidos de manera más uniforme.</li>
+            <li>Centraliza los resultados y facilita localizar excepciones pendientes.</li>
+            <li>Mejora la visibilidad del proceso y permite dedicar la revisión humana a los casos que requieren criterio.</li>
+          </ul>
+          <p>
+            Los beneficios se describen cualitativamente. No se publican métricas de ahorro, precisión ni volumen porque
+            no forman parte de una medición aprobada para este caso de estudio.
+          </p>
+
+          <h2>Alcance de divulgación</h2>
+          <p>
+            Esta descripción omite nombres de organizaciones, procesos internos, datos de proveedores, países,
+            identificadores, enlaces privados, reglas de negocio detalladas y código propietario. Se presenta como una
+            síntesis profesional de alto nivel.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
