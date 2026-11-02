@@ -53,7 +53,7 @@ Two React apps (no build step, via Babel Standalone) that call the Claude API in
 
 | Project | Description | Tech stack | View |
 | :--- | :--- | :---: | :---: |
-| **Payment Control** | Automated cross-referencing of reports between ERPs. 90% reduction in invoice validation errors. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 View](https://esteban2507.github.io/portfolio/pages/Proyecto1.html) |
+| **Payment Control** | Automated comparison of ERP reports to identify discrepancies and support payment review. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 View](https://esteban2507.github.io/portfolio/pages/Proyecto1.html) |
 | **Management KPIs** | Dynamic dashboard for real-time tracking of key operational performance indicators. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 View](https://esteban2507.github.io/portfolio/pages/Proyecto2.html) |
 | **Accounting Validation** | VBA automation that cross-checks FTS, warehouse and customs reports, eliminating closing errors. | ![Excel](https://img.shields.io/badge/-Excel%20VBA-217346) | [🔗 View](https://esteban2507.github.io/portfolio/pages/Proyecto3.html) |
 | **Sales Analysis** | Python-based sales analysis by region and product. Visualizations that surface patterns and support strategic decisions. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 View](https://esteban2507.github.io/portfolio/pages/Proyecto4.html) |

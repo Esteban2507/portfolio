@@ -10,12 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Cargar firmas existentes
     loadSignatures();
 
-    // 2. Generar visitas aleatorias si está vacío
-    if (JSON.parse(localStorage.getItem('portfolio_signatures') || '[]').length === 0) {
-        generateRandomSignatures();
-    }
-
-    // 3. Manejar envío del formulario
+    // Manejar envío del formulario
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -46,29 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function generateRandomSignatures() {
-        const randomVisitors = [
-            { name: "Beñat Alfonso", message: "¡Increíble portfolio! Me encantaron las visualizaciones en Power BI.", sentiment: "🚀 Excelente" },
-            { name: "Amando Rivera", message: "Muy buen trabajo con la automatización de reportes. Inspirador.", sentiment: "✨ Muy Bueno" },
-            { name: "Eugenia Salvador Gómez", message: "La sección de proyectos está muy bien organizada. ¡Genial!", sentiment: "👍 Bueno" },
-            { name: "Lizeth Santamaría", message: "Me interesa mucho tu enfoque en APIs. Saludos.", sentiment: "🤔 Interesante" }
-        ];
-
-        // Generar fechas realistas (últimos 3 días)
-        randomVisitors.forEach((visitor, index) => {
-            const date = new Date();
-            date.setHours(date.getHours() - (index * 4 + Math.random() * 10)); // Espaciar un poco las firmas
-
-            const sig = {
-                id: Date.now() - (index * 1000),
-                ...visitor,
-                date: formatDate(date)
-            };
-            saveSignature(sig);
-            renderSignature(sig);
-        });
-    }
-
     function formatDate(date) {
         return date.toLocaleDateString('es-ES', {
             year: 'numeric',
@@ -88,10 +60,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadSignatures() {
-        const signatures = JSON.parse(localStorage.getItem('portfolio_signatures') || '[]');
+        const oldSignatures = JSON.parse(localStorage.getItem('portfolio_signatures') || '[]');
+        const examples = [
+            ["Beñat Alfonso", "¡Increíble portfolio! Me encantaron las visualizaciones en Power BI."],
+            ["Amando Rivera", "Muy buen trabajo con la automatización de reportes. Inspirador."],
+            ["Eugenia Salvador Gómez", "La sección de proyectos está muy bien organizada. ¡Genial!"],
+            ["Lizeth Santamaría", "Me interesa mucho tu enfoque en APIs. Saludos."]
+        ];
+        const signatures = oldSignatures.filter(sig =>
+            !examples.some(([name, message]) => sig.name === name && sig.message === message)
+        );
+        if (signatures.length !== oldSignatures.length) {
+            localStorage.setItem('portfolio_signatures', JSON.stringify(signatures));
+        }
 
         if (signatures.length === 0) {
-            list.innerHTML = '<div class="loading-signatures">Aún no hay mensajes. ¡Sé el primero en firmar!</div>';
+            list.innerHTML = '<div class="loading-signatures">Aún no hay mensajes guardados en este navegador.</div>';
             return;
         }
 

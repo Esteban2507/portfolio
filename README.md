@@ -53,7 +53,7 @@ Dos aplicaciones React (sin build step, vía Babel Standalone) que consumen la A
 
 | Proyecto | Descripción | Tecnologías | Ver |
 | :--- | :--- | :---: | :---: |
-| **Control de Pagos** | Cruce automatizado de reportes entre ERPs. Reducción del 90% en errores de validación de facturas. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](https://esteban2507.github.io/portfolio/pages/Proyecto1.html) |
+| **Control de Pagos** | Cruce automatizado de reportes entre ERP para detectar discrepancias y facilitar la revisión de pagos. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](https://esteban2507.github.io/portfolio/pages/Proyecto1.html) |
 | **KPIs de Gestión** | Dashboard dinámico de performance operativa con seguimiento en tiempo real de indicadores clave. | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811) | [🔗 Ver](https://esteban2507.github.io/portfolio/pages/Proyecto2.html) |
 | **Validación Contable** | Automatización con VBA que cruza reportes de FTS, Almacén y Aduana eliminando errores en el cierre. | ![Excel](https://img.shields.io/badge/-Excel%20VBA-217346) | [🔗 Ver](https://esteban2507.github.io/portfolio/pages/Proyecto3.html) |
 | **Análisis de Ventas** | Análisis de ventas por región y producto con Python. Visualizaciones que detectan patrones y apoyan decisiones estratégicas. | ![Python](https://img.shields.io/badge/-Python-3776AB) | [🔗 Ver](https://esteban2507.github.io/portfolio/pages/Proyecto4.html) |
