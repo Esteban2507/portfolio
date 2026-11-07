@@ -122,7 +122,7 @@ type puede ser: "bar", "line" o "pie". Máximo 8 puntos. Si no hace falta gráfi
           'anthropic-dangerous-direct-browser-calls': 'true',
         },
         body: JSON.stringify({
-          model: 'claude-3-5-sonnet-20240620',
+          model: MODELS.claude,
           max_tokens: 1000,
           messages: [{ role: 'user', content: buildPrompt(cols, rows, preview, question) }],
         }),
@@ -135,19 +135,19 @@ type puede ser: "bar", "line" o "pie". Máximo 8 puntos. Si no hace falta gráfi
     async function askGemini(apiKey, rows, cols, question) {
       const preview = rows.slice(0, 60);
       const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+          geminiUrl(await resolveGeminiModel(apiKey)),
         {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: geminiHeaders(apiKey),
           body: JSON.stringify({
             contents: [{ parts: [{ text: buildPrompt(cols, rows, preview, question) }] }],
-            generationConfig: { maxOutputTokens: 1000 },
+            generationConfig: { maxOutputTokens: 8192 },
           }),
         }
       );
       const data = await res.json();
       if (data.error) throw new Error(data.error.message || 'Error de API');
-      return data.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+      return (data.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('');
     }
 
     async function askGroq(apiKey, rows, cols, question) {
@@ -156,7 +156,7 @@ type puede ser: "bar", "line" o "pie". Máximo 8 puntos. Si no hace falta gráfi
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
         body: JSON.stringify({
-          model: 'llama-3.1-8b-instant',
+          model: MODELS.groq,
           messages: [{ role: 'user', content: buildPrompt(cols, rows, preview, question) }],
         }),
       });
@@ -171,31 +171,64 @@ type puede ser: "bar", "line" o "pie". Máximo 8 puntos. Si no hace falta gráfi
       return askClaude(apiKey, rows, cols, question);
     }
 
+    // ── Modelos y helpers de proveedores ─────────────────────────────
+    // Los IDs de modelo se retiran seguido: mantenerlos SOLO acá.
+    const MODELS = {
+      claude: 'claude-sonnet-4-6',
+      groq: 'openai/gpt-oss-120b',
+      geminiPreferred: ['gemini-2.5-flash', 'gemini-2.5-flash-lite'],
+    };
+
+    async function readJson(res) {
+      try { return await res.json(); } catch { return {}; }
+    }
+
+    // Gemini: el modelo se elige de la lista real de la clave (no se asume ninguno).
+    // Sirve a la vez para validar la clave, sin gastar cuota ni depender de un modelo fijo.
+    let geminiModelCache = null;
+    async function resolveGeminiModel(key) {
+      if (geminiModelCache) return geminiModelCache;
+      const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models?pageSize=200', {
+        headers: { 'x-goog-api-key': key },
+      });
+      const data = await readJson(res);
+      if (!res.ok || data.error) throw new Error(data.error?.message || `Gemini respondió ${res.status}`);
+      const names = (data.models || [])
+        .filter(m => (m.supportedGenerationMethods || []).includes('generateContent'))
+        .map(m => m.name.replace('models/', ''));
+      const flash = names
+        .filter(n => /^gemini-\d+(\.\d+)?-flash$/.test(n))
+        .sort((a, b) => parseFloat(b.split('-')[1]) - parseFloat(a.split('-')[1]));
+      geminiModelCache = MODELS.geminiPreferred.find(m => names.includes(m)) || flash[0] || names[0];
+      if (!geminiModelCache) throw new Error('Tu clave no tiene modelos de Gemini disponibles para generar texto.');
+      return geminiModelCache;
+    }
+
+    const geminiUrl = model => `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+    const geminiHeaders = key => ({ 'Content-Type': 'application/json', 'x-goog-api-key': key });
+
+    function explainKeyError(e) {
+      if (e instanceof TypeError) return 'No se pudo conectar con el proveedor. Revisá tu conexión o si alguna extensión/bloqueador impide la llamada.';
+      return `No se pudo validar la clave: ${e.message || 'error desconocido'}`;
+    }
+
     async function testKey(provider, key) {
       if (provider === 'claude') {
         const res = await fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-calls': 'true' },
-          body: JSON.stringify({ model: 'claude-3-5-sonnet-20240620', max_tokens: 10, messages: [{ role: 'user', content: 'test' }] }),
+          body: JSON.stringify({ model: MODELS.claude, max_tokens: 10, messages: [{ role: 'user', content: 'test' }] }),
         });
-        const data = await res.json();
-        if (data.error) throw new Error(data.error.message);
+        const data = await readJson(res);
+        if (!res.ok || data.error) throw new Error(data.error?.message || `Anthropic respondió ${res.status}`);
       } else if (provider === 'gemini') {
-        const res = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,
-          { method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ contents: [{ parts: [{ text: 'test' }] }], generationConfig: { maxOutputTokens: 5 } }) }
-        );
-        const data = await res.json();
-        if (data.error) throw new Error(data.error.message);
+        await resolveGeminiModel(key);
       } else if (provider === 'groq') {
-        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
-          body: JSON.stringify({ model: 'llama-3.1-8b-instant', max_tokens: 5, messages: [{ role: 'user', content: 'test' }] })
+        const res = await fetch('https://api.groq.com/openai/v1/models', {
+          headers: { 'Authorization': `Bearer ${key}` },
         });
-        const data = await res.json();
-        if (data.error) throw new Error(data.error.message);
+        const data = await readJson(res);
+        if (!res.ok || data.error) throw new Error(data.error?.message || `Groq respondió ${res.status}`);
       }
     }
 
@@ -297,7 +330,8 @@ type puede ser: "bar", "line" o "pie". Máximo 8 puntos. Si no hace falta gráfi
           await testKey(selectedProvider, key.trim());
           onConfirm({ provider: selectedProvider, apiKey: key.trim() });
         } catch (e) {
-          setErr('No se pudo validar la clave. Verificá que sea correcta y con saldo disponible.');
+          console.error('[validación de clave]', e);
+          setErr(explainKeyError(e));
           setTesting(false);
         }
       }
@@ -305,7 +339,7 @@ type puede ser: "bar", "line" o "pie". Máximo 8 puntos. Si no hace falta gráfi
       return (
         <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
           <div style={{ maxWidth: 460, width: '100%' }}>
-            <a href="index.html" style={{ color: P.muted, fontSize: 13, textDecoration: 'none', display: 'block', marginBottom: 40 }}>← Volver al portfolio</a>
+            <a href="../index.html" style={{ color: P.muted, fontSize: 13, textDecoration: 'none', display: 'block', marginBottom: 40 }}>← Volver al portfolio</a>
             <div style={{ width: 48, height: 48, borderRadius: 12, background: P.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, marginBottom: 20, color: '#000', fontWeight: 700 }}>✦</div>
             <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 26, fontWeight: 700, marginBottom: 8 }}>Explorador de Datos</h1>
             <p style={{ color: P.muted, fontSize: 14, lineHeight: 1.65, marginBottom: 28 }}>Hacé preguntas en español sobre tus datos y la IA responde con análisis y gráficos. Elegí tu proveedor de IA.</p>
@@ -409,7 +443,7 @@ type puede ser: "bar", "line" o "pie". Máximo 8 puntos. Si no hace falta gráfi
       return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
           <header style={{ borderBottom: `1px solid ${P.border}`, padding: '12px 20px', display: 'flex', alignItems: 'center', gap: 12, background: P.surface, flexShrink: 0 }}>
-            <a href="index.html" style={{ color: P.muted, fontSize: 12, textDecoration: 'none', marginRight: 4 }}>←</a>
+            <a href="../index.html" style={{ color: P.muted, fontSize: 12, textDecoration: 'none', marginRight: 4 }}>←</a>
             <div style={{ width: 30, height: 30, borderRadius: 8, background: P.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 700, color: '#000', flexShrink: 0 }}>✦</div>
             <div>
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, fontWeight: 700, lineHeight: 1 }}>Explorador de Datos con IA</h1>
