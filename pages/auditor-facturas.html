@@ -25,6 +25,7 @@
     .report-grid{display:grid;grid-template-columns:1fr 1.3fr}
     @media(max-width:640px){.report-grid{grid-template-columns:1fr}}
   </style>
+  <link rel="stylesheet" href="../project-credit.css">
 </head>
 <body>
   <div id="root"></div>
@@ -507,5 +508,8 @@ ${invoiceText}
 
     ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   </script>
+  <footer class="project-credit-footer">
+    <p class="project-credit">© 2026 Auditor de Facturas con IA <span aria-hidden="true">·</span> Desarrollado por <strong>Esteban Gabrielloni</strong></p>
+  </footer>
 </body>
 </html>

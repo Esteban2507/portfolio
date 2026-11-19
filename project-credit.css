@@ -1,0 +1,23 @@
+.project-credit {
+  margin: 0.85rem 0 0;
+  color: var(--color-text-muted, #a1a1aa);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.project-credit strong {
+  color: var(--color-text-main, #e8e8ec);
+  font-weight: 600;
+}
+
+footer.project-credit-footer {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem 1.5rem;
+  border-top: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+}
+
+.project-credit-footer .project-credit {
+  margin: 0;
+}
