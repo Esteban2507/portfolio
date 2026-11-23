@@ -1,119 +1,118 @@
-/**
- * Guestbook Logic - Portfolio 2026
- * Handles persistence via localStorage and dynamic rendering.
- */
-
+/** Save guestbook entries in this browser and announce each submission result. */
 document.addEventListener('DOMContentLoaded', () => {
+    const storageKey = 'portfolio_signatures';
     const form = document.getElementById('guestbook-form');
     const list = document.getElementById('signatures-list');
+    const nameField = document.getElementById('gb-name');
+    const messageField = document.getElementById('gb-message');
+    const sentimentField = document.getElementById('gb-sentiment');
+    const submit = form?.querySelector('[type="submit"]');
 
-    // 1. Cargar firmas existentes
-    loadSignatures();
+    if (!form || !list || !nameField || !messageField || !sentimentField || !submit) return;
 
-    // Manejar envío del formulario
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('gb-name').value.trim();
-            const message = document.getElementById('gb-message').value.trim();
-            const sentiment = document.getElementById('gb-sentiment').value;
-
-            if (name && message) {
-                const newSignature = {
-                    id: Date.now(),
-                    name,
-                    message,
-                    sentiment,
-                    date: formatDate(new Date())
-                };
-
-                saveSignature(newSignature);
-                form.reset();
-                renderSignature(newSignature, true);
-
-                // Scroll suave a la nueva firma
-                const firstCard = list.firstElementChild;
-                if (firstCard) {
-                    firstCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
-        });
+    let status = document.getElementById('guestbook-status');
+    if (!status) {
+        status = document.createElement('p');
+        status.setAttribute('role', 'status');
+        list.before(status);
     }
 
-    function formatDate(date) {
-        return date.toLocaleDateString('es-ES', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-    }
+    // Earlier versions saved sample entries alongside real local signatures.
+    const starterEntries = new Map([
+        ['Beñat Alfonso', '¡Increíble portfolio! Me encantaron las visualizaciones en Power BI.'],
+        ['Amando Rivera', 'Muy buen trabajo con la automatización de reportes. Inspirador.'],
+        ['Eugenia Salvador Gómez', 'La sección de proyectos está muy bien organizada. ¡Genial!'],
+        ['Lizeth Santamaría', 'Me interesa mucho tu enfoque en APIs. Saludos.']
+    ]);
 
-    function saveSignature(sig) {
-        const signatures = JSON.parse(localStorage.getItem('portfolio_signatures') || '[]');
-        signatures.unshift(sig); // Agregar al inicio
-        // Evitar duplicados por ID si se llama varias veces por error
-        const uniqueSignatures = Array.from(new Map(signatures.map(item => [item.id, item])).values());
-        localStorage.setItem('portfolio_signatures', JSON.stringify(uniqueSignatures));
-    }
+    function readSignatures() {
+        const stored = JSON.parse(localStorage.getItem(storageKey) ?? '[]');
+        if (!Array.isArray(stored)) throw new Error('Invalid guestbook data.');
 
-    function loadSignatures() {
-        const oldSignatures = JSON.parse(localStorage.getItem('portfolio_signatures') || '[]');
-        const examples = [
-            ["Beñat Alfonso", "¡Increíble portfolio! Me encantaron las visualizaciones en Power BI."],
-            ["Amando Rivera", "Muy buen trabajo con la automatización de reportes. Inspirador."],
-            ["Eugenia Salvador Gómez", "La sección de proyectos está muy bien organizada. ¡Genial!"],
-            ["Lizeth Santamaría", "Me interesa mucho tu enfoque en APIs. Saludos."]
-        ];
-        const signatures = oldSignatures.filter(sig =>
-            !examples.some(([name, message]) => sig.name === name && sig.message === message)
+        return stored.filter(entry =>
+            typeof entry?.name === 'string' &&
+            typeof entry.message === 'string' &&
+            starterEntries.get(entry.name) !== entry.message
         );
-        if (signatures.length !== oldSignatures.length) {
-            localStorage.setItem('portfolio_signatures', JSON.stringify(signatures));
-        }
+    }
 
-        if (signatures.length === 0) {
-            list.innerHTML = '<div class="loading-signatures">Aún no hay mensajes guardados en este navegador.</div>';
+    function textElement(tag, className, value) {
+        const element = document.createElement(tag);
+        element.className = className;
+        element.textContent = value;
+        return element;
+    }
+
+    function renderSignature(entry) {
+        const card = document.createElement('article');
+        card.className = 'signature-card';
+        const header = document.createElement('div');
+        header.className = 'signature-header';
+        header.append(
+            textElement('strong', 'signature-name', entry.name),
+            textElement('span', 'signature-sentiment', entry.sentiment || '')
+        );
+        card.append(
+            header,
+            textElement('p', 'signature-body', entry.message),
+            textElement('span', 'signature-date', entry.date || '')
+        );
+        return card;
+    }
+
+    function renderList(entries) {
+        if (entries.length === 0) {
+            list.replaceChildren(textElement('p', 'loading-signatures', 'No notes saved in this browser yet.'));
             return;
         }
 
-        list.innerHTML = ''; // Limpiar cargando
-        signatures.forEach(sig => renderSignature(sig));
+        const cards = document.createDocumentFragment();
+        entries.forEach(entry => cards.append(renderSignature(entry)));
+        list.replaceChildren(cards);
     }
 
-    function renderSignature(sig, isNew = false) {
-        // Eliminar mensaje de "no hay firmas" si existe
-        const emptyMsg = list.querySelector('.loading-signatures');
-        if (emptyMsg) emptyMsg.remove();
+    try {
+        renderList(readSignatures());
+        submit.disabled = false;
+    } catch {
+        list.replaceChildren();
+        status.textContent = 'Guestbook notes could not be read from this browser.';
+        submit.disabled = true;
+    }
 
-        const card = document.createElement('div');
-        card.className = 'signature-card';
-        if (isNew) card.style.borderColor = 'var(--color-accent)';
+    form.addEventListener('submit', event => {
+        event.preventDefault();
 
-        card.innerHTML = `
-            <div class="signature-header">
-                <span class="signature-name">${escapeHTML(sig.name)}</span>
-                <span class="signature-sentiment">${sig.sentiment}</span>
-            </div>
-            <div class="signature-body">
-                ${escapeHTML(sig.message)}
-            </div>
-            <span class="signature-date">${sig.date}</span>
-        `;
-
-        if (isNew) {
-            list.prepend(card);
-        } else {
-            list.appendChild(card);
+        const name = nameField.value.trim();
+        const message = messageField.value.trim();
+        if (!name || !message) {
+            status.textContent = 'Enter your name and a note to continue.';
+            (!name ? nameField : messageField).focus();
+            return;
         }
-    }
 
-    function escapeHTML(str) {
-        const p = document.createElement('p');
-        p.textContent = str;
-        return p.innerHTML;
-    }
+        const entry = {
+            id: Date.now(),
+            name,
+            message,
+            sentiment: sentimentField.value,
+            date: new Date().toLocaleString(document.documentElement.lang || 'en', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            })
+        };
+
+        try {
+            const entries = [entry, ...readSignatures().filter(previous => previous.id !== entry.id)];
+            localStorage.setItem(storageKey, JSON.stringify(entries));
+            renderList(entries);
+            form.reset();
+            status.textContent = 'Your note was saved in this browser.';
+        } catch {
+            status.textContent = 'Your note could not be saved. Browser storage may be unavailable or full.';
+        }
+    });
 });
-

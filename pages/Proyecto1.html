@@ -1,85 +1,133 @@
-<!DOCTYPE html>
-<html lang="es">
-
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Control de Pagos - Portfolio Esteban Gabrielloni</title>
-
-    <!-- Fuentes y Estilos -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../Estilo.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-D0D4EQQWC4');
-    </script>
-  <link rel="stylesheet" href="../project-credit.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment Control Automation | Esteban Gabrielloni</title>
+  <meta name="description" content="A Power BI control that compares payment records with supporting reports and brings discrepancies into view.">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="canonical" href="https://esteban2507.github.io/portfolio/pages/Proyecto1.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Payment Control Automation | Esteban Gabrielloni">
+  <meta property="og:description" content="A Power BI control that compares payment records with supporting reports and brings discrepancies into view.">
+  <meta property="og:url" content="https://esteban2507.github.io/portfolio/pages/Proyecto1.html">
+  <link rel="icon" href="../img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../Estilo.css">
+  <link rel="stylesheet" href="project-pages.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-D0D4EQQWC4');
+  </script>
 </head>
+<body class="project-page project-page--finance">
+  <a class="skip-link" href="#principal">Skip to content</a>
 
-<body>
+  <header class="project-page__header">
+    <div class="shell project-page__navigation">
+      <a class="project-page__brand" href="../index.html">Esteban G.</a>
+      <nav aria-label="Project navigation">
+        <a class="project-page__back" href="../index.html#proyectos"><span aria-hidden="true">←</span> Back to projects</a>
+      </nav>
+    </div>
+  </header>
 
-    <header>
-        <div class="container">
-            <div class="perfil">
-                <a href="../index.html" class="btn-volver">
-                    <i class="fas fa-arrow-left"></i> Volver al portfolio
-                </a>
-                <h1>Control de Pagos</h1>
-            </div>
+  <main id="principal" tabindex="-1">
+    <div class="project-page__hero">
+      <div class="shell">
+        <div class="project-page__context">
+          <span class="project-page__category">Finance Controls</span>
+          <span>Anonymized case study</span>
         </div>
-    </header>
+        <h1>Payment Control Automation</h1>
+        <p>A Power BI control that compares payment records with supporting reports and brings discrepancies into view.</p>
+      </div>
+    </div>
 
-    <main class="container">
-        <section class="detalle-proyecto">
-
-            <!-- Galería de Imágenes -->
-            <div class="galeria-imagenes">
-                <img src="../img/proyecto1_1.png" alt="Dashboard Power BI - Vista General" loading="lazy">
-                <img src="../img/proyecto1_2.png" alt="Dashboard Power BI - Detalle de Facturas" loading="lazy">
-                <img src="../img/proyecto1_3.png" alt="Dashboard Power BI - Análisis de Pagos" loading="lazy">
-            </div>
-
-            <h2>Descripción del Proyecto</h2>
-            <p>Este dashboard fue creado en Power BI para comparar las facturas ingresadas en distintos sistemas
-                contables. El objetivo principal es asegurar que los pagos se realicen correctamente, evitando
-                duplicidades o montos erróneos.</p>
-
-            <h2>Herramientas Utilizadas</h2>
-            <ul class="lista-herramientas">
-                <li>Power BI</li>
-                <li>Excel (fuentes de datos)</li>
-                <li>Power Query</li>
-                <li>DAX</li>
-            </ul>
-
-            <h2>Impacto</h2>
-            <p>El cruce automatizado facilita la detección de discrepancias y duplicados, y reduce la revisión visual manual durante la validación de pagos.</p>
+    <div class="shell project-page__body">
+      <article class="project-page__story" aria-label="Project overview">
+        <section>
+          <h2>Problem</h2>
+          <p>
+            Before approval, I checked that the payee, issue date, document number, currency and amount
+            matched the supporting information. Comparing records visually across sources took time and made
+            consistent checks harder to repeat.
+          </p>
         </section>
-    </main>
+        <section>
+          <h2>Solution</h2>
+          <p>
+            I built a Power BI dashboard that prepares the source files, compares the records and highlights
+            discrepancies or possible duplicates for review.
+          </p>
+        </section>
+        <section>
+          <h2>Technology</h2>
+          <ul class="project-page__tools">
+            <li>Power BI</li>
+            <li>Power Query</li>
+            <li>DAX</li>
+            <li>Excel</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Result</h2>
+          <p>
+            The dashboard brings mismatches into one review view. I can verify the flagged differences and
+            use the supporting documentation to decide how to proceed.
+          </p>
+        </section>
+        <section>
+          <h2>Impact</h2>
+          <p class="project-page__metric">
+            <strong>~60%</strong>
+            <span>Less time spent on the payment checks previously done by visual comparison</span>
+          </p>
+          <p>
+            This is my estimate for the payment control workflow. The approver still reviews the evidence
+            and makes the payment decision.
+          </p>
+        </section>
+      </article>
 
-    <footer>
-        <p>
-            📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
-            🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank">LinkedIn</a> |
-            <i class="fab fa-github"></i> <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md"
-                target="_blank">GitHub</a>
-        </p>
-      <p class="project-credit">© 2026 Control de Pagos <span aria-hidden="true">·</span> Desarrollado por <strong>Esteban Gabrielloni</strong></p>
-    </footer>
+      <figure class="project-page__figure">
+        <figcaption>Conceptual payment control workflow</figcaption>
+        <ol class="project-page__flow">
+          <li>
+            <strong>Prepare source records</strong>
+            <span>Bring payment records and reference reports into a common structure.</span>
+          </li>
+          <li>
+            <strong>Apply comparison rules</strong>
+            <span>Check payee, date, document, currency and amount.</span>
+          </li>
+          <li>
+            <strong>Review flagged differences</strong>
+            <span>Follow up on mismatches or possible duplicates before approval.</span>
+          </li>
+        </ol>
+      </figure>
+    </div>
 
+    <div class="shell project-page__continuation">
+      <a class="project-page__back" href="../index.html#proyectos"><span aria-hidden="true">←</span> Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="project-page__footer">
+    <div class="shell project-page__footer-inner">
+      <nav aria-label="Contact links">
+        <a href="mailto:egabrielloni@yahoo.com.ar">Email</a>
+        <a href="https://www.linkedin.com/in/egabrielloni">LinkedIn <span class="external-arrow" aria-hidden="true"></span></a>
+        <a href="https://github.com/Esteban2507">GitHub <span class="external-arrow" aria-hidden="true"></span></a>
+      </nav>
+      <p class="site-credit project-page__credit">
+        © 2026 Payment Control Automation <span aria-hidden="true">·</span>
+        <span lang="es">Desarrollado por <strong>Esteban Gabrielloni</strong></span>
+      </p>
+    </div>
+  </footer>
 </body>
-
 </html>

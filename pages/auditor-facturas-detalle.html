@@ -1,74 +1,124 @@
-<!DOCTYPE html>
-<html lang="es">
-
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Auditor de Facturas con IA – Detalle del proyecto | Esteban Gabrielloni</title>
-  <meta name="description" content="Agente de IA que extrae los datos de una factura y valida reglas contables automáticamente, con Claude API y React.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>AI Invoice Auditor | Esteban Gabrielloni</title>
+  <meta name="description" content="A Spanish-language demo that extracts fields from sample invoice text and flags common issues for review.">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="canonical" href="https://esteban2507.github.io/portfolio/pages/auditor-facturas-detalle.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AI Invoice Auditor | Esteban Gabrielloni">
+  <meta property="og:description" content="A Spanish-language demo that extracts fields from sample invoice text and flags common issues for review.">
+  <meta property="og:url" content="https://esteban2507.github.io/portfolio/pages/auditor-facturas-detalle.html">
+  <link rel="icon" href="../img/favicon.png" type="image/png">
   <link rel="stylesheet" href="../Estilo.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="../project-credit.css">
+  <link rel="stylesheet" href="project-pages.css">
 </head>
+<body class="project-page project-page--ai">
+  <a class="skip-link" href="#principal">Skip to content</a>
 
-<body>
-  <main id="principal">
-    <section class="detalle-proyecto-section visible">
-      <div class="container">
-        <a href="../index.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver al portfolio</a>
+  <header class="project-page__header">
+    <div class="shell project-page__navigation">
+      <a class="project-page__brand" href="../index.html">Esteban G.</a>
+      <nav aria-label="Project navigation">
+        <a class="project-page__back" href="../index.html#proyectos"><span aria-hidden="true">←</span> Back to projects</a>
+      </nav>
+    </div>
+  </header>
 
-        <div class="detalle-proyecto">
-          <span class="card-category-badge badge-ia">✦ IA</span>
-          <h1>Auditor de Facturas con IA</h1>
-          <p class="proyecto-info">
-            Un agente que automatiza uno de los procesos más repetitivos de cuentas a pagar: revisar que una
-            factura esté bien cargada antes de que llegue al ERP. Pegás el texto de la factura (copiado de un
-            PDF, un mail o una tabla) y la IA extrae los datos clave y corre validaciones contables en segundos.
-          </p>
-
-          <div class="galeria-imagenes">
-            <img src="../img/ia-auditor.png" alt="Vista previa del Auditor de Facturas con IA" loading="lazy">
-          </div>
-
-          <h2>Qué valida automáticamente</h2>
-          <p class="proyecto-info">
-            Los chequeos de campos obligatorios y coherencia del IVA los evalúa Claude a partir del texto de la
-            factura. La detección de duplicados, el formato de CUIT y el cruce de totales contra la suma de
-            ítems se corren directamente en el código, para que esas validaciones no dependan de la IA.
-          </p>
-          <ul>
-            <li>Campos obligatorios: proveedor, CUIT, número de factura, fecha y total</li>
-            <li>Formato de CUIT válido (11 dígitos)</li>
-            <li>Fecha de emisión no futura</li>
-            <li>Total coincide con la suma de ítems + IVA</li>
-            <li>Detección de facturas duplicadas dentro de la misma sesión</li>
-          </ul>
-
-          <h2>Stack</h2>
-          <div class="lista-herramientas">
-            <span>Claude API</span>
-            <span>React 18</span>
-            <span>Babel Standalone</span>
-            <span>JavaScript</span>
-          </div>
-
-          <div class="card-footer" style="margin-top: 2rem;">
-            <a href="auditor-facturas.html" class="card-btn card-btn-ia">
-              Probar demo en vivo <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
+  <main id="principal" tabindex="-1">
+    <div class="project-page__hero">
+      <div class="shell">
+        <div class="project-page__context">
+          <span class="project-page__category">Artificial Intelligence</span>
+          <span>Interactive prototype</span>
         </div>
+        <h1>AI Invoice Auditor</h1>
+        <p>A Spanish-language demo that extracts fields from sample invoice text and flags common issues for review.</p>
       </div>
-    </section>
+    </div>
+
+    <div class="shell project-page__body">
+      <article class="project-page__story" aria-label="Project overview">
+        <section>
+          <h2>Problem</h2>
+          <p>
+            When invoice details come from unstructured text, checking required fields and totals takes
+            extra preparation.
+          </p>
+        </section>
+        <section>
+          <h2>Solution</h2>
+          <p>
+            The demo uses a selected AI provider to extract information from pasted text. JavaScript checks
+            the tax ID format, compares line items against the total and looks for duplicates within the
+            session.
+          </p>
+        </section>
+        <section>
+          <h2>Technology</h2>
+          <ul class="project-page__tools">
+            <li>React</li>
+            <li>JavaScript</li>
+            <li>AI provider APIs</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Result</h2>
+          <p>
+            It presents the extracted fields with individual check results, so a reviewer can inspect issues
+            before using the output.
+          </p>
+        </section>
+      </article>
+
+      <figure class="project-page__figure">
+        <figcaption>Conceptual invoice demo</figcaption>
+        <ol class="project-page__flow">
+          <li>
+            <strong>Paste synthetic invoice text</strong>
+            <span>Use example text in the Spanish-language interface.</span>
+          </li>
+          <li>
+            <strong>Extract and validate</strong>
+            <span>The AI provider extracts fields and JavaScript applies the programmed checks.</span>
+          </li>
+          <li>
+            <strong>Review the flags</strong>
+            <span>Look through the results alongside the source example.</span>
+          </li>
+        </ol>
+      </figure>
+    </div>
+
+    <div class="shell project-page__continuation">
+      <section class="project-page__demo" aria-labelledby="demo-heading">
+        <h2 id="demo-heading">Try the demo</h2>
+        <p id="demo-requirements">
+          The demo is in Spanish and requires an API key from your chosen provider.
+          The demo sends the pasted invoice text to the AI provider you select. Use synthetic or public examples.
+        </p>
+        <a class="button button--primary" href="auditor-facturas.html" aria-describedby="demo-requirements">
+          Open Spanish-language demo <span aria-hidden="true">→</span>
+        </a>
+      </section>
+      <a class="project-page__back" href="../index.html#proyectos"><span aria-hidden="true">←</span> Back to projects</a>
+    </div>
   </main>
-  <footer class="project-credit-footer">
-    <p class="project-credit">© 2026 Auditor de Facturas con IA <span aria-hidden="true">·</span> Desarrollado por <strong>Esteban Gabrielloni</strong></p>
+
+  <footer class="project-page__footer">
+    <div class="shell project-page__footer-inner">
+      <nav aria-label="Contact links">
+        <a href="mailto:egabrielloni@yahoo.com.ar">Email</a>
+        <a href="https://www.linkedin.com/in/egabrielloni">LinkedIn <span class="external-arrow" aria-hidden="true"></span></a>
+        <a href="https://github.com/Esteban2507">GitHub <span class="external-arrow" aria-hidden="true"></span></a>
+      </nav>
+      <p class="site-credit project-page__credit">
+        © 2026 AI Invoice Auditor <span aria-hidden="true">·</span>
+        <span lang="es">Desarrollado por <strong>Esteban Gabrielloni</strong></span>
+      </p>
+    </div>
   </footer>
 </body>
-
 </html>

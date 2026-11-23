@@ -1,81 +1,121 @@
-<!DOCTYPE html>
-<html lang="es">
-
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KPIs de Gestión - Portfolio Esteban Gabrielloni</title>
-
-    <!-- Fuentes y Estilos -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../Estilo.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-D0D4EQQWC4');
-    </script>
-  <link rel="stylesheet" href="../project-credit.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operations KPIs | Esteban Gabrielloni</title>
+  <meta name="description" content="A Power BI dashboard for tracking operational indicators in invoice intake.">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="canonical" href="https://esteban2507.github.io/portfolio/pages/Proyecto2.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Operations KPIs | Esteban Gabrielloni">
+  <meta property="og:description" content="A Power BI dashboard for tracking operational indicators in invoice intake.">
+  <meta property="og:url" content="https://esteban2507.github.io/portfolio/pages/Proyecto2.html">
+  <link rel="icon" href="../img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../Estilo.css">
+  <link rel="stylesheet" href="project-pages.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-D0D4EQQWC4');
+  </script>
 </head>
+<body class="project-page project-page--data">
+  <a class="skip-link" href="#principal">Skip to content</a>
 
-<body>
+  <header class="project-page__header">
+    <div class="shell project-page__navigation">
+      <a class="project-page__brand" href="../index.html">Esteban G.</a>
+      <nav aria-label="Project navigation">
+        <a class="project-page__back" href="../index.html#proyectos"><span aria-hidden="true">←</span> Back to projects</a>
+      </nav>
+    </div>
+  </header>
 
-    <header>
-        <div class="container">
-            <div class="perfil">
-                <a href="../index.html" class="btn-volver">
-                    <i class="fas fa-arrow-left"></i> Volver al portfolio
-                </a>
-                <h1>KPIs de Gestión</h1>
-            </div>
+  <main id="principal" tabindex="-1">
+    <div class="project-page__hero">
+      <div class="shell">
+        <div class="project-page__context">
+          <span class="project-page__category">Data &amp; Analytics</span>
+          <span>Portfolio project</span>
         </div>
-    </header>
+        <h1>Operations KPIs</h1>
+        <p>A Power BI dashboard for tracking operational indicators in invoice intake.</p>
+      </div>
+    </div>
 
-    <main class="container">
-        <section class="detalle-proyecto">
-
-            <!-- Galería de Imágenes -->
-            <div class="galeria-imagenes">
-                <img src="../img/proyecto2_1.png" alt="Dashboard Power BI - KPIs de Gestión" loading="lazy">
-                <img src="../img/proyecto2.png" alt="Dashboard Power BI - KPIs de Gestión" loading="lazy">
-            </div>
-
-            <h2>Descripción del Proyecto</h2>
-            <p>Este dashboard fue creado en Power BI para visualizar los indicadores claves de desempeño para las áreas
-                de recepción de facturas de proveedores, con alertas y filtros dinámicos.</p>
-
-            <h2>Herramientas Utilizadas</h2>
-            <ul class="lista-herramientas">
-                <li>Power BI</li>
-                <li>Excel (fuentes de datos)</li>
-                <li>Power Query</li>
-                <li>DAX</li>
-            </ul>
-
+    <div class="shell project-page__body">
+      <article class="project-page__story" aria-label="Project overview">
+        <section>
+          <h2>Problem</h2>
+          <p>
+            Invoice intake teams needed a single view for looking at operational indicators and narrowing
+            the data to the part of the process they wanted to review.
+          </p>
         </section>
-    </main>
+        <section>
+          <h2>Solution</h2>
+          <p>
+            I built a Power BI dashboard using Excel inputs, Power Query and DAX. Filters let viewers change
+            their scope and indicators draw attention to cases that may need a closer look.
+          </p>
+        </section>
+        <section>
+          <h2>Technology</h2>
+          <ul class="project-page__tools">
+            <li>Power BI</li>
+            <li>Power Query</li>
+            <li>DAX</li>
+            <li>Excel</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Result</h2>
+          <p>
+            The dashboard groups indicators in one view and gives reviewers filters for exploring the
+            underlying activity.
+          </p>
+        </section>
+      </article>
 
-    <footer>
-        <p>
-            📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
-            🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank">LinkedIn</a> |
-            <i class="fab fa-github"></i> <a href="https://github.com/Esteban2507/portfolio/blob/main/README.md"
-                target="_blank">GitHub</a>
-        </p>
-      <p class="project-credit">© 2026 KPIs de Gestión <span aria-hidden="true">·</span> Desarrollado por <strong>Esteban Gabrielloni</strong></p>
-    </footer>
+      <figure class="project-page__figure">
+        <figcaption>Conceptual dashboard interaction</figcaption>
+        <ol class="project-page__flow">
+          <li>
+            <strong>Choose a scope</strong>
+            <span>Filter the operational records for the review.</span>
+          </li>
+          <li>
+            <strong>Read the indicators</strong>
+            <span>Compare the relevant intake KPIs in one view.</span>
+          </li>
+          <li>
+            <strong>Investigate exceptions</strong>
+            <span>Use the alerts to identify which records to explore.</span>
+          </li>
+        </ol>
+      </figure>
+    </div>
 
+    <div class="shell project-page__continuation">
+      <a class="project-page__back" href="../index.html#proyectos"><span aria-hidden="true">←</span> Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="project-page__footer">
+    <div class="shell project-page__footer-inner">
+      <nav aria-label="Contact links">
+        <a href="mailto:egabrielloni@yahoo.com.ar">Email</a>
+        <a href="https://www.linkedin.com/in/egabrielloni">LinkedIn <span class="external-arrow" aria-hidden="true"></span></a>
+        <a href="https://github.com/Esteban2507">GitHub <span class="external-arrow" aria-hidden="true"></span></a>
+      </nav>
+      <p class="site-credit project-page__credit">
+        © 2026 Operations KPIs <span aria-hidden="true">·</span>
+        <span lang="es">Desarrollado por <strong>Esteban Gabrielloni</strong></span>
+      </p>
+    </div>
+  </footer>
 </body>
-
 </html>

@@ -1,127 +1,229 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proyectos - Carrusel</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Project Carousel | Esteban Gabrielloni</title>
+  <link rel="stylesheet" href="Estilo.css">
+  <link rel="stylesheet" href="project-credit.css">
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
-      color: #fff;
-      margin: 0;
-      padding: 2rem;
+    .archive-shell {
+      width: min(72rem, calc(100% - 2rem));
+      margin-inline: auto;
     }
 
-    h2 {
-      text-align: center;
+    .archive-header {
+      padding-block: 3rem;
+      background: #0b1220;
+      color: #f8fafc;
+    }
+
+    .archive-header h1 {
+      margin: 1rem 0 0.5rem;
+      font-size: clamp(2rem, 5vw, 3.75rem);
+    }
+
+    .archive-header p {
+      margin: 0;
+      color: #cbd5e1;
+    }
+
+    .archive-header a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: #67e8f9;
+    }
+
+    .archive-projects {
+      padding-block: 3rem;
+    }
+
+    .archive-track {
+      --gap: 1rem;
+
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: min(86%, 25rem);
+      gap: var(--gap);
+      overflow-x: auto;
+      padding: 0.3rem 0.25rem 1rem;
+      margin: 0;
+      list-style: none;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: 0.25rem;
+    }
+
+    .archive-card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.875rem;
+      background: #fff;
+      color: #0f172a;
+      scroll-snap-align: start;
+    }
+
+    .archive-card strong {
+      width: fit-content;
+      color: #334155;
+      font-size: 0.875rem;
+    }
+
+    .archive-card h2 {
+      margin: 0.75rem 0 0.25rem;
+      font-size: 1.3rem;
+    }
+
+    .archive-card p {
+      margin: 0 0 0.75rem;
+      color: #475569;
+    }
+
+    .archive-card a {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      min-height: 44px;
+      margin-top: auto;
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    .archive-controls {
+      display: flex;
+      gap: 0.75rem;
       margin-bottom: 1rem;
     }
 
-    .carousel-container {
-      position: relative;
-      overflow: hidden;
+    .archive-controls[hidden] {
+      display: none;
     }
 
-    .carousel-track {
-      display: flex;
-      transition: transform 0.4s ease-in-out;
-    }
-
-    .project-card {
-      flex: 0 0 33.33%;
-      padding: 1rem;
-      box-sizing: border-box;
-    }
-
-    .project-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .project-card h3 {
-      margin: 0.5rem 0 0.25rem;
-    }
-
-    .project-card p {
-      font-size: 0.9rem;
-    }
-
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: white;
-      font-size: 2rem;
-      padding: 0.5rem;
+    .archive-controls button {
+      min-height: 44px;
+      padding: 0.5rem 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      background: #fff;
+      color: #0f172a;
+      font: inherit;
       cursor: pointer;
-      z-index: 1;
     }
 
-    .carousel-btn.left {
-      left: 0;
+    .archive-controls button:disabled {
+      color: #64748b;
+      cursor: default;
     }
 
-    .carousel-btn.right {
-      right: 0;
+    .archive-header a:focus-visible,
+    .archive-projects :focus-visible {
+      outline: 3px solid #2563eb;
+      outline-offset: 2px;
+    }
+
+    .archive-footer {
+      background: #0b1220;
+    }
+
+    @media (min-width: 44rem) {
+      .archive-track {
+        grid-auto-columns: calc((100% - var(--gap)) / 2);
+      }
+    }
+
+    @media (min-width: 65rem) {
+      .archive-track {
+        grid-auto-columns: calc((100% - var(--gap) - var(--gap)) / 3);
+      }
     }
   </style>
-  <link rel="stylesheet" href="project-credit.css">
 </head>
 <body>
-  <h2>Mis Proyectos</h2>
-  <div class="carousel-container">
-    <button class="carousel-btn left" onclick="moveCarousel(-1)">&#8249;</button>
-    <div class="carousel-track" id="carouselTrack">
-      <div class="project-card">
-        <img src="img/proyecto1.png" alt="Proyecto 1">
-        <h3>Dashboard de Ventas</h3>
-        <p>Visualización de KPIs mensuales con Power BI.</p>
-      </div>
-      <div class="project-card">
-        <img src="img/proyecto2.png" alt="Proyecto 2">
-        <h3>Control de Facturas</h3>
-        <p>Comparación automatizada de reportes en Excel con VBA.</p>
-      </div>
-      <div class="project-card">
-        <img src="img/proyecto3.png" alt="Proyecto 3">
-        <h3>Gestión de Incidentes</h3>
-        <p>Automatización de aprobaciones mediante Power Automate.</p>
-      </div>
-      <div class="project-card">
-        <img src="img/proyecto4.png" alt="Proyecto 4">
-        <h3>Análisis de Ventas en Python</h3>
-        <p>Exploración de datos y visualización con Pandas y Matplotlib.</p>
-      </div>
-      <div class="project-card">
-        <img src="img/proyecto5.png" alt="Proyecto 4">
-        <h3>Control de recepción de Facturas - Power BI</h3>
-        <p>Este tablero fue desarrollado para verificar la correcta recepción de las facturas emitidas.</p>
-      </div>
+  <header class="archive-header">
+    <div class="archive-shell">
+      <a href="index.html#proyectos">← Back to Work</a>
+      <h1>Project carousel</h1>
+      <p>Browse work in finance controls, automation and data analytics.</p>
     </div>
-    <button class="carousel-btn right" onclick="moveCarousel(1)">&#8250;</button>
-  </div>
-
-  <script>
-    let position = 0;
-    const track = document.getElementById('carouselTrack');
-    const totalItems = track.children.length;
-    const itemsPerView = 3;
-    const maxPosition = Math.ceil(totalItems / itemsPerView) - 1;
-
-    function moveCarousel(direction) {
-      position += direction;
-      if (position < 0) position = 0;
-      if (position > maxPosition) position = maxPosition;
-      const slideWidth = track.children[0].offsetWidth;
-      track.style.transform = `translateX(-${position * slideWidth * itemsPerView}px)`;
-    }
-  </script>
-  <footer class="project-credit-footer">
-    <p class="project-credit">© 2026 Portafolio <span aria-hidden="true">·</span> Desarrollado por <strong>Esteban Gabrielloni</strong></p>
+  </header>
+  <main class="archive-shell archive-projects">
+    <div class="archive-controls" id="project-controls" hidden>
+      <button type="button" id="previous-project" aria-controls="project-track">← Previous</button>
+      <button type="button" id="next-project" aria-controls="project-track">Next →</button>
+    </div>
+    <ul class="archive-track" id="project-track" tabindex="0" aria-label="Project cards">
+      <li class="archive-card">
+        <strong>Finance Controls</strong>
+        <h2>Payment Control Automation</h2>
+        <p>Apply validation rules across report sources and surface payment discrepancies for review.</p>
+        <a href="pages/Proyecto1.html">Read the payment control case</a>
+      </li>
+      <li class="archive-card">
+        <strong>Artificial Intelligence</strong>
+        <h2>Invoice Reconciliation Agent</h2>
+        <p>Coordinate report preparation, classify exceptions and record reconciliation results for review.</p>
+        <a href="pages/agente-conciliacion-facturas-detalle.html">Read the reconciliation agent case</a>
+      </li>
+      <li class="archive-card">
+        <strong>Automation</strong>
+        <h2>Accounting Validation with VBA</h2>
+        <p>Run repeatable report checks in Excel and flag differences for review.</p>
+        <a href="pages/Proyecto3.html">Read the accounting validation case</a>
+      </li>
+      <li class="archive-card">
+        <strong>Data &amp; Analytics</strong>
+        <h2>Operations KPIs</h2>
+        <p>Bring operational indicators together in Power BI for routine follow-up.</p>
+        <a href="pages/Proyecto2.html">View the operations KPI project</a>
+      </li>
+      <li class="archive-card">
+        <strong>Data &amp; Analytics</strong>
+        <h2>Sales Analysis with Python</h2>
+        <p>Explore sales patterns across regions and products with Pandas and Matplotlib.</p>
+        <a href="pages/Proyecto4.html">View the sales analysis project</a>
+      </li>
+      <li class="archive-card">
+        <strong>Finance Controls</strong>
+        <h2>Invoice Control</h2>
+        <p>Compare invoice records between two sources and summarize issues in Power BI.</p>
+        <a href="pages/Proyecto5.html">View the invoice control project</a>
+      </li>
+    </ul>
+  </main>
+  <footer class="project-credit-footer archive-footer">
+    <p class="project-credit">© 2026 Portafolio <span aria-hidden="true">·</span> <span lang="es">Desarrollado por <strong>Esteban Gabrielloni</strong></span></p>
   </footer>
+  <script>
+    const track = document.getElementById('project-track');
+    const controls = document.getElementById('project-controls');
+    const previous = document.getElementById('previous-project');
+    const next = document.getElementById('next-project');
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function updateControls() {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      controls.hidden = maxScroll <= 1;
+      previous.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft >= maxScroll - 1;
+    }
+
+    function move(direction) {
+      const [first, second] = track.children;
+      const step = second.offsetLeft - first.offsetLeft;
+      track.scrollBy({
+        left: direction * step,
+        behavior: motionPreference.matches ? 'instant' : 'smooth',
+      });
+    }
+
+    previous.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    track.addEventListener('scroll', updateControls, { passive: true });
+    window.addEventListener('resize', updateControls);
+    updateControls();
+  </script>
 </body>
 </html>
-

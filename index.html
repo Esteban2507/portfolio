@@ -1,44 +1,26 @@
-<!DOCTYPE html>
-<html lang="es">
-
+<!doctype html>
+<html lang="en">
 <head>
-  <!-- ---------- Metadatos básicos y SEO ---------- -->
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Esteban Gabrielloni | Automatización de procesos e IA</title>
-  <meta name="description" content="Portfolio de Esteban Gabrielloni: automatización de procesos, inteligencia artificial y control de pagos con Power Automate, Power BI y Python.">
+  <title>Esteban Gabrielloni | Finance Automation &amp; AI</title>
+  <meta name="description" content="Esteban Gabrielloni builds finance workflows that strengthen payment controls, simplify invoice reconciliation and surface exceptions using automation, analytics and AI.">
+  <meta name="theme-color" content="#0B1220">
   <link rel="canonical" href="https://esteban2507.github.io/portfolio/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Esteban Gabrielloni | Automatización de procesos e IA">
-  <meta property="og:description" content="Portfolio de Esteban Gabrielloni: automatización de procesos, inteligencia artificial y control de pagos con Power Automate, Power BI y Python.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Esteban Gabrielloni | Finance Automation &amp; AI">
+  <meta property="og:description" content="Finance operations experience applied to payment controls, process automation and AI. Explore three case studies.">
   <meta property="og:url" content="https://esteban2507.github.io/portfolio/">
   <meta property="og:image" content="https://esteban2507.github.io/portfolio/img/perfil.jpg">
-  <meta property="og:image:alt" content="Foto de Esteban Gabrielloni">
-  <meta property="og:locale" content="es_AR">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Esteban Gabrielloni | Automatización de procesos e IA">
-  <meta name="twitter:description" content="Portfolio de Esteban Gabrielloni: automatización de procesos, inteligencia artificial y control de pagos con Power Automate, Power BI y Python.">
+  <meta property="og:image:alt" content="Portrait of Esteban Gabrielloni">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Esteban Gabrielloni | Finance Automation &amp; AI">
+  <meta name="twitter:description" content="Case studies in payment controls, invoice reconciliation and finance automation.">
   <meta name="twitter:image" content="https://esteban2507.github.io/portfolio/img/perfil.jpg">
-  <meta name="twitter:image:alt" content="Foto de Esteban Gabrielloni">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="twitter:image:alt" content="Portrait of Esteban Gabrielloni">
   <link rel="icon" href="img/favicon.png" type="image/png">
-
-  <!-- ---------- Conexiones a CDN ---------- -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
-    rel="stylesheet">
-
-  <!-- ---------- Hojas de estilo ---------- -->
   <link rel="stylesheet" href="Estilo.css">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    crossorigin="anonymous" referrerpolicy="no-referrer">
-
-  <!-- ---------- Datos estructurados (JSON-LD) ---------- -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -46,17 +28,11 @@
     "name": "Esteban Gabrielloni",
     "jobTitle": "ITP Associate Ssr – Controls & Approvals",
     "url": "https://esteban2507.github.io/portfolio/",
-    "sameAs": [
-      "https://www.linkedin.com/in/egabrielloni",
-      "https://github.com/Esteban2507"
-    ],
-    "email": "egabrielloni@yahoo.com.ar",
     "image": "https://esteban2507.github.io/portfolio/img/perfil.jpg",
-    "knowsAbout": ["Automatización de procesos","Inteligencia artificial","Control de pagos","Power Automate","Power BI","Python","Excel avanzado","Process Mining"]
+    "sameAs": ["https://www.linkedin.com/in/egabrielloni", "https://github.com/Esteban2507"],
+    "knowsAbout": ["Finance operations", "Payment controls", "Invoice reconciliation", "Process automation", "Power BI", "Power Automate", "Copilot Studio"]
   }
   </script>
-
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0D4EQQWC4"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -64,431 +40,322 @@
     gtag('js', new Date());
     gtag('config', 'G-D0D4EQQWC4');
   </script>
-  <link rel="stylesheet" href="project-credit.css">
+  <script defer src="portfolio.js"></script>
+  <script defer src="guestbook.js"></script>
 </head>
-
-<body>
-
-  <!-- Skip link -->
-  <a href="#principal" class="skip-link">Saltar al contenido principal</a>
-  <div class="noise-overlay"></div>
-
-  <!-- ---------- Cabecera ---------- -->
-  <header>
-    <div class="perfil">
-      <img src="img/perfil.jpg" alt="Foto de Esteban Gabrielloni, analista de datos" width="150" height="150"
-        loading="lazy">
-      <h1>Esteban Gabrielloni</h1>
-      <p>Controles y aprobaciones de pagos • Automatización inteligente • Agentes de IA</p>
+<body id="top">
+  <a class="skip-link" href="#principal">Skip to main content</a>
+  <header class="site-header">
+    <div class="shell masthead">
+      <a class="brand" href="#top" aria-label="Esteban Gabrielloni, home">
+        <span class="brand-mark" aria-hidden="true">EG</span>
+        <span>Esteban G.</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        Menu <span class="nav-chevron" aria-hidden="true"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#proyectos">Work</a></li>
+          <li><a href="#sobre-mi">About</a></li>
+          <li><a href="#habilidades">Toolbox</a></li>
+          <li><a href="#contacto">Contact</a></li>
+          <li><a class="nav-social" href="https://www.linkedin.com/in/egabrielloni">LinkedIn <span class="external-arrow" aria-hidden="true"></span></a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- ---------- Navegación ---------- -->
-  <nav aria-label="Navegación principal">
-    <ul>
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#habilidades">Habilidades</a></li>
-      <li><a href="#experiencia">Experiencia</a></li>
-      <li><a href="#proyectos">Proyectos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <!-- ---------- Contenido principal ---------- -->
-  <main id="principal">
-
-    <!-- Sobre mí -->
-    <section id="sobre-mi" class="sobre-mi">
-      <div class="container">
-        <h2>Sobre mí</h2>
-        <p>Trabajo en controles y aprobaciones de pagos, donde verifico que los datos ingresados en los ERP coincidan con la documentación de respaldo. Combino mi experiencia en procesos financieros con automatización inteligente para mejorar los controles y facilitar la revisión de excepciones.</p>
-        <p>Desarrollé soluciones que cruzan información de Salesforce y ERP, y flujos de conciliación de facturas con Copilot Studio, Power Automate, SharePoint y Office Scripts. Mi objetivo profesional es evolucionar hacia Process Specialist y contribuir a la mejora continua de los procesos.</p>
-        <p><strong>Conectemos.</strong> Estoy siempre abierto a nuevas oportunidades y a generar valor juntos.
-          Hechale un vistazo a mi hoja de vida <strong><a href="https://esteban2507.github.io/CV-Esteban/"
-              target="_blank" rel="noopener noreferrer">aquí</a></strong>
-        </p>
-      </div>
-    </section>
-
-    <!-- Frase destacada -->
-    <section class="frase-destacada">
-      <blockquote cite="https://esteban2507.github.io/portfolio/">
-        Los datos no son solo números; son oportunidades esperando ser descubiertas.
-      </blockquote>
-    </section>
-
-    <!-- Habilidades técnicas -->
-    <section id="habilidades" class="habilidades">
-      <h2>Habilidades Técnicas</h2>
-      <ul>
-        <li>Automatización inteligente: Power Automate, Copilot Studio, agentes de IA, Office Scripts y SharePoint</li>
-        <li>Datos y análisis: Power BI, Python y Excel avanzado</li>
-        <li>ERP: FTS, E1 y SAP</li>
-        <li>Procesos: conciliación de facturas, controles financieros y mejora continua</li>
-      </ul>
-    </section>
-
-
-
-    <!-- Proyectos (Grid Simétrico) -->
-    <section id="proyectos" class="proyectos-section">
-      <div class="container">
-        <h2 class="titulo">Proyectos Destacados</h2>
-
-        <!-- Bloque IA -->
-        <div class="seccion-label" style="margin-top: 2rem;">
-          <span class="label-badge label-ia">✦ Inteligencia Artificial</span>
-        </div>
-
-        <div class="proyectos-grid">
-
-          <!-- IA 1: Explorador de Datos -->
-          <article class="project-card">
-            <div class="card-img">
-              <img src="img/ia-explorador.png" alt="Explorador de datos en lenguaje natural con IA" loading="lazy"
-                onerror="this.style.display='none'">
-              <div class="card-img-overlay"></div>
-              <span class="card-category-badge badge-ia">✦ IA</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Explorador de Datos con IA</h3>
-              <p class="card-desc">Subí un CSV o Excel y hacé preguntas en español. La IA analiza, responde y genera
-                gráficos automáticamente usando Claude.</p>
-              <div class="card-tags">
-                <span class="tag-ia">Claude API</span>
-                <span class="tag-ia">React</span>
-                <span class="tag-ia">Chart.js</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <a href="pages/explorador-datos-detalle.html" class="card-btn card-btn-ia">
-                Ver detalles <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
-
-          <!-- IA 2: Generador de Reportes -->
-          <article class="project-card">
-            <div class="card-img">
-              <img src="img/ia-reportes.png" alt="Generador de reportes ejecutivos con IA" loading="lazy"
-                onerror="this.style.display='none'">
-              <div class="card-img-overlay"></div>
-              <span class="card-category-badge badge-ia">✦ IA</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Generador de Reportes Ejecutivos</h3>
-              <p class="card-desc">Pegás datos crudos y la IA genera un informe profesional con métricas, análisis,
-                riesgos y recomendaciones, listo para presentar.</p>
-              <div class="card-tags">
-                <span class="tag-ia">Claude API</span>
-                <span class="tag-ia">React</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <a href="pages/generador-reportes-detalle.html" class="card-btn card-btn-ia">
-                Ver detalles <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
-
-          <!-- IA 3: Auditor de Facturas -->
-          <article class="project-card">
-            <div class="card-img">
-              <img src="img/ia-auditor.png" alt="Auditor de facturas con IA, extracción de datos y validación contable" loading="lazy"
-                onerror="this.style.display='none'">
-              <div class="card-img-overlay"></div>
-              <span class="card-category-badge badge-ia">✦ IA</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Auditor de Facturas con IA</h3>
-              <p class="card-desc">Pegás el texto de una factura y la IA extrae los datos clave y corre validaciones
-                contables automáticas: campos obligatorios, CUIT, totales y duplicados.</p>
-              <div class="card-tags">
-                <span class="tag-ia">Claude API</span>
-                <span class="tag-ia">React</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <a href="pages/auditor-facturas-detalle.html" class="card-btn card-btn-ia">
-                Ver detalles <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
-
-          <!-- IA 4: Agente para conciliación de facturas -->
-          <article class="project-card">
-            <div class="card-img">
-              <img src="img/ia-reportes.png" alt="Visualización conceptual de un flujo automatizado de conciliación" loading="lazy">
-              <div class="card-img-overlay"></div>
-              <span class="card-category-badge badge-ia">✦ IA</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Agente para Conciliación de Facturas</h3>
-              <p class="card-desc">Agente conversacional que coordina la preparación de reportes ERP y compara sus datos con registros de facturas para identificar coincidencias y excepciones.</p>
-              <div class="card-tags">
-                <span class="tag-ia">Copilot Studio</span>
-                <span class="tag-ia">Power Automate</span>
-                <span class="tag-ia">SharePoint</span>
-                <span class="tag-ia">Power BI</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <a href="pages/agente-conciliacion-facturas-detalle.html" class="card-btn card-btn-ia">
-                Ver caso de estudio <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
-
-        </div><!-- /.proyectos-grid IA -->
-
-        <!-- Bloque Análisis de Datos -->
-        <div class="seccion-label" style="margin-top: 3rem;">
-          <span class="label-badge label-datos">📊 Análisis de Datos</span>
-        </div>
-
-        <div class="proyectos-grid">
-
-          <!-- Datos 1: Control de Pagos -->
-          <article class="project-card">
-            <div class="card-img">
-              <img src="img/proyecto1.png" alt="Dashboard de control de pagos en Power BI" loading="lazy">
-              <div class="card-img-overlay"></div>
-              <span class="card-category-badge badge-datos">Power BI</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Control de Pagos</h3>
-              <p class="card-desc">Cruce automatizado de reportes entre ERP para detectar discrepancias y facilitar la revisión de pagos.</p>
-              <div class="card-tags">
-                <span class="tag-datos">Power BI</span>
-                <span class="tag-datos">DAX</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <a href="pages/Proyecto1.html" class="card-btn card-btn-datos">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
-
-          <!-- Datos 2: KPIs de Gestión -->
-          <article class="project-card">
-            <div class="card-img">
-              <img src="img/proyecto2.png" alt="Dashboard de KPIs de gestión operativa" loading="lazy">
-              <div class="card-img-overlay"></div>
-              <span class="card-category-badge badge-datos">Power BI</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">KPIs de Gestión</h3>
-              <p class="card-desc">Dashboard dinámico de performance operativa con seguimiento en tiempo real de
-                indicadores clave.</p>
-              <div class="card-tags">
-                <span class="tag-datos">Power BI</span>
-                <span class="tag-datos">DAX</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <a href="pages/Proyecto2.html" class="card-btn card-btn-datos">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
-
-          <!-- Datos 3: Validación Contable -->
-          <article class="project-card">
-            <div class="card-img">
-              <img src="img/proyecto3.png" alt="Macros VBA para validación contable" loading="lazy">
-              <div class="card-img-overlay"></div>
-              <span class="card-category-badge badge-datos">Excel VBA</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Validación Contable</h3>
-              <p class="card-desc">Automatización con VBA que cruza reportes de FTS, Almacén y Aduana eliminando errores
-                en el cierre.</p>
-              <div class="card-tags">
-                <span class="tag-datos">Excel VBA</span>
-                <span class="tag-datos">Automatización</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <a href="pages/Proyecto3.html" class="card-btn card-btn-datos">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
-
-          <!-- Datos 4: Análisis de Ventas -->
-          <article class="project-card">
-            <div class="card-img">
-              <img src="img/proyecto4.png" alt="Análisis de ventas en Python con Pandas y Matplotlib" loading="lazy">
-              <div class="card-img-overlay"></div>
-              <span class="card-category-badge badge-datos">Python</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Análisis de Ventas</h3>
-              <p class="card-desc">Análisis de ventas por región y producto con Python. Visualizaciones que detectan
-                patrones y apoyan decisiones estratégicas.</p>
-              <div class="card-tags">
-                <span class="tag-datos">Python</span>
-                <span class="tag-datos">Pandas</span>
-                <span class="tag-datos">Matplotlib</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <a href="pages/Proyecto4.html" class="card-btn card-btn-datos">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
-
-          <!-- Datos 5: Control de Facturas -->
-          <article class="project-card">
-            <div class="card-img">
-              <img src="img/proyecto5.png" alt="Dashboard de control de facturas en Power BI" loading="lazy">
-              <div class="card-img-overlay"></div>
-              <span class="card-category-badge badge-datos">Power BI</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Control de Facturas</h3>
-              <p class="card-desc">Tablero Power BI que detecta discrepancias entre dos fuentes de facturas, con medidas
-                DAX e indicadores visuales automáticos.</p>
-              <div class="card-tags">
-                <span class="tag-datos">Power BI</span>
-                <span class="tag-datos">DAX</span>
-                <span class="tag-datos">Modelado</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <a href="pages/Proyecto5.html" class="card-btn card-btn-datos">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
-
-          <!-- Datos 6: API Traductor -->
-          <article class="project-card">
-            <div class="card-img">
-              <img src="img/proyecto6.png" alt="API Traductora desarrollada con Python y Flask" loading="lazy">
-              <div class="card-img-overlay"></div>
-              <span class="card-category-badge badge-datos">Python</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">API Traductor</h3>
-              <p class="card-desc">API web con Flask y googletrans. Interfaz amigable que traduce texto entre múltiples
-                idiomas via Google Translate.</p>
-              <div class="card-tags">
-                <span class="tag-datos">Python</span>
-                <span class="tag-datos">Flask</span>
-                <span class="tag-datos">API</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <a href="pages/Proyecto6.html" class="card-btn card-btn-datos">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
-
-        </div><!-- /.proyectos-grid datos -->
-      </div>
-    </section>
-
-    <!-- Libro de Firmas -->
-    <section id="firmas" class="guestbook-section">
-      <div class="container">
-        <h2 class="titulo">Libro de Firmas</h2>
-        <p class="intro-guestbook">Dejá un mensaje en este navegador. Se guarda solo en este dispositivo y navegador, no se comparte con otros visitantes ni se envía a Esteban. Puede perderse al borrar los datos de navegación.</p>
-        <div class="guestbook-container">
-          <form id="guestbook-form" class="glass-form">
-            <div class="form-group">
-              <label for="gb-name">Nombre</label>
-              <input type="text" id="gb-name" placeholder="Tu nombre o alias" required>
-            </div>
-            <div class="form-group">
-              <label for="gb-message">Mensaje / Feedback</label>
-              <textarea id="gb-message" rows="4" placeholder="¿Qué te pareció mi portfolio?" required></textarea>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="gb-sentiment">¿Cómo calificarías la experiencia?</label>
-                <select id="gb-sentiment">
-                  <option value="🚀 Excelente">🚀 Excelente</option>
-                  <option value="✨ Muy Bueno" selected>✨ Muy Bueno</option>
-                  <option value="👍 Bueno">👍 Bueno</option>
-                  <option value="🤔 Interesante">🤔 Interesante</option>
-                </select>
-              </div>
-              <button type="submit" class="btn">Firmar Libro <i class="fas fa-pen-nib"></i></button>
-            </div>
-          </form>
-          <div id="signatures-list" class="signatures-grid">
-            <div class="loading-signatures">Cargando firmas...</div>
+  <main id="principal" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <p class="hero-kicker">FINANCE <span aria-hidden="true">·</span> AUTOMATION <span aria-hidden="true">·</span> AI</p>
+          <h1 id="hero-title">Finance Automation &amp; AI</h1>
+          <p class="hero-intro">I turn manual finance processes into automated workflows that strengthen controls, surface exceptions and save time.</p>
+          <div class="hero-actions">
+            <a class="button button--primary" href="#proyectos">View Projects <span aria-hidden="true">↓</span></a>
+            <a class="button button--outline" href="#sobre-mi">About Me</a>
           </div>
+          <ul class="hero-links" aria-label="Professional profiles">
+            <li><a href="https://www.linkedin.com/in/egabrielloni">LinkedIn <span class="external-arrow" aria-hidden="true"></span></a></li>
+            <li><a href="https://github.com/Esteban2507">GitHub <span class="external-arrow" aria-hidden="true"></span></a></li>
+          </ul>
+        </div>
+        <div class="hero-lines" aria-hidden="true">
+          <span></span><span></span><span></span>
         </div>
       </div>
     </section>
 
+    <section class="impact" aria-labelledby="impact-title">
+      <div class="shell impact-inner">
+        <h2 id="impact-title">Impact</h2>
+        <p class="impact-number"><span aria-hidden="true">~60%</span><span class="visually-hidden">Approximately 60 percent</span></p>
+        <div class="impact-copy">
+          <p class="impact-label">less time spent on payment checks</p>
+          <p>Estimated reduction in the time I spent on payment checks that previously relied on visual comparison.</p>
+        </div>
+        <a class="text-link" href="pages/Proyecto1.html">Read the payment control case <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="capabilities-title">
+      <div class="shell">
+        <div class="section-heading">
+          <h2 id="capabilities-title">What I Do</h2>
+        </div>
+        <ul class="capabilities">
+          <li class="capability tone-automation">
+            <h3>Financial Process Automation</h3>
+            <p>Automate repetitive steps in financial controls, report preparation and reconciliations.</p>
+          </li>
+          <li class="capability tone-data">
+            <h3>Data &amp; Analytics</h3>
+            <p>Turn operational data into comparisons, exception lists and tools for decisions.</p>
+          </li>
+          <li class="capability tone-controls">
+            <h3>Controls &amp; Process Improvement</h3>
+            <p>Define consistent checks and make it easier for people to review the cases that need attention.</p>
+          </li>
+          <li class="capability tone-ai">
+            <h3>AI for Finance</h3>
+            <p>Use Copilot and conversational agents to guide and coordinate financial workflows.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="proyectos" aria-labelledby="featured-title">
+      <div class="shell">
+        <div class="section-heading">
+          <h2 id="featured-title">Featured Projects</h2>
+        </div>
+        <article class="feature feature--primary tone-controls">
+          <div class="feature-copy">
+            <span class="tag">Finance Controls</span>
+            <h3>Payment Control Automation</h3>
+            <p>Payment checks relied on visual comparisons across reports. I built a control that applies the same rules across sources and brings differences into one view for review.</p>
+            <p class="feature-result"><strong>~60% less time</strong> on the payment checks I previously performed visually.</p>
+            <ul class="tech-list" aria-label="Technologies">
+              <li>Power BI</li><li>Power Query</li><li>DAX</li>
+            </ul>
+            <a class="text-link" href="pages/Proyecto1.html">Read the payment control case <span aria-hidden="true">→</span></a>
+          </div>
+          <figure class="control-flow">
+            <figcaption>Payment check workflow</figcaption>
+            <div class="flow-sources">
+              <span>Invoice records</span><span>ERP reports</span>
+            </div>
+            <ol>
+              <li><strong>Compare key fields</strong><span>Payee, document details, currency and amount</span></li>
+              <li><strong>Flag discrepancies</strong><span>Route exceptions to a reviewer</span></li>
+            </ol>
+            <p>Conceptual diagram</p>
+          </figure>
+        </article>
+        <div class="feature-pair">
+          <article class="feature tone-ai">
+            <div class="feature-copy">
+              <span class="tag">Artificial Intelligence</span>
+              <h3>Invoice Reconciliation Agent</h3>
+              <p>I built a conversational agent that coordinates report preparation and reconciliation. The team can review recorded matches and exceptions before deciding on approvals.</p>
+              <ul class="tech-list" aria-label="Technologies">
+                <li>Copilot Studio</li><li>Power Automate</li><li>SharePoint</li>
+              </ul>
+              <a class="text-link" href="pages/agente-conciliacion-facturas-detalle.html">Read the agent case <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="feature tone-automation">
+            <div class="feature-copy">
+              <span class="tag">Automation</span>
+              <h3>Accounting Validation with VBA</h3>
+              <p>I automated repetitive report comparisons in Excel so the same validation rules run consistently and reviewers can investigate differences.</p>
+              <ul class="tech-list" aria-label="Technologies">
+                <li>Excel</li><li>VBA</li>
+              </ul>
+              <a class="text-link" href="pages/Proyecto3.html">Read the accounting validation case <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="library" aria-labelledby="library-title">
+      <div class="shell">
+        <div class="section-heading">
+          <h2 id="library-title">Project Library</h2>
+          <p>Dashboards, data projects and interactive demos.</p>
+        </div>
+        <div class="library-grid">
+          <article class="library-card tone-data">
+            <span class="tag">Data &amp; Analytics</span>
+            <h3>Operations KPIs</h3>
+            <p>A single view of operational indicators to help teams track performance.</p>
+            <ul class="tech-list" aria-label="Technologies"><li>Power BI</li><li>DAX</li></ul>
+            <a class="text-link" href="pages/Proyecto2.html">View the KPI project <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="library-card tone-controls">
+            <span class="tag">Finance Controls</span>
+            <h3>Invoice Control Dashboard</h3>
+            <p>Checks invoice data across two sources and makes differences easier to find.</p>
+            <ul class="tech-list" aria-label="Technologies"><li>Power BI</li><li>DAX</li><li>Data modeling</li></ul>
+            <a class="text-link" href="pages/Proyecto5.html">View the invoice control project <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="library-card tone-ai">
+            <span class="tag">Artificial Intelligence</span>
+            <h3>AI Invoice Auditor</h3>
+            <p>A demo that extracts fields from sample invoice text and checks formats, totals and duplicates.</p>
+            <ul class="tech-list" aria-label="Technologies"><li>Generative AI</li><li>React</li></ul>
+            <a class="text-link" href="pages/auditor-facturas-detalle.html">View the invoice auditor demo <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="library-card tone-ai">
+            <span class="tag">Artificial Intelligence</span>
+            <h3>Data Explorer with AI</h3>
+            <p>Ask questions in Spanish about a CSV or Excel file and get visual summaries.</p>
+            <ul class="tech-list" aria-label="Technologies"><li>Generative AI</li><li>React</li><li>Chart.js</li></ul>
+            <a class="text-link" href="pages/explorador-datos-detalle.html">View the data explorer demo <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="library-card tone-improvement">
+            <span class="tag">Process Improvement</span>
+            <h3>Executive Report Generator</h3>
+            <p>A demo that turns sample input into a draft executive summary for review.</p>
+            <ul class="tech-list" aria-label="Technologies"><li>Generative AI</li><li>React</li></ul>
+            <a class="text-link" href="pages/generador-reportes-detalle.html">View the report generator demo <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="library-card tone-data">
+            <span class="tag">Data &amp; Analytics</span>
+            <h3>Sales Analysis</h3>
+            <p>Explores sales across regions and product lines with Python visualizations.</p>
+            <ul class="tech-list" aria-label="Technologies"><li>Python</li><li>pandas</li><li>Matplotlib</li></ul>
+            <a class="text-link" href="pages/Proyecto4.html">View the sales analysis project <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="library-card tone-automation">
+            <span class="tag">Automation</span>
+            <h3>Translation API</h3>
+            <p>A Flask web interface that translates text between languages.</p>
+            <ul class="tech-list" aria-label="Technologies"><li>Python</li><li>Flask</li><li>googletrans</li></ul>
+            <a class="text-link" href="pages/Proyecto6.html">View the translation API project <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--navy" aria-labelledby="method-title">
+      <div class="shell">
+        <div class="section-heading">
+          <h2 id="method-title">How I Build Solutions</h2>
+          <p>I start with the work people do, where errors can enter and which decisions require judgment.</p>
+        </div>
+        <ol class="method-steps">
+          <li><h3>Understand</h3><p>Map the process, pain points and risks.</p></li>
+          <li><h3>Simplify</h3><p>Reduce steps and define the business rules.</p></li>
+          <li><h3>Automate</h3><p>Build the workflow with data, automation and AI where useful.</p></li>
+          <li><h3>Control</h3><p>Flag exceptions and keep people in charge of decisions.</p></li>
+          <li><h3>Measure</h3><p>Track time saved, errors prevented and changes in the process.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="habilidades" aria-labelledby="toolbox-title">
+      <div class="shell">
+        <div class="section-heading">
+          <h2 id="toolbox-title">Toolbox</h2>
+        </div>
+        <div class="toolbox">
+          <article class="toolbox-group tone-data">
+            <h3>Data &amp; Visualization</h3>
+            <ul><li>Power BI</li><li>Power Query</li><li>DAX</li><li>Excel</li></ul>
+          </article>
+          <article class="toolbox-group tone-automation">
+            <h3>Automation</h3>
+            <ul><li>Python</li><li>Power Automate</li><li>Office Scripts</li></ul>
+          </article>
+          <article class="toolbox-group tone-ai">
+            <h3>Artificial Intelligence</h3>
+            <ul><li>Microsoft Copilot</li><li>Copilot Studio</li><li>Generative AI</li></ul>
+          </article>
+          <article class="toolbox-group tone-controls">
+            <h3>Business</h3>
+            <ul><li>Finance Operations</li><li>Payment Controls</li><li>Reconciliations</li><li>Process Improvement</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="sobre-mi" aria-labelledby="about-title">
+      <div class="shell about-layout">
+        <div class="about-copy">
+          <div class="section-heading">
+            <p class="eyebrow">About Me</p>
+            <h2 id="about-title">Finance professional turned automation builder.</h2>
+          </div>
+          <p>I’m Esteban Gabrielloni. Working in finance operations and payment controls showed me how much critical work depended on repetitive, manual checks. I began building tools to apply those checks consistently and help reviewers find the differences that matter.</p>
+          <p>Today I work as an <strong>ITP Associate Ssr – Controls &amp; Approvals</strong>, combining finance operations with analytics, process automation and AI. My training includes IA Forward.</p>
+          <a class="text-link" href="https://esteban2507.github.io/CV-Esteban/en_version.html">View my CV <span class="external-arrow" aria-hidden="true"></span></a>
+        </div>
+        <img class="about-portrait" src="img/esteban-portrait.webp" width="480" height="480" alt="Portrait of Esteban Gabrielloni" loading="lazy" decoding="async">
+      </div>
+    </section>
+
+    <section class="section" id="experiencia" aria-labelledby="journey-title">
+      <div class="shell">
+        <div class="section-heading">
+          <h2 id="journey-title">Professional Journey</h2>
+          <p>My goal is to grow into a Process Specialist role.</p>
+        </div>
+        <ol class="journey">
+          <li>Finance Operations</li>
+          <li>Controls &amp; Approvals</li>
+          <li>Data Analytics</li>
+          <li>Process Automation</li>
+          <li>AI for Finance</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="contact section--navy" id="contacto" aria-labelledby="contact-title">
+      <div class="shell contact-inner">
+        <div class="contact-heading">
+          <h2 id="contact-title">Contact</h2>
+          <address class="contact-links">
+            <a href="mailto:egabrielloni@yahoo.com.ar">Email</a>
+            <a href="https://www.linkedin.com/in/egabrielloni">LinkedIn <span class="external-arrow" aria-hidden="true"></span></a>
+            <a href="https://github.com/Esteban2507">GitHub <span class="external-arrow" aria-hidden="true"></span></a>
+            <a href="https://esteban2507.github.io/CV-Esteban/en_version.html">View CV <span class="external-arrow" aria-hidden="true"></span></a>
+          </address>
+        </div>
+        <details class="guestbook" id="firmas">
+          <summary>Guestbook</summary>
+          <div class="guestbook-content">
+            <p>Messages are saved in this browser. Other visitors can’t see them, and they aren’t sent to Esteban.</p>
+            <noscript><p>Enable JavaScript to use the guestbook.</p></noscript>
+            <form id="guestbook-form">
+              <label for="gb-name">Name or alias</label>
+              <input id="gb-name" type="text" maxlength="100" required>
+              <label for="gb-message">Message</label>
+              <textarea id="gb-message" rows="3" maxlength="800" required></textarea>
+              <label for="gb-sentiment">How was your visit?</label>
+              <select id="gb-sentiment">
+                <option value="🚀 Excelente">Excellent</option>
+                <option value="✨ Muy Bueno" selected>Very good</option>
+                <option value="👍 Bueno">Good</option>
+                <option value="🤔 Interesante">Interesting</option>
+              </select>
+              <button class="button button--primary" type="submit" disabled>Save message</button>
+              <p id="guestbook-status" role="status"></p>
+            </form>
+            <div class="signatures-list" id="signatures-list"></div>
+          </div>
+        </details>
+      </div>
+    </section>
   </main>
 
-  <script src="guestbook.js"></script>
-
-  <!-- ---------- Footer ---------- -->
-  <footer id="contacto">
-    <address>
-      📧 <a href="mailto:egabrielloni@yahoo.com.ar">egabrielloni@yahoo.com.ar</a> |
-      🌐 <a href="https://www.linkedin.com/in/egabrielloni" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
-      <i class="fab fa-github" aria-hidden="true"></i>
-      <a href="https://github.com/Esteban2507" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </address>
-    <p class="project-credit">© 2026 Portafolio <span aria-hidden="true">·</span> Desarrollado por <strong>Esteban Gabrielloni</strong></p>
+  <footer class="site-footer">
+    <div class="shell">
+      <p class="site-credit" lang="es">© 2026 Portafolio <span aria-hidden="true">·</span> Desarrollado por <strong>Esteban Gabrielloni</strong></p>
+    </div>
   </footer>
-
-  <!-- ---------- Scripts ---------- -->
-  <script>
-    // Animación de aparición con IntersectionObserver
-    document.addEventListener('DOMContentLoaded', () => {
-      const secs = document.querySelectorAll('section');
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-          });
-        },
-        { rootMargin: '0px 0px -15% 0px', threshold: 0.1 }
-      );
-      secs.forEach(sec => observer.observe(sec));
-    });
-  </script>
-
-  <script>
-    // Efecto Tilt 3D en las cards de proyecto
-    document.querySelectorAll('.project-card').forEach(item => {
-      item.addEventListener('mousemove', e => {
-        const rect = item.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateX = (y - rect.height / 2) / 20;
-        const rotateY = (rect.width / 2 - x) / 20;
-        item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-      });
-      item.addEventListener('mouseleave', () => {
-        item.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-      });
-    });
-
-    // Botones magnéticos
-    document.querySelectorAll('.btn, .vermas, .card-btn').forEach(btn => {
-      btn.addEventListener('mousemove', e => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-      });
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = 'translate(0, 0)';
-      });
-    });
-  </script>
-
 </body>
-
 </html>
